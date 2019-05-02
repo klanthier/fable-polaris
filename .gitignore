@@ -1,2 +1,10 @@
-bin
 obj
+bin
+src/bin
+src/obj
+sample/src/bin
+sample/src/obj
+sample/.fable
+sample/node_modules
+.fake
+paket-files

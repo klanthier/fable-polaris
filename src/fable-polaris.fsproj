@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Fable Components implementation of Polaris React for Elmish apps</Description>
+    <PackageProjectUrl>https://github.com/klanthier/fable-polaris</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/klanthier/fable-polaris/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/klanthier/fable-polaris/master/fable-polaris.jpg</PackageIconUrl>
+    <RepositoryUrl>https://github.com/klanthier/fable-polaris</RepositoryUrl>
+    <PackageTags>fable;elm;fsharp;shopify-polaris,react</PackageTags>
+    <Authors>Kevin Lanthier</Authors>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Components -->
+    <Compile Include="components/appProvider/appProvider.fs" />
+    <Compile Include="components/avatar/avatar.fs" />
+  </ItemGroup>
+  
+  <!-- Add source files to "fable" folder in Nuget package -->
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>
