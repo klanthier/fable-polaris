@@ -90,8 +90,6 @@ module Page =
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj -> obj?title <- requiredProps.Title; obj)
 
-        Browser.Dom.console.log(combinedProps)
-            
         ofImport "Page" "@shopify/polaris" combinedProps children
 
 module Spinner =
