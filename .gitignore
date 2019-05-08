@@ -8,3 +8,4 @@ sample/.fable
 sample/node_modules
 .fake
 paket-files
+node_modules

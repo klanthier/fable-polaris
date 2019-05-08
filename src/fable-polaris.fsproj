@@ -9,17 +9,16 @@
     <PackageTags>fable;elm;fsharp;shopify-polaris,react</PackageTags>
     <Authors>Kevin Lanthier</Authors>
     <Version>0.0.1</Version>
-  </PropertyGroup>
-  <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- Components -->
-    <Compile Include="components/appProvider/appProvider.fs" />
-    <Compile Include="components/avatar/avatar.fs" />
+    <Compile Include="Polaris.fs" />
   </ItemGroup>
   
   <!-- Add source files to "fable" folder in Nuget package -->
-  <Import Project="..\.paket\Paket.Restore.targets" />
+  <ItemGroup>
+    <PackageReference Include="Fable.Core" Version="3.0.0" />
+  </ItemGroup>
 </Project>
