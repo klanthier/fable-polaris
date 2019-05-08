@@ -20,5 +20,6 @@
   <!-- Add source files to "fable" folder in Nuget package -->
   <ItemGroup>
     <PackageReference Include="Fable.Core" Version="3.0.0" />
+    <PackageReference Include="Fable.React" Version="5.2.3" />
   </ItemGroup>
 </Project>
