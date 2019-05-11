@@ -13,8 +13,13 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Components -->
-    <Compile Include="Polaris.fs" />
+    <Compile Include="Shared.fs" />
+    
+    <Compile Include="AppProvider.fs" />
+    <Compile Include="Avatar.fs" />
+    <Compile Include="Button.fs" />
+    <Compile Include="Page.fs" />
+    <Compile Include="Spinner.fs" />
   </ItemGroup>
   
   <!-- Add source files to "fable" folder in Nuget package -->
