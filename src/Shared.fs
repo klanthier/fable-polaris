@@ -1,4 +1,4 @@
-module Polaris
+module Polaris.Shared
 
 open Fable.Core
 

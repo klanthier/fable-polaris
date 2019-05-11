@@ -3,10 +3,12 @@ module App
 open Elmish
 open Elmish.React
 open Fable.React
-open Fable.React.Props
+open Fable.Core.JsInterop
 
-open Polaris.Avatar
+open Polaris
 open Polaris.AppProvider
+
+// importAll "@shopify/polaris/styles.css"
 
 type Model = int
 
@@ -30,22 +32,14 @@ let update (msg:Msg) (model:Model) =
     | Decrement -> model - 1
 
 let view (model:Model) dispatch =
-    let props = {
-        accessibilityLabel = None
-        customer = Some true
-        initials = None
-        name = Some "ABCD"
-        size = None
-        source = None
-    }
 
     appProvider appProviderProps [
       div []
         [ 
-          avatar props
-          button [ OnClick (fun _ -> dispatch Increment) ] [ str "+" ]
+          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
           div [] [ str (string model) ]
-          button [ OnClick (fun _ -> dispatch Decrement) ] [ str "-" ] ]
+          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+        ]
     ]
 
 // App

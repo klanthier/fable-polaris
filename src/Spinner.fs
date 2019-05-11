@@ -3,6 +3,7 @@ module Polaris.Spinner
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Shared
 
 type [<RequireQualifiedAccess>] [<StringEnum>] SpinnerSize =
     | [<CompiledName "small">] Small

@@ -1,7 +1,6 @@
 module Polaris.AppProvider
 
 open Fable.React
-
 type AppColorsTopBar = {
     background: string
 }

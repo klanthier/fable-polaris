@@ -40,7 +40,7 @@ type RequiredButtonProps = {
 }
 
 
-let inline button requiredProps (props : ButtonProps list) (elems : ReactElement list) : ReactElement =
+let inline button requiredProps (props : ButtonProps list) (children : ReactElement list) : ReactElement =
     let combinedProps =
         props
         |> keyValueList CaseRules.LowerFirst
@@ -48,4 +48,4 @@ let inline button requiredProps (props : ButtonProps list) (elems : ReactElement
             obj?onClick <- requiredProps.OnClick
             obj
         )
-    ofImport "Button" "@shopify/polaris" combinedProps elems
+    ofImport "Button" "@shopify/polaris" combinedProps children
