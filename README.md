@@ -1,4 +1,4 @@
-# fable-polaris
+# fable-polaris [![Build Status](https://travis-ci.org/klanthier/fable-polaris.svg?branch=master)](https://travis-ci.org/klanthier/fable-polaris) [![NuGet version](https://badge.fury.io/nu/fable-polaris.svg)](https://badge.fury.io/nu/fable-polaris)
 Fable/F# bindings for Shopify's Polaris react component library
 
 # Installing and Running the sample
