@@ -1,6 +1,67 @@
 # fable-polaris [![Build Status](https://travis-ci.org/klanthier/fable-polaris.svg?branch=master)](https://travis-ci.org/klanthier/fable-polaris) [![NuGet version](https://badge.fury.io/nu/fable-polaris.svg)](https://badge.fury.io/nu/fable-polaris)
 Fable/F# bindings for Shopify's Polaris react component library
 
+Current bindings are written for Shopify Polaris version **3.14.0**
+
+# Using in your Fable Project
+## Dependency
+You will need to install Shopify Polaris
+`yarn add @shopify/polaris@3.14.0`
+
+Then you must ensure you add the styles to your main F# file like so:
+`importAll "@shopify/polaris/styles.css"`
+
+## Fable-Polaris
+Add shopify-polaris to your project
+`dotnet add package fable-polaris --version 0.2.0`
+
+### You may now begin using the library like so
+	
+~~~~
+module App
+
+open Elmish
+open Elmish.React
+open Fable.React
+open Fable.Core.JsInterop
+
+open Polaris
+open Polaris.AppProvider
+open Polaris.Stack
+
+importAll "@shopify/polaris/styles.css"
+
+type Model = int
+
+type Msg =
+| Increment
+| Decrement
+
+let init() : Model = 0
+
+let update (msg:Msg) (model:Model) =
+    match msg with
+    | Increment -> model + 1
+    | Decrement -> model - 1
+
+let view (model:Model) dispatch =
+
+    appProvider [] [
+      stack [ StackProps.Vertical true ]
+        [ 
+          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
+          div [] [ str (string model) ]
+          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+        ]
+    ]
+
+// App
+Program.mkSimple init update view
+|> Program.withReactBatched "fable-polaris-app"
+|> Program.withConsoleTrace
+|> Program.run
+~~~~
+
 # Installing and Running the sample
 Run `yarn build` to build all the project source
 
@@ -80,3 +141,28 @@ To start the sample project run
 | Tooltip               |     :no_entry:     |
 | Top bar               |     :no_entry:     |
 | Visually hidden       |     :no_entry:     |
+
+# Common issues
+You will need to ensure that there is a loader for the css files from Polaris, in your webpack make sure you have that set-up
+ ~~~~
+
+ module: {
+        rules: [
+            {
+                test: /\.fs(x|proj)?$/,
+                use: "fable-loader"
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                ]
+            }
+        
+        ]
+    }
+~~~~
+
+# Disclaimer
+This library facilitate usage of Shopify's Polaris React library through bindings. We do not have any license or rights over their library and you must ensure while using Fable-Polaris that you have the proper rights to consume Shopify's Polaris library according to their [license](https://polaris.shopify.com/legal/license).

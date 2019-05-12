@@ -12,9 +12,19 @@ module.exports = {
         port: 8080,
     },
     module: {
-        rules: [{
-            test: /\.fs(x|proj)?$/,
-            use: "fable-loader"
-        }]
+        rules: [
+            {
+                test: /\.fs(x|proj)?$/,
+                use: "fable-loader"
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                ]
+            }
+        
+        ]
     }
 }

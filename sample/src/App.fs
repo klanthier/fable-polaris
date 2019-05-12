@@ -9,7 +9,7 @@ open Polaris
 open Polaris.AppProvider
 open Polaris.Stack
 
-// importAll "@shopify/polaris/styles.css"
+importAll "@shopify/polaris/styles.css"
 
 type Model = int
 
