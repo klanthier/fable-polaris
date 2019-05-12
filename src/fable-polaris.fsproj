@@ -20,6 +20,7 @@
     <Compile Include="Button.fs" />
     <Compile Include="Page.fs" />
     <Compile Include="Spinner.fs" />
+    <Compile Include="Stack.fs" />
   </ItemGroup>
   
   <!-- Add source files to "fable" folder in Nuget package -->

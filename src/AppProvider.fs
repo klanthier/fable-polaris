@@ -1,5 +1,7 @@
 module Polaris.AppProvider
 
+open Fable.Core
+open Fable.Core.JsInterop
 open Fable.React
 type AppColorsTopBar = {
     background: string
@@ -22,10 +24,15 @@ type AppTheme = {
     logo: AppLogo option
 }
 
-type AppProviderProps = {
-    linkComponent: ReactElement option
-    theme: AppTheme option
-}
+type TranslationDictionary = TranslationDictionary
 
-let inline appProvider (props : AppProviderProps) (elems : ReactElement list) : ReactElement =
-    ofImport "AppProvider" "@shopify/polaris" props elems
+type AppProviderProps =
+    | ApiKey of string
+    | ForceRedirect of bool
+    | I18n of U2<TranslationDictionary, TranslationDictionary list>
+    | LinkComponent of ReactElement
+    | ShopOrigin of string
+    | Theme of AppTheme
+
+let inline appProvider (props : AppProviderProps list) (children : ReactElement list) : ReactElement =
+    ofImport "AppProvider" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children

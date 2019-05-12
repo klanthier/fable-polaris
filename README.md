@@ -17,7 +17,7 @@ To start the sample project run
 | Avatar                | :white_check_mark: |
 | Badge                 |     :no_entry:     |
 | Banner                |     :no_entry:     |
-| Button                |     :no_entry:     |
+| Button                | :white_check_mark: |
 | Button group          |     :no_entry:     |
 | Callout card          |     :no_entry:     |
 | Caption               |     :no_entry:     |
@@ -67,7 +67,7 @@ To start the sample project run
 | Skeleton page         |     :no_entry:     |
 | Skeleton thumbnail    |     :no_entry:     |
 | Spinner               | :white_check_mark: |
-| Stack                 |     :no_entry:     |
+| Stack                 | :white_check_mark: |
 | Stepper               |     :no_entry:     |
 | Subheading            |     :no_entry:     |
 | Tabs                  |     :no_entry:     |

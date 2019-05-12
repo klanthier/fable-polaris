@@ -7,6 +7,7 @@ open Fable.Core.JsInterop
 
 open Polaris
 open Polaris.AppProvider
+open Polaris.Stack
 
 // importAll "@shopify/polaris/styles.css"
 
@@ -15,14 +16,6 @@ type Model = int
 type Msg =
 | Increment
 | Decrement
-
-let appProviderProps = {
-  theme = Some {
-    logo = None
-    colors = None
-  }
-  linkComponent = None
-}
 
 let init() : Model = 0
 
@@ -33,8 +26,8 @@ let update (msg:Msg) (model:Model) =
 
 let view (model:Model) dispatch =
 
-    appProvider appProviderProps [
-      div []
+    appProvider [] [
+      stack [ StackProps.Vertical true ]
         [ 
           Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
           div [] [ str (string model) ]
