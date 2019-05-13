@@ -35,8 +35,10 @@ let view (model:Model) dispatch =
         ]
     ]
 
-// // App
-// Program.mkSimple init update view
-// |> Program.withReactBatched "fable-polaris-app"
-// |> Program.withConsoleTrace
-// |> Program.run
+
+ignore <| Browser.Dom.window.addEventListener ("load", (fun _ -> 
+    Program.mkSimple init update view
+            |> Program.withReactBatched "fable-polaris-avatar"
+            |> Program.withConsoleTrace
+            |> Program.run
+), false)

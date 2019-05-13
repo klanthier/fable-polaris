@@ -1,0 +1,26 @@
+---
+name: Avatar
+---
+
+import { Playground, Props } from 'docz'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+# Avatar
+
+## Example
+
+<div id="fable-polaris-avatar" className="fable-polaris-avatar"></div>
+
+## Code
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`
+    appProvider [] [
+      stack [ StackProps.Vertical true ]
+        [ 
+          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
+          div [] [ str (string model) ]
+          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+        ]
+    ]
+`}</SyntaxHighlighter>
