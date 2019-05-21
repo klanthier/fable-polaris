@@ -38,8 +38,8 @@ let view (model:Model) dispatch =
     nav2.label <- "Somewhere"
     nav2.icon <- BundledIcon.OnlineStore
 
-    appProvider [] [
-        div
+    appProvider []
+        (div
             []
             [
                 stack [ StackProps.Vertical true ]
@@ -57,8 +57,7 @@ let view (model:Model) dispatch =
                             ]
                             []
                     ]
-            ]
-    ]
+            ])
 
 // App
 Program.mkSimple init update view
