@@ -34,5 +34,5 @@ type AppProviderProps =
     | ShopOrigin of string
     | Theme of AppTheme
 
-let inline appProvider (props : AppProviderProps list) (children : ReactElement list) : ReactElement =
-    ofImport "AppProvider" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children
+let inline appProvider (props : AppProviderProps list) (child : ReactElement) : ReactElement =
+    ofImport "AppProvider" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) [ child ]
