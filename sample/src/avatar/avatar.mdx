@@ -6,21 +6,48 @@ import { Playground, Props } from 'docz'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
+export const load = function() {
+  if (window.polaris_avatar_loaded) {
+    window.polaris_avatar_loaded();
+  }
+};
+
 # Avatar
 
-## Example
+## Examples
 
-<div id="fable-polaris-avatar" className="fable-polaris-avatar"></div>
+<div ref={load()} id="fable-polaris-avatar" className="fable-polaris-avatar"></div>
 
-## Code
+## Code - Example 1
 
-<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`
-    appProvider [] [
-      stack [ StackProps.Vertical true ]
-        [ 
-          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
-          div [] [ str (string model) ]
-          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
-        ]
-    ]
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`avatar [  
+  AccessibilityLabel "Accessiblity Label String"
+  Customer true
+  Initials "FP"
+  Name "Fable Polaris"
+  Size AvatarSize.Medium
+]
+`}</SyntaxHighlighter>
+
+## Code - Example 2
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`avatar [
+  AccessibilityLabel "Accessiblity Label String"
+  Customer true
+  Initials "FP"
+  Name "Fable Polaris"
+  Size AvatarSize.Medium
+  Source "https://raw.githubusercontent.com/klanthier/fable-polaris/master/fable-polaris.jpg"
+]
+`}</SyntaxHighlighter>
+
+## Code - Example 3
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`avatar [
+  AccessibilityLabel "Accessiblity Label String"
+  Customer false
+  Initials "FP"
+  Name "Fable Polaris"
+  Size AvatarSize.Medium
+]
 `}</SyntaxHighlighter>

@@ -1,15 +1,9 @@
-module App
+module Avatar
 
-open Elmish
-open Elmish.React
 open Fable.React
-open Fable.Core.JsInterop
-
-open Polaris
 open Polaris.AppProvider
+open Polaris.Avatar
 open Polaris.Stack
-
-importAll "@shopify/polaris/styles.css"
 
 type Model = int
 
@@ -27,18 +21,42 @@ let update (msg:Msg) (model:Model) =
 let view (model:Model) dispatch =
 
     appProvider [] [
-      stack [ StackProps.Vertical true ]
-        [ 
-          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
-          div [] [ str (string model) ]
-          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+      stack [ Spacing StackSpacing.ExtraLoose] [
+      
+        div [] [
+          h1 [] [str "Example 1"]
+          avatar [  
+            AccessibilityLabel "Accessiblity Label String"
+            Customer true
+            Initials "FP"
+            Name "Fable Polaris"
+            Size AvatarSize.Medium
+          ]
         ]
+
+        div [] [
+          h1 [] [str "Example 2"]
+          avatar [
+            AccessibilityLabel "Accessiblity Label String"
+            Customer true
+            Initials "FP"
+            Name "Fable Polaris"
+            Size AvatarSize.Medium
+            Source "https://raw.githubusercontent.com/klanthier/fable-polaris/master/fable-polaris.jpg"
+          ]
+        ]
+
+        div [] [
+          h1 [] [str "Example 3"]
+          avatar [
+            AccessibilityLabel "Accessiblity Label String"
+            Customer false
+            Initials "FP"
+            Name "Fable Polaris"
+            Size AvatarSize.Medium
+          ]
+        ]
+      
     ]
+  ]
 
-
-ignore <| Browser.Dom.window.addEventListener ("load", (fun _ -> 
-    Program.mkSimple init update view
-            |> Program.withReactBatched "fable-polaris-avatar"
-            |> Program.withConsoleTrace
-            |> Program.run
-), false)

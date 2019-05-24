@@ -1,0 +1,32 @@
+---
+name: Navigation
+---
+
+import { Playground, Props } from 'docz'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+export const load = function() {
+  window.polaris_navigation_loaded();
+};
+
+
+# Navigation
+
+## Example
+
+<div ref={load()} id="fable-polaris-navigation" className="fable-polaris-navigation"></div>
+
+## Code
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`
+    appProvider [] [
+      stack [ StackProps.Vertical true ]
+        [ 
+          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
+          div [] [ str (string model) ]
+          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+        ]
+    ]
+`}</SyntaxHighlighter>
+
