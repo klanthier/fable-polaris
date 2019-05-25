@@ -20,12 +20,12 @@ let update (msg:Msg) (model:Model) =
 
 let view (model:Model) dispatch =
 
-    appProvider [] [
+    appProvider [] <|
       stack [ Spacing StackSpacing.ExtraLoose] [
       
         div [] [
           h1 [] [str "Example 1"]
-          avatar [  
+          avatar [
             AccessibilityLabel "Accessiblity Label String"
             Customer true
             Initials "FP"
@@ -57,6 +57,6 @@ let view (model:Model) dispatch =
           ]
         ]
       
-    ]
+    
   ]
 

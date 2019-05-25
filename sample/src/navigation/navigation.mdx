@@ -19,14 +19,13 @@ export const load = function() {
 
 ## Code
 
-<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`
-    appProvider [] [
-      stack [ StackProps.Vertical true ]
-        [ 
-          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
-          div [] [ str (string model) ]
-          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`navigation { Location = "/"} []
+[
+    navigationSection
+        [
+            [nav1; nav2] |> ResizeArray |> NavigationSectionProps.Items
         ]
-    ]
+        []
+]
 `}</SyntaxHighlighter>
 

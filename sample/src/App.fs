@@ -3,7 +3,6 @@ module App
 open Elmish
 open Elmish.React
 open Fable.Core.JsInterop
-
 importAll "@shopify/polaris/styles.css"
 
 Browser.Dom.window?polaris_navigation_loaded

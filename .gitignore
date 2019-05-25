@@ -10,3 +10,4 @@ sample/node_modules
 paket-files
 node_modules
 .docz
+.DS_Store

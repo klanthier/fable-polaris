@@ -19,6 +19,9 @@
     <Compile Include="AppProvider.fs" />
     <Compile Include="Avatar.fs" />
     <Compile Include="Button.fs" />
+    <Compile Include="Frame.fs" />
+    <Compile Include="Icon.fs" />
+    <Compile Include="Navigation.fs" />
     <Compile Include="Page.fs" />
     <Compile Include="Spinner.fs" />
     <Compile Include="Stack.fs" />
