@@ -1,21 +1,27 @@
 {
-    "private": true,
-    "scripts": {
-      "start": "webpack-dev-server"
-    },
-    "dependencies": {
-      "@babel/core": "^7.3.4",
-      "@shopify/polaris": "^3.14.0",
-      "fable-compiler": "^2.1.12",
-      "fable-loader": "^2.1.5",
-      "react": "^16.8.4",
-      "react-dom": "^16.8.4",
-      "webpack": "^4.29.6",
-      "webpack-cli": "^3.2.3",
-      "webpack-dev-server": "^3.2.1"
-    },
-    "devDependencies": {
-      "css-loader": "^2.1.1",
-      "style-loader": "^0.23.1"
-    }
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server",
+    "start-docs": "yarn docz dev"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@shopify/polaris": "^3.14.0",
+    "fable-compiler": "^2.1.12",
+    "fable-loader": "^2.1.5",
+    "rc-progress": "^2.3.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-syntax-highlighter": "^10.2.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "docz": "^1.2.0",
+    "docz-theme-default": "^1.2.0",
+    "style-loader": "^0.23.1",
+    "webpack-merge": "^4.2.1"
   }
+}

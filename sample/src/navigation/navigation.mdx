@@ -1,0 +1,31 @@
+---
+name: Navigation
+---
+
+import { Playground, Props } from 'docz'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+export const load = function() {
+  window.polaris_navigation_loaded();
+};
+
+
+# Navigation
+
+## Example
+
+<div ref={load()} id="fable-polaris-navigation" className="fable-polaris-navigation"></div>
+
+## Code
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`navigation { Location = "/"} []
+[
+    navigationSection
+        [
+            [nav1; nav2] |> ResizeArray |> NavigationSectionProps.Items
+        ]
+        []
+]
+`}</SyntaxHighlighter>
+

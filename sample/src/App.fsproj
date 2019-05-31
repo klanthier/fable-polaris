@@ -7,6 +7,8 @@
     <ProjectReference Include="../../src/fable-polaris.fsproj" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="navigation/navigation.fs" />
+    <Compile Include="avatar/avatar.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <ItemGroup>
