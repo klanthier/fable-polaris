@@ -1,0 +1,33 @@
+---
+name: AccountConnection
+---
+
+import { Playground, Props } from 'docz'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+export const load = function() {
+  if (window.polaris_accountConnection_loaded) {
+    window.polaris_accountConnection_loaded();
+  }
+};
+
+# Account Connection
+
+## Examples
+
+<div ref={load()} id="fable-polaris-accountConnection" className="fable-polaris-accountConnection"></div>
+
+## Code
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`    appProvider [] <|
+        accountConnection [
+            Title <| str "Title"
+            AccountName "Fable Polaris"
+            Action <| Polaris.Shared.Action (content = "Disconnect", onAction = (fun x -> Browser.Dom.console.log ("Disconnect.")))
+            AvatarUrl "https://raw.githubusercontent.com/klanthier/fable-polaris/master/fable-polaris.jpg"
+            Connected true
+            Details <| str "Detailed information about the user connection status.."
+            TermsOfService <| str "Visit our TOS licensing at https://github.com/klanthier/fable-polaris/blob/master/LICENSE"
+        ]
+`}</SyntaxHighlighter>
