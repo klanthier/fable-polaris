@@ -15,7 +15,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Shared.fs" />
-    
+
+    <Compile Include="AccountConnection.fs" />
     <Compile Include="AppProvider.fs" />
     <Compile Include="Avatar.fs" />
     <Compile Include="Button.fs" />
@@ -26,7 +27,7 @@
     <Compile Include="Spinner.fs" />
     <Compile Include="Stack.fs" />
   </ItemGroup>
-  
+
   <!-- Add source files to "fable" folder in Nuget package -->
   <ItemGroup>
     <PackageReference Include="Fable.Core" Version="3.0.0" />

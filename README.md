@@ -77,7 +77,7 @@ To start the sample project run
 
 | Component             |     Supported      |
 | --------------------- | :----------------: |
-| Account connection    |     :no_entry:     |
+| Account connection    | :white_check_mark: |
 | Action list           |     :no_entry:     |
 | App provider          | :white_check_mark: |
 | Autocomplete          |     :no_entry:     |
