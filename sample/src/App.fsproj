@@ -10,6 +10,7 @@
     <Compile Include="accountConnection/accountConnection.fs" />
     <Compile Include="navigation/navigation.fs" />
     <Compile Include="avatar/avatar.fs" />
+    <Compile Include="actionList/actionList.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <ItemGroup>

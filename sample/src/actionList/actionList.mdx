@@ -1,0 +1,33 @@
+---
+name: ActionList
+---
+
+import { Playground, Props } from 'docz'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+export const load = function() {
+  if (window.polaris_actionList_loaded) {
+    window.polaris_actionList_loaded();
+  }
+};
+
+# ActionList
+
+## Examples
+
+<div ref={load()} id="fable-polaris-actionList" className="fable-polaris-actionList"></div>
+
+## Code
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`appProvider [] <|
+        actionList
+            { Items = [|
+                ActionListItemDescriptor( content = "Item1", icon = BundledIcon.Calendar )
+                ActionListItemDescriptor( content = "Item2 - Selected", active = true, badge = ActionListItemDescriptorBadge("New", ItemDescriptorBadgeStatus.New) )
+                ActionListItemDescriptor( content = "Item3", badge = ActionListItemDescriptorBadge("Non-new") )
+                ActionListItemDescriptor( content = "Item4", disabled = true )
+                ActionListItemDescriptor( content = "Item5", destructive = true )
+            |]}
+            []
+`}</SyntaxHighlighter>

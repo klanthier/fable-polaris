@@ -5,24 +5,11 @@ open Polaris.AppProvider
 open Polaris.Avatar
 open Polaris.Stack
 
-type Model = int
-
-type Msg =
-| Increment
-| Decrement
-
-let init() : Model = 0
-
-let update (msg:Msg) (model:Model) =
-    match msg with
-    | Increment -> model + 1
-    | Decrement -> model - 1
-
-let view (model:Model) dispatch =
+let view _ _ =
 
     appProvider [] <|
       stack [ Spacing StackSpacing.ExtraLoose] [
-      
+
         div [] [
           h1 [] [str "Example 1"]
           avatar [
@@ -56,7 +43,7 @@ let view (model:Model) dispatch =
             Size AvatarSize.Medium
           ]
         ]
-      
-    
+
+
   ]
 

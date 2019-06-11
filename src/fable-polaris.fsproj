@@ -17,6 +17,7 @@
     <Compile Include="Shared.fs" />
 
     <Compile Include="AccountConnection.fs" />
+    <Compile Include="ActionList.fs" />
     <Compile Include="AppProvider.fs" />
     <Compile Include="Avatar.fs" />
     <Compile Include="Button.fs" />

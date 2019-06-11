@@ -5,26 +5,21 @@ open Elmish.React
 open Fable.Core.JsInterop
 importAll "@shopify/polaris/styles.css"
 
-Browser.Dom.window?polaris_navigation_loaded
-  <-
-    fun _ ->
-        Program.mkSimple Navigation.init Navigation.update Navigation.view
-                |> Program.withReactBatched "fable-polaris-navigation"
-                |> Program.withConsoleTrace
-                |> Program.run
+let elements = [
+  (Navigation.view, "fable-polaris-navigation", "polaris_navigation_loaded")
+  (Avatar.view, "fable-polaris-avatar", "polaris_avatar_loaded")
+  (AccountConnection.view, "fable-polaris-accountConnection", "polaris_accountConnection_loaded")
+  (ActionList.view, "fable-polaris-actionList", "polaris_actionList_loaded")
+]
 
-Browser.Dom.window?polaris_avatar_loaded
-  <-
-    fun _ ->
-        Program.mkSimple Avatar.init Avatar.update Avatar.view
-                |> Program.withReactBatched "fable-polaris-avatar"
-                |> Program.withConsoleTrace
-                |> Program.run
-
-Browser.Dom.window?polaris_accountConnection_loaded
-  <-
-    fun _ ->
-        Program.mkSimple AccountConnection.init AccountConnection.update AccountConnection.view
-                |> Program.withReactBatched "fable-polaris-accountConnection"
-                |> Program.withConsoleTrace
-                |> Program.run
+List.iter (fun x ->
+  match x with
+    | (a, b, c) ->
+      Browser.Dom.window?(c)
+        <-
+          fun _ ->
+              Program.mkSimple ignore (fun _ -> ignore) a
+                      |> Program.withReactBatched b
+                      |> Program.withConsoleTrace
+                      |> Program.run
+) elements

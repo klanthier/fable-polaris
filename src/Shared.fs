@@ -62,6 +62,10 @@ type [<RequireQualifiedAccess>] [<StringEnum>] BundledIcon =
     |  [<CompiledName "subtract">] Subtract
     |  [<CompiledName "view">] View
 
+type [<StringEnum>] [<RequireQualifiedAccess>] LinkTarget =
+    |  [<CompiledName "ADMIN_PATH">] ADMIN_PATH
+    |  [<CompiledName "REMOTE">] REMOTE
+    |  [<CompiledName "APP">] APP
 
 ///
 /// ACTIONS
