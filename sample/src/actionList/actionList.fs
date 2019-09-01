@@ -7,12 +7,23 @@ open Polaris.Shared
 let view _ _ =
     appProvider [] <|
         actionList
-            { Items = [|
-                ActionListItemDescriptor( content = "Item1", icon = BundledIcon.Calendar )
-                ActionListItemDescriptor( content = "Item2 - Selected", active = true, badge = ActionListItemDescriptorBadge("New", ItemDescriptorBadgeStatus.New) )
-                ActionListItemDescriptor( content = "Item3", badge = ActionListItemDescriptorBadge("Non-new") )
-                ActionListItemDescriptor( content = "Item4", disabled = true )
-                ActionListItemDescriptor( content = "Item5", destructive = true )
-            |]}
+            { Items = [
+                ({ Content = "Item1"; OnAction = fun _ -> ()}, [Icon BundledIcon.Calendar])
+                ({ Content = "Item2 - Selected"; OnAction = fun _ -> ()}, [
+                        ActionListItemDescriptorProps.Active true
+                        ActionListItemDescriptorProps.Badge [
+                            Content "New"
+                            Status ItemDescriptorBadgeStatus.New
+                        ]
+                    ])
+                ({ Content = "Item3"; OnAction = fun _ -> ()}, [
+                        ActionListItemDescriptorProps.Active true
+                        ActionListItemDescriptorProps.Badge [
+                            Content "Non-new"
+                        ]
+                    ])
+                ({ Content = "Item4"; OnAction = fun _ -> ()}, [ActionListItemDescriptorProps.Disabled true])
+                ({ Content = "Item5"; OnAction = fun _ -> ()}, [ActionListItemDescriptorProps.Destructive true])
+            ]}
             []
 

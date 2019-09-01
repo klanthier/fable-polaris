@@ -9,7 +9,11 @@ let view _ _ =
         accountConnection [
             Title <| str "Title"
             AccountName "Fable Polaris"
-            Action <| Polaris.Shared.Action (content = "Disconnect", onAction = (fun x -> Browser.Dom.console.log ("Disconnect.")))
+            AccountConnectionProps.Action <|
+                ({
+                    Content = "Disconnect"
+                    OnAction = (fun _ -> Browser.Dom.console.log ("Disconnect."))
+                }, [])
             AvatarUrl "https://raw.githubusercontent.com/klanthier/fable-polaris/master/fable-polaris.jpg"
             Connected true
             Details <| str "Detailed information about the user connection status.."

@@ -1,0 +1,40 @@
+---
+name: Autocomplete
+---
+
+import { Playground, Props } from 'docz'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+export const load = function() {
+  if (window.polaris_autocomplete_loaded) {
+    window.polaris_autocomplete_loaded();
+  }
+};
+
+export const code = `    appProvider [] <|
+        div [] [
+            autoComplete {
+                Selected = [|"Label"|]
+                OnSelect = (fun x -> ())
+                TextField = div [] [str "abc"]
+                Options = [
+                    ({Label = str "Label"; Value = "LabelValue"}, [])
+                    ({Label = str "Label2"; Value = "LabelValue2"}, [])
+                ]
+            } []
+        ]`
+
+
+
+# Autocomplete
+
+## Examples
+
+<div ref={load()} id="fable-polaris-autocomplete" className="fable-polaris-autocomplete"></div>
+
+## Code
+
+
+
+<SyntaxHighlighter language='fsharp' style={tomorrowNight}>{code}</SyntaxHighlighter>

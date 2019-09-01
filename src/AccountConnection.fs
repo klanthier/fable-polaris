@@ -11,12 +11,13 @@ type [<StringEnum>] [<RequireQualifiedAccess>] TextSpacing =
 
 type AccountConnectionProps =
   | AccountName of string
-  | Action of Action
   | AvatarUrl of string
   | Connected of bool
   | Details of ReactElement
   | TermsOfService of ReactElement
   | Title of ReactElement
+  static member Action (action: Action) =
+    actionUnboxHelper "action" action
 
 let inline accountConnection (props : AccountConnectionProps list) : ReactElement =
     ofImport "AccountConnection" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

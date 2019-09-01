@@ -10,6 +10,7 @@ let elements = [
   (Avatar.view, "fable-polaris-avatar", "polaris_avatar_loaded")
   (AccountConnection.view, "fable-polaris-accountConnection", "polaris_accountConnection_loaded")
   (ActionList.view, "fable-polaris-actionList", "polaris_actionList_loaded")
+  (Autocomplete.view, "fable-polaris-autocomplete", "polaris_autocomplete_loaded")
 ]
 
 List.iter (fun x ->
