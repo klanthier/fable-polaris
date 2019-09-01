@@ -18,6 +18,7 @@
 
     <Compile Include="AccountConnection.fs" />
     <Compile Include="ActionList.fs" />
+    <Compile Include="AutoComplete.fs" />
     <Compile Include="AppProvider.fs" />
     <Compile Include="Avatar.fs" />
     <Compile Include="Button.fs" />
@@ -27,6 +28,7 @@
     <Compile Include="Page.fs" />
     <Compile Include="Spinner.fs" />
     <Compile Include="Stack.fs" />
+    <Compile Include="TextField.fs" />
   </ItemGroup>
 
   <!-- Add source files to "fable" folder in Nuget package -->
