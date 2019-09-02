@@ -36,7 +36,7 @@ let inline autoComplete requiredProps (props : AutocompleteProps list): ReactEle
             obj?selected <- requiredProps.Selected
             obj?onSelect <- requiredProps.OnSelect
             obj?textField <- requiredProps.TextField
-            obj?options <- Array.map optionDescriptorPropsUnboxHelper (List.toArray requiredProps.Options)
+            obj?options <- Array.map optionDescriptorPropsConverterHelper (List.toArray requiredProps.Options)
             obj
         )
     ofImport "Autocomplete" "@shopify/polaris" combinedProps []
