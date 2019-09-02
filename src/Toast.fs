@@ -15,8 +15,9 @@ type ToastProps =
   | Duration of int
   | Error of bool
   static member Actions (actions: Action list) =
-    let acs = Array.map actionConverterHelper (List.toArray actions)
-    unbox ("actions", acs)
+    unbox ("actions",
+        Array.map actionConverterHelper (List.toArray actions)
+    )
 
 
 let inline polarisToast requiredProps (props : ToastProps list) : ReactElement =

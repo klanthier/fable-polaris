@@ -69,6 +69,20 @@ type [<StringEnum>] [<RequireQualifiedAccess>] LinkTarget =
     |  [<CompiledName "REMOTE">] Remote
     |  [<CompiledName "APP">] App
 
+type [<StringEnum>] [<RequireQualifiedAccess>] TextFieldType =
+    | [<CompiledName "text">] Text
+    | [<CompiledName "email">] Email
+    | [<CompiledName "number">] Number
+    | [<CompiledName "password">] Password
+    | [<CompiledName "search">] Search
+    | [<CompiledName "tel">] Tel
+    | [<CompiledName "url">] Url
+    | [<CompiledName "date">] Date
+    | [<CompiledName "datetime-local">] DatetimeLocal
+    | [<CompiledName "month">] Month
+    | [<CompiledName "time">] Time
+    | [<CompiledName "week">] Week
+    | [<CompiledName "currency">] Currency
 
 type [<StringEnum>] [<RequireQualifiedAccess>] ItemDescriptorBadgeStatus =
     |  [<CompiledName "new">] New
@@ -93,7 +107,13 @@ type [<StringEnum>] [<RequireQualifiedAccess>] DisplayTextSize =
     | [<CompiledName "large">] Large
     | [<CompiledName "extraLarge">] ExtraLarge
 
+type [<StringEnum>] [<RequireQualifiedAccess>] SelectAllItems =
+    |  [<CompiledName "All">] All
 
+type [<StringEnum>] [<RequireQualifiedAccess>] DateOptionsTypes =
+    | [<CompiledName "past">] Past
+    | [<CompiledName "future">] Future
+    | [<CompiledName "full">] Full
 
 ////////////////////////////////////////
 ///              ACTION              ///
@@ -128,9 +148,97 @@ let actionUnboxHelper (keyName: string) (action: Action) =
     unbox (keyName, actionConverterHelper action)
 
 ////////////////////////////////////////
+///         DISABLEABLE-ACTION       ///
+////////////////////////////////////////
+type RequiredDisableableActionProps = {
+    Content : string
+}
+
+type DisableableActionProps =
+    | AccessibilityLabel of string
+    | Disabled of bool
+    | External of bool
+    | Id of string
+    | Url of string
+    | OnAction of (unit -> unit)
+
+type DisableableAction = RequiredDisableableActionProps * (DisableableActionProps list)
+
+let disableableActionConverterHelper (disableableAction: DisableableAction) =
+    let requiredProps = fst disableableAction
+    let combinedProps =
+        (snd disableableAction)
+        |> keyValueList CaseRules.LowerFirst
+        |> (fun obj ->
+            obj?content <- requiredProps.Content
+            obj
+        )
+    combinedProps
+
+
+////////////////////////////////////////
+///          COMPLEX-ACTION          ///
+////////////////////////////////////////
+type RequiredComplexActionProps = {
+    Content : string
+}
+
+
+type ComplexActionProps =
+    | AccessibilityLabel of string
+    | External of bool
+    | Id of string
+    | Url of string
+    | OnAction of (unit -> unit)
+    | Destructive of bool
+    | Disabled of bool
+    | Target of LinkTarget
+    | Icon of string
+    | Loading of bool
+
+type ComplexAction = RequiredComplexActionProps * (ComplexActionProps list)
+
+let complexActionConverterHelper (complexAction: ComplexAction) =
+    let requiredProps = fst complexAction
+    let combinedProps =
+        (snd complexAction)
+        |> keyValueList CaseRules.LowerFirst
+        |> (fun obj ->
+            obj?content <- requiredProps.Content
+            obj
+        )
+    combinedProps
+
+
+
+////////////////////////////////////////
+///          STRICT-OPTION           ///
+////////////////////////////////////////
+type RequiredStrictOptionProps = {
+    Label : string
+    Value : string
+}
+
+type StrictOptionProps =
+    | Disabled of bool
+
+type StrictOption = RequiredStrictOptionProps * (StrictOptionProps list)
+
+let strictOptionConverterHelper (strictOption: StrictOption) =
+    let requiredProps = fst strictOption
+    let combinedProps =
+        (snd strictOption)
+        |> keyValueList CaseRules.LowerFirst
+        |> (fun obj ->
+            obj?label <- requiredProps.Label
+            obj?value <- requiredProps.Value
+            obj
+        )
+    combinedProps
+
+////////////////////////////////////////
 ///     ActionListItemDescriptor     ///
 ////////////////////////////////////////
-///
 type ActionListItemDescriptorBadge =
     | Content of string
     | Status of ItemDescriptorBadgeStatus

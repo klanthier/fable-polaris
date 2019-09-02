@@ -6,21 +6,6 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Polaris.Shared
 
-type [<StringEnum>] [<RequireQualifiedAccess>] TextFieldType =
-    | [<CompiledName "text">] Text
-    | [<CompiledName "email">] Email
-    | [<CompiledName "number">] Number
-    | [<CompiledName "password">] Password
-    | [<CompiledName "search">] Search
-    | [<CompiledName "tel">] Tel
-    | [<CompiledName "url">] Url
-    | [<CompiledName "date">] Date
-    | [<CompiledName "datetime-local">] DatetimeLocal
-    | [<CompiledName "month">] Month
-    | [<CompiledName "time">] Time
-    | [<CompiledName "week">] Week
-    | [<CompiledName "currency">] Currency
-
 type [<StringEnum>] [<RequireQualifiedAccess>] TextFieldAlignment =
     | [<CompiledName "left">] Left
     | [<CompiledName "center">] Center
