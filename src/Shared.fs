@@ -73,6 +73,28 @@ type [<StringEnum>] [<RequireQualifiedAccess>] LinkTarget =
 type [<StringEnum>] [<RequireQualifiedAccess>] ItemDescriptorBadgeStatus =
     |  [<CompiledName "new">] New
 
+type [<RequireQualifiedAccess>] [<StringEnum>] ElementNameSelection =
+    |  [<CompiledName "h1">] H1
+    |  [<CompiledName "h2">] H2
+    |  [<CompiledName "h3">] H3
+    |  [<CompiledName "h4">] H4
+    |  [<CompiledName "h5">] H5
+    |  [<CompiledName "h6">] H6
+    |  [<CompiledName "p">] P
+
+type [<StringEnum>] [<RequireQualifiedAccess>] ThumbnailSize =
+    | [<CompiledName "small">] Small
+    | [<CompiledName "medium">] Medium
+    | [<CompiledName "large">] Large
+
+type [<StringEnum>] [<RequireQualifiedAccess>] DisplayTextSize =
+    | [<CompiledName "small">] Small
+    | [<CompiledName "medium">] Medium
+    | [<CompiledName "large">] Large
+    | [<CompiledName "extraLarge">] ExtraLarge
+
+
+
 ////////////////////////////////////////
 ///              ACTION              ///
 ////////////////////////////////////////
@@ -89,7 +111,8 @@ type ActionProps =
 
 type Action = RequiredActionProps * (ActionProps list)
 
-let actionUnboxHelper (keyName: string) (action: Action) =
+
+let actionConverterHelper (action: Action) =
     let requiredProps = fst action
     let combinedProps =
         (snd action)
@@ -99,7 +122,10 @@ let actionUnboxHelper (keyName: string) (action: Action) =
             obj?content <- requiredProps.Content
             obj
         )
-    unbox (keyName, combinedProps)
+    combinedProps
+
+let actionUnboxHelper (keyName: string) (action: Action) =
+    unbox (keyName, actionConverterHelper action)
 
 ////////////////////////////////////////
 ///     ActionListItemDescriptor     ///

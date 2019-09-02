@@ -37,8 +37,8 @@ type StackProps =
 type StackItemProps =
     | Fill of bool
 
-let inline stack (props : StackProps list) (children : ReactElement list) : ReactElement =
+let inline polarisStack (props : StackProps list) (children : ReactElement list) : ReactElement =
     ofImport "Stack" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children
 
-let inline stackItem (props : StackItemProps list) (children : ReactElement list) : ReactElement =
+let inline polarisStackItem (props : StackItemProps list) (children : ReactElement list) : ReactElement =
     ofImport "Stack.Item" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children

@@ -71,7 +71,7 @@ type RequiredTextFieldProps = {
   Label: string
 }
 
-let inline textField requiredProps (props : TextFieldProps list) : ReactElement =
+let inline polarisTextField requiredProps (props : TextFieldProps list) : ReactElement =
     let combinedProps =
         props
         |> keyValueList CaseRules.LowerFirst
