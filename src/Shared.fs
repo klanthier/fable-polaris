@@ -130,6 +130,12 @@ type [<StringEnum>] [<RequireQualifiedAccess>] PopoverPreferedPosition =
   | [<CompiledName "below">] Below
   | [<CompiledName "mostSpace">] MostSpace
 
+type [<StringEnum>] [<RequireQualifiedAccess>] ModalSize =
+    | [<CompiledName "Small">] Small
+    | [<CompiledName "Medium">] Medium
+    | [<CompiledName "Large">] Large
+    | [<CompiledName "Full">] Full
+
 type Key =
   | Backspace = 8
   | Tab = 9
@@ -317,6 +323,37 @@ let complexActionConverterHelper (complexAction: ComplexAction) =
     let requiredProps = fst complexAction
     let combinedProps =
         (snd complexAction)
+        |> keyValueList CaseRules.LowerFirst
+        |> (fun obj ->
+            obj?content <- requiredProps.Content
+            obj
+        )
+    combinedProps
+
+
+////////////////////////////////////////
+///         APP-BRIDGE-ACTION        ///
+////////////////////////////////////////
+type RequiredAppBridgeActionProps = {
+    Content : string
+}
+
+type AppBridgeActionProps =
+    | AccessibilityLabel of string
+    | External of bool
+    | Id of string
+    | Url of string
+    | OnAction of (unit -> unit)
+    | Destructive of bool
+    | Disabled of bool
+    | Target of LinkTarget
+
+type AppBridgeAction = RequiredAppBridgeActionProps * (AppBridgeActionProps list)
+
+let appBridgeActionConverterHelper (appBridgeAction: AppBridgeAction) =
+    let requiredProps = fst appBridgeAction
+    let combinedProps =
+        (snd appBridgeAction)
         |> keyValueList CaseRules.LowerFirst
         |> (fun obj ->
             obj?content <- requiredProps.Content

@@ -49,17 +49,16 @@ type IconProps =
     | AccessibilityLabel of string
     | Backdrop of bool
     | Color of IconColor
-    | Untrusted of bool
 
 type RequiredIconProps = {
-    Source : U2<ReactElement, BundledIcon>
+    Source : U3<ReactElement, BundledIcon, string>
 }
 
-let inline icon requiredProps (props : IconProps list) (children : ReactElement list) : ReactElement =
+let inline polarisIcon (requiredProps: RequiredIconProps) (props : IconProps list) : ReactElement =
     let combinedProps =
         props
         |> keyValueList CaseRules.LowerFirst
         |> (fun obj ->
             obj?source <- requiredProps.Source
         )
-    ofImport "Icon" "@shopify/polaris" combinedProps children
+    ofImport "Icon" "@shopify/polaris" combinedProps []

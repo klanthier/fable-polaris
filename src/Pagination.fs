@@ -19,5 +19,5 @@ type PaginationProps =
     | OnNext of (unit -> unit)
     | OnPrevious of (unit -> unit)
 
-let inline Pagination (props : PaginationProps list): ReactElement =
+let inline polarisPagination (props : PaginationProps list): ReactElement =
     ofImport "Pagination" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) []

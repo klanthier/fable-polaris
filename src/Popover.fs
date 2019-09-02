@@ -22,7 +22,7 @@ type PopoverProps =
     | Sectioned of bool
 
 
-let inline popover (requiredProps: RequiredPopoverProps) (props : PopoverProps list) (elems : ReactElement list): ReactElement =
+let inline polarisPopover (requiredProps: RequiredPopoverProps) (props : PopoverProps list) (elems : ReactElement list): ReactElement =
     let combinedProps =
         props
         |> keyValueList CaseRules.LowerFirst
@@ -33,4 +33,4 @@ let inline popover (requiredProps: RequiredPopoverProps) (props : PopoverProps l
             obj
         )
 
-    ofImport "Popover" "@shopify/polaris" props elems
+    ofImport "Popover" "@shopify/polaris" combinedProps elems

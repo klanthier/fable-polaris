@@ -22,5 +22,5 @@ type PageActionsProps =
             |> List.toArray
         )
 
-let inline PageActions (props : PageActionsProps list): ReactElement =
+let inline polarisPageActions (props : PageActionsProps list): ReactElement =
     ofImport "PageActions" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) []

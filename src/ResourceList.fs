@@ -249,4 +249,4 @@ let inline polarisResourceListFilterControl (requiredProps: RequiredResourceList
           obj?onSearchChange <- requiredProps.OnSearchChange
           obj
       )
-    ofImport "ResourceList.FilterControl" "@shopify/polaris" props []
+    ofImport "ResourceList.FilterControl" "@shopify/polaris" combinedProps []

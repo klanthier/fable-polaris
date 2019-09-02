@@ -22,7 +22,7 @@ type OptionListProps =
         sectionDescriptorsPropsUnboxHelper "sections" sections
 
 
-let inline OptionList (requiredProps: RequiredOptionListProps) (props : OptionListProps list): ReactElement =
+let inline polarisOptionList (requiredProps: RequiredOptionListProps) (props : OptionListProps list): ReactElement =
     let combinedProps =
         props
         |> keyValueList CaseRules.LowerFirst
