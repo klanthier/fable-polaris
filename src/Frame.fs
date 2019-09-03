@@ -11,5 +11,5 @@ type FrameProps =
     | TopBar of ReactElement
     | OnNavigationDismiss of (unit -> unit)
 
-let inline frame (props : FrameProps list) (children : ReactElement list) : ReactElement =
+let inline polarisFrame (props : FrameProps list) (children : ReactElement list) : ReactElement =
     ofImport "Frame" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children

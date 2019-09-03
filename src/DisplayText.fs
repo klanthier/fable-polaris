@@ -17,4 +17,4 @@ type DisplayTextProps =
     | Size of DisplayTextSize
 
 let inline polarisDisplayText (props : DisplayTextProps list) (elems : ReactElement list) : ReactElement =
-    ofImport "TextStyle" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
+    ofImport "DisplayText" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
