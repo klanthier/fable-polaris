@@ -4,6 +4,7 @@ open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Polaris.Shared
 
 type [<StringEnum>] [<RequireQualifiedAccess>] ButtonSize =
     | [<CompiledName "slim">] Slim
@@ -31,21 +32,15 @@ type ButtonProps =
     | Primary of bool
     | Size of ButtonSize
     | Submit of bool
+    | TextAlign of TextAlign
     | Url of string
     | OnBlur of (Event -> unit)
     | OnFocus of (Event -> unit)
+    | OnClick of (Event -> unit)
+    | OnKeyDown of (KeyboardEvent -> unit)
+    | OnKeyPress of (KeyboardEvent -> unit)
+    | OnKeyUp of (KeyboardEvent -> unit)
 
-type RequiredButtonProps = {
-    OnClick : (Event -> unit)
-}
 
-
-let inline button requiredProps (props : ButtonProps list) (children : ReactElement list) : ReactElement =
-    let combinedProps =
-        props
-        |> keyValueList CaseRules.LowerFirst
-        |> (fun obj ->
-            obj?onClick <- requiredProps.OnClick
-            obj
-        )
-    ofImport "Button" "@shopify/polaris" combinedProps children
+let inline polarisButton (props : ButtonProps list) (children : ReactElement list) : ReactElement =
+    ofImport "Button" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) children

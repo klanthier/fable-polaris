@@ -17,5 +17,5 @@ type AvatarProps =
     | Size of AvatarSize
     | Source of string
 
-let inline avatar (props : AvatarProps list): ReactElement =
+let inline polarisAvatar (props : AvatarProps list): ReactElement =
     ofImport "Avatar" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

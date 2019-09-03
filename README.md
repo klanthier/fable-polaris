@@ -2,14 +2,14 @@
 
 Fable/F# bindings for Shopify's Polaris react component library
 
-Current bindings are written for Shopify Polaris version **3.14.0**
+Current bindings are written for Shopify Polaris version **4.0.0**
 
 # Using in your Fable Project
 
 ## Dependency
 
 You will need to install Shopify Polaris
-`yarn add @shopify/polaris@3.14.0`
+`yarn add @shopify/polaris@4.0.0`
 
 Then you must ensure you add the styles to your main F# file like so:
 `importAll "@shopify/polaris/styles.css"`
@@ -17,7 +17,7 @@ Then you must ensure you add the styles to your main F# file like so:
 ## Fable-Polaris
 
 Add shopify-polaris to your project
-`dotnet add package fable-polaris --version 0.2.0`
+`dotnet add package fable-polaris`
 
 ### You may now begin using the library like so
 
@@ -79,74 +79,76 @@ To start the sample project run
 | --------------------- | :----------------: |
 | Account connection    | :white_check_mark: |
 | Action list           | :white_check_mark: |
-| App provider          | :white_check_mark: |
-| Autocomplete          |     :no_entry:     |
+| App provider          |   :construction:   |
+| Autocomplete          | :white_check_mark: |
 | Avatar                | :white_check_mark: |
-| Badge                 |     :no_entry:     |
-| Banner                |     :no_entry:     |
+| Badge                 | :white_check_mark: |
+| Banner                | :white_check_mark: |
 | Button                | :white_check_mark: |
-| Button group          |     :no_entry:     |
-| Callout card          |     :no_entry:     |
-| Caption               |     :no_entry:     |
-| Card                  |     :no_entry:     |
-| Checkbox              |     :no_entry:     |
-| Choice list           |     :no_entry:     |
-| Collapsible           |     :no_entry:     |
-| Color picker          |     :no_entry:     |
-| Contextual save bar   |     :no_entry:     |
-| Data table            |     :no_entry:     |
-| Date picker           |     :no_entry:     |
-| Description list      |     :no_entry:     |
-| Display text          |     :no_entry:     |
-| Dropzone              |     :no_entry:     |
-| Empty state           |     :no_entry:     |
-| Exception list        |     :no_entry:     |
-| Footer help           |     :no_entry:     |
-| Form                  |     :no_entry:     |
-| Form layout           |     :no_entry:     |
+| Button group          | :white_check_mark: |
+| Callout card          | :white_check_mark: |
+| Caption               | :white_check_mark: |
+| Card                  | :white_check_mark: |
+| Checkbox              | :white_check_mark: |
+| Choice list           | :white_check_mark: |
+| Collapsible           | :white_check_mark: |
+| Color picker          | :white_check_mark: |
+| Contextual save bar   | :white_check_mark: |
+| Data table            | :white_check_mark: |
+| Date picker           |   :construction:   |
+| Description list      | :white_check_mark: |
+| Display text          | :white_check_mark: |
+| Dropzone              | :white_check_mark: |
+| Empty state           | :white_check_mark: |
+| Exception list        | :white_check_mark: |
+| Footer help           | :white_check_mark: |
+| Filters               |   :construction:   |
+| Form                  |   :construction:   |
+| Form layout           | :white_check_mark: |
 | Frame                 | :white_check_mark: |
-| Heading               |     :no_entry:     |
+| Heading               | :white_check_mark: |
 | Icon                  | :white_check_mark: |
-| Inline error          |     :no_entry:     |
-| Keyboard key          |     :no_entry:     |
-| Layout                |     :no_entry:     |
-| Link                  |     :no_entry:     |
-| List                  |     :no_entry:     |
-| Loading               |     :no_entry:     |
-| Modal                 |     :no_entry:     |
-| Navigation            | :white_check_mark: |
-| Option List           |     :no_entry:     |
-| Page                  |     :no_entry:     |
-| Page actions          |     :no_entry:     |
-| Pagination            |     :no_entry:     |
-| Popover               |     :no_entry:     |
-| Progress bar          |     :no_entry:     |
-| Radio button          |     :no_entry:     |
-| Range slider          |     :no_entry:     |
-| Resource list         |     :no_entry:     |
+| Inline error          | :white_check_mark: |
+| Keyboard key          | :white_check_mark: |
+| Layout                | :white_check_mark: |
+| Link                  | :white_check_mark: |
+| List                  | :white_check_mark: |
+| Loading               | :white_check_mark: |
+| Modal                 | :white_check_mark: |
+| Navigation            |   :construction:   |
+| Option List           | :white_check_mark: |
+| Page                  |   :construction:   |
+| Page actions          | :white_check_mark: |
+| Pagination            | :white_check_mark: |
+| Popover               |   :construction:   |
+| Progress bar          | :white_check_mark: |
+| Radio button          | :white_check_mark: |
+| Range slider          |   :construction:   |
+| Resource list         | :white_check_mark: |
 | Resource picker       |     :no_entry:     |
-| Scrollable            |     :no_entry:     |
+| Scrollable            | :white_check_mark: |
 | Section header        |     :no_entry:     |
-| Select                |     :no_entry:     |
-| Setting toggle        |     :no_entry:     |
-| Skeleton body text    |     :no_entry:     |
-| Skeleton display text |     :no_entry:     |
-| Skeleton page         |     :no_entry:     |
-| Skeleton thumbnail    |     :no_entry:     |
+| Select                | :white_check_mark: |
+| Sheet                 |   :construction:   |
+| Setting toggle        | :white_check_mark: |
+| Skeleton body text    | :white_check_mark: |
+| Skeleton display text | :white_check_mark: |
+| Skeleton page         | :white_check_mark: |
+| Skeleton thumbnail    | :white_check_mark: |
 | Spinner               | :white_check_mark: |
 | Stack                 | :white_check_mark: |
 | Stepper               |     :no_entry:     |
-| Subheading            |     :no_entry:     |
-| Tabs                  |     :no_entry:     |
-| Tag                   |     :no_entry:     |
-| Text container        |     :no_entry:     |
-| Text field            |     :no_entry:     |
-| Text style            |     :no_entry:     |
-| Thumbnail             |     :no_entry:     |
-| Toast (flash message) |     :no_entry:     |
-| Tooltip               |     :no_entry:     |
-| Top bar               |     :no_entry:     |
-| Visually hidden       |     :no_entry:     |
+| Subheading            | :white_check_mark: |
+| Tabs                  | :white_check_mark: |
+| Tag                   | :white_check_mark: |
+| Text container        | :white_check_mark: |
+| Text field            | :white_check_mark: |
+| Text style            | :white_check_mark: |
+| Thumbnail             | :white_check_mark: |
+| Toast (flash message) | :white_check_mark: |
+| Tooltip               | :white_check_mark: |
+| Top bar               |   :construction:   |
+| Visually hidden       | :white_check_mark: |
 
 # Common issues
 

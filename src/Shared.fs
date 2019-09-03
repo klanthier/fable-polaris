@@ -64,6 +64,12 @@ type [<RequireQualifiedAccess>] [<StringEnum>] BundledIcon =
     |  [<CompiledName "subtract">] Subtract
     |  [<CompiledName "view">] View
 
+type [<StringEnum>] [<RequireQualifiedAccess>] TextAlign =
+    |  [<CompiledName "left">] Left
+    |  [<CompiledName "right">] Right
+    |  [<CompiledName "center">] Center
+
+
 type [<StringEnum>] [<RequireQualifiedAccess>] LinkTarget =
     |  [<CompiledName "ADMIN_PATH">] AdminPath
     |  [<CompiledName "REMOTE">] Remote

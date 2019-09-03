@@ -3,28 +3,32 @@ module Polaris.AppProvider
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+
+// Needs work to have proper type
+type TranslationDictionary = obj
+
 type AppColorsTopBar = {
     background: string
 }
- 
-type AppColors = {
-    topBar: AppColorsTopBar
-}
 
-type AppLogo = {
-    width: int
-    topBarSource: string
-    url: string
-    accessibilityLabel: string option
-    contextualSaveBarSource: string option
-}
+type AppColors =
+    | TopBar of AppColorsTopBar
 
-type AppTheme = {
-    colors: AppColors option
-    logo: AppLogo option
-}
+type AppLogo =
+    | Width of int
+    | TopBarSource of string
+    | Url of string
+    | AccessibilityLabel of string
+    | ContextualSaveBarSource of string
 
-type TranslationDictionary = TranslationDictionary
+type AppTheme =
+    static member Colors (colors: AppColors list) =
+        unbox ("colors", (keyValueList CaseRules.LowerFirst colors))
+
+    static member Logo (logo: AppLogo list) =
+        unbox ("logo", (keyValueList CaseRules.LowerFirst logo))
+
+
 
 type AppProviderProps =
     | ApiKey of string
@@ -32,7 +36,8 @@ type AppProviderProps =
     | I18n of U2<TranslationDictionary, TranslationDictionary list>
     | LinkComponent of ReactElement
     | ShopOrigin of string
-    | Theme of AppTheme
+    static member Theme (theme: AppTheme list) =
+        unbox ("theme", (keyValueList CaseRules.LowerFirst theme))
 
-let inline appProvider (props : AppProviderProps list) (child : ReactElement) : ReactElement =
+let inline polarisAppProvider (props : AppProviderProps list) (child : ReactElement) : ReactElement =
     ofImport "AppProvider" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) [ child ]
