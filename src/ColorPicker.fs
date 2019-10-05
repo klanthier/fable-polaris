@@ -1,31 +1,33 @@
-module Polaris.ColorPicker
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module ColorPicker =
 
-type Color = {
-    alpha: int
-    brightness: int
-    hue: int
-    saturation: int
-}
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-type RequiredColorPickerProps = {
-    Color: Color
-    OnChange: (Color -> unit)
-}
+    type Color = {
+        alpha: int
+        brightness: int
+        hue: int
+        saturation: int
+    }
 
-type ColorPickerProps =
-    | AllowAlpha of bool
-    | Id of string
+    type RequiredColorPickerProps = {
+        Color: Color
+        OnChange: (Color -> unit)
+    }
 
-let inline polarisColorPicker (requiredProps: RequiredColorPickerProps) (props : ColorPickerProps list) : ReactElement =
-    let combinedProps =
-        props
-        |> keyValueList CaseRules.LowerFirst
-        |> (fun obj ->
-            obj?color <- requiredProps.Color
-            obj?onChange <- requiredProps.OnChange
-        )
-    ofImport "ColorPicker" "@shopify/polaris" combinedProps []
+    type ColorPickerProps =
+        | AllowAlpha of bool
+        | Id of string
+
+    let inline polarisColorPicker (requiredProps: RequiredColorPickerProps) (props : ColorPickerProps list) : ReactElement =
+        let combinedProps =
+            props
+            |> keyValueList CaseRules.LowerFirst
+            |> (fun obj ->
+                obj?color <- requiredProps.Color
+                obj?onChange <- requiredProps.OnChange
+            )
+        ofImport "ColorPicker" "@shopify/polaris" combinedProps []

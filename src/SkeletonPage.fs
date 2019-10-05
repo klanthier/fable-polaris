@@ -1,16 +1,18 @@
-module Polaris.SkeletonPage
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module SkeletonPage =
 
-type SkeletonPageProps =
-    | Breadcrumbs of bool
-    | FullWith of bool
-    | NarrowWidth of bool
-    | PrimaryAction of bool
-    | SecondaryActions of int
-    | Title of string
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-let inline polarisSkeletonPage (props : SkeletonPageProps list) (elems : ReactElement list) : ReactElement =
-    ofImport "SkeletonPage" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
+    type SkeletonPageProps =
+        | Breadcrumbs of bool
+        | FullWith of bool
+        | NarrowWidth of bool
+        | PrimaryAction of bool
+        | SecondaryActions of int
+        | Title of string
+
+    let inline polarisSkeletonPage (props : SkeletonPageProps list) (elems : ReactElement list) : ReactElement =
+        ofImport "SkeletonPage" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems

@@ -1,14 +1,16 @@
-module Polaris.FormLayout
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module FormLayout =
 
-type FormLayoutGroup =
-    | Condensed of bool
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-let inline polarisFormLayout (elems : ReactElement list) : ReactElement =
-    ofImport "FormLayout" "@shopify/polaris" [] elems
+    type FormLayoutGroup =
+        | Condensed of bool
 
-let inline polarisFormLayoutGroup (props: FormLayoutGroup list) (elems : ReactElement list) : ReactElement =
-    ofImport "FormLayout.Group" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
+    let inline polarisFormLayout (elems : ReactElement list) : ReactElement =
+        ofImport "FormLayout" "@shopify/polaris" [] elems
+
+    let inline polarisFormLayoutGroup (props: FormLayoutGroup list) (elems : ReactElement list) : ReactElement =
+        ofImport "FormLayout.Group" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems

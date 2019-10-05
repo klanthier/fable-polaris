@@ -1,13 +1,15 @@
-module Polaris.Heading
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Polaris.Shared
+module Heading =
 
-type HeadingProps =
-    | Element of ElementNameSelection
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.Polaris
 
-let inline polarisHeading (props: HeadingProps list) (elems : ReactElement) : ReactElement =
-    ofImport "Heading" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) [elems]
+    type HeadingProps =
+        | Element of Polaris.ElementNameSelection
+
+    let inline polarisHeading (props: HeadingProps list) (elems : ReactElement) : ReactElement =
+        ofImport "Heading" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) [elems]
 

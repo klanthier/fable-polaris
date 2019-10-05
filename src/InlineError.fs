@@ -1,14 +1,16 @@
-module Polaris.InlineError
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core.JsInterop
-open Fable.Core
+module InlineError =
 
-type RequiredInlineErrorProps = {
-    fieldID: string
-    message: ReactElement
-}
+    open Fable.React
+    open Fable.Core.JsInterop
+    open Fable.Core
 
-let inline polarisInlineError (props : RequiredInlineErrorProps) : ReactElement =
-    ofImport "InlineError" "@shopify/polaris" props []
+    type RequiredInlineErrorProps = {
+        fieldID: string
+        message: ReactElement
+    }
+
+    let inline polarisInlineError (props : RequiredInlineErrorProps) : ReactElement =
+        ofImport "InlineError" "@shopify/polaris" props []
 

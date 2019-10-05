@@ -1,14 +1,16 @@
-module Polaris.Tag
+namespace Fable.Polaris
 
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.React
+module Tag =
 
-type TagProps =
-    | Disabled of bool
-    | OnRemove of (unit -> unit)
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.React
 
-let inline polarisTag (props : TagProps list) (elems: ReactElement list): ReactElement =
-    ofImport "Tag" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) elems
+    type TagProps =
+        | Disabled of bool
+        | OnRemove of (unit -> unit)
+
+    let inline polarisTag (props : TagProps list) (elems: ReactElement list): ReactElement =
+        ofImport "Tag" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) elems
 
 

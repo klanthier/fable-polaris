@@ -1,29 +1,31 @@
-module Polaris.ExceptionList
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module ExceptionList =
 
-type [<StringEnum>] [<RequireQualifiedAccess>] ExceptionListItemStatus =
-    | [<CompiledName "critical">] Critical
-    | [<CompiledName "warning">] Warning
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-type ExceptionListItemProps =
-    | Title of string
-    | Description of ReactElement
-    | Icon of string
-    | Status of ExceptionListItemStatus
-    | Truncate of bool
+    type [<StringEnum>] [<RequireQualifiedAccess>] ExceptionListItemStatus =
+        | [<CompiledName "critical">] Critical
+        | [<CompiledName "warning">] Warning
 
-type ExceptionListProps =
-    static member Items (items: ExceptionListItemProps list list) =
-        unbox ("items",
-            (List.map (
-                fun (x: ExceptionListItemProps list) ->
-                    keyValueList CaseRules.LowerFirst x
-            ) items
-            |> List.toArray)
-        )
+    type ExceptionListItemProps =
+        | Title of string
+        | Description of ReactElement
+        | Icon of string
+        | Status of ExceptionListItemStatus
+        | Truncate of bool
 
-let inline polarisExceptionList (props : ExceptionListProps list) : ReactElement =
-    ofImport "ExceptionList" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []
+    type ExceptionListProps =
+        static member Items (items: ExceptionListItemProps list list) =
+            unbox ("items",
+                (List.map (
+                    fun (x: ExceptionListItemProps list) ->
+                        keyValueList CaseRules.LowerFirst x
+                ) items
+                |> List.toArray)
+            )
+
+    let inline polarisExceptionList (props : ExceptionListProps list) : ReactElement =
+        ofImport "ExceptionList" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

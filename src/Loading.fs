@@ -1,5 +1,8 @@
-module Polaris.Loading
-open Fable.React
+namespace Fable.Polaris
 
-let inline polarisLoading() : ReactElement =
-    ofImport "Loading" "@shopify/polaris" [] []
+module Loading =
+
+    open Fable.React
+
+    let inline polarisLoading() : ReactElement =
+        ofImport "Loading" "@shopify/polaris" [] []

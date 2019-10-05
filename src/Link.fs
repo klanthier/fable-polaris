@@ -1,16 +1,18 @@
-module Polaris.Link
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Browser.Types
+module Link =
 
-type LinkProps =
-    | External of bool
-    | Id of string
-    | Monochrome of bool
-    | Url of string
-    | OnClick of (Event -> unit)
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Browser.Types
 
-let inline polarisLink (props : LinkProps list) (elems : ReactElement list) : ReactElement =
-    ofImport "Link" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) elems
+    type LinkProps =
+        | External of bool
+        | Id of string
+        | Monochrome of bool
+        | Url of string
+        | OnClick of (Event -> unit)
+
+    let inline polarisLink (props : LinkProps list) (elems : ReactElement list) : ReactElement =
+        ofImport "Link" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) elems

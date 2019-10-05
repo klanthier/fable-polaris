@@ -1,6 +1,8 @@
-module Polaris.Caption
+namespace Fable.Polaris
 
-open Fable.React
+module Caption =
 
-let inline polarisCaption (elems: ReactElement list): ReactElement =
-    ofImport "Caption" "@shopify/polaris" [] elems
+    open Fable.React
+
+    let inline polarisCaption (elems: ReactElement list): ReactElement =
+        ofImport "Caption" "@shopify/polaris" [] elems

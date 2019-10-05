@@ -1,15 +1,17 @@
-module Polaris.Scrollable
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module Scrollable =
 
-type ScrollableProps =
-    | Hint of bool
-    | Horizontal of bool
-    | Shadow of bool
-    | Vertical of bool
-    | OnScrolledToBottom of (unit -> unit)
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-let inline polarisScrollable (props : ScrollableProps list) (elems : ReactElement list) : ReactElement =
-    ofImport "Scrollable" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
+    type ScrollableProps =
+        | Hint of bool
+        | Horizontal of bool
+        | Shadow of bool
+        | Vertical of bool
+        | OnScrolledToBottom of (unit -> unit)
+
+    let inline polarisScrollable (props : ScrollableProps list) (elems : ReactElement list) : ReactElement =
+        ofImport "Scrollable" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems

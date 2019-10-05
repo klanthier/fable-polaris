@@ -1,30 +1,32 @@
-module Polaris.ToolTip
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module ToolTip =
 
-type [<StringEnum>] [<RequireQualifiedAccess>] PreferedPosition =
-    | [<CompiledName "above">] Above
-    | [<CompiledName "below">] Below
-    | [<CompiledName "mostSpace">] MostSpace
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-type TooltipProps =
-  | ActivatorWrapper of string
-  | Active of bool
-  | Light of bool
-  | PreferredPosition of PreferedPosition
+    type [<StringEnum>] [<RequireQualifiedAccess>] PreferedPosition =
+        | [<CompiledName "above">] Above
+        | [<CompiledName "below">] Below
+        | [<CompiledName "mostSpace">] MostSpace
 
-type RequiredTooltipProps = {
-    Content: string
-}
+    type TooltipProps =
+      | ActivatorWrapper of string
+      | Active of bool
+      | Light of bool
+      | PreferredPosition of PreferedPosition
 
-let inline polarisTooltip (requiredProps: RequiredTooltipProps) (props : TooltipProps list) (elems : ReactElement list) : ReactElement =
-    let combinedProps =
-        props
-        |> keyValueList CaseRules.LowerFirst
-        |> (fun obj ->
-            obj?content <- requiredProps.Content
-            obj
-        )
-    ofImport "Tooltip" "@shopify/polaris" combinedProps elems
+    type RequiredTooltipProps = {
+        Content: string
+    }
+
+    let inline polarisTooltip (requiredProps: RequiredTooltipProps) (props : TooltipProps list) (elems : ReactElement list) : ReactElement =
+        let combinedProps =
+            props
+            |> keyValueList CaseRules.LowerFirst
+            |> (fun obj ->
+                obj?content <- requiredProps.Content
+                obj
+            )
+        ofImport "Tooltip" "@shopify/polaris" combinedProps elems

@@ -1,13 +1,15 @@
-module Polaris.ButtonGroup
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module ButtonGroup =
 
-type ButtonGroupProps =
-    | ConnectedTop of bool
-    | FullWidth of bool
-    | Segmented of bool
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-let inline polarisButtonGroup (props : ButtonGroupProps list) (elems : ReactElement list): ReactElement =
-    ofImport "ButtonGroup" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
+    type ButtonGroupProps =
+        | ConnectedTop of bool
+        | FullWidth of bool
+        | Segmented of bool
+
+    let inline polarisButtonGroup (props : ButtonGroupProps list) (elems : ReactElement list): ReactElement =
+        ofImport "ButtonGroup" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems

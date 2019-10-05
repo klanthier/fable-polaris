@@ -1,12 +1,14 @@
-module Polaris.SubHeading
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Polaris.Shared
+module SubHeading =
 
-type SubHeadingProps =
-    | Element of ElementNameSelection
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.Polaris
 
-let inline polarisSubHeading (props : SubHeadingProps list) (elems : ReactElement list) : ReactElement =
-    ofImport "Subheading" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
+    type SubHeadingProps =
+        | Element of Polaris.ElementNameSelection
+
+    let inline polarisSubHeading (props : SubHeadingProps list) (elems : ReactElement list) : ReactElement =
+        ofImport "Subheading" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems

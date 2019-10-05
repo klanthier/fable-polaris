@@ -1,12 +1,14 @@
-module Polaris.Collapsible
+namespace Fable.Polaris
+
+module Collapsible =
 
 
-open Fable.React
+    open Fable.React
 
-type CollapsibleProps = {
-    id: string
-    ``open``: bool
-}
+    type CollapsibleProps = {
+        id: string
+        ``open``: bool
+    }
 
-let inline polarisCollapsible (props : CollapsibleProps) (elems : ReactElement list): ReactElement =
-    ofImport "Collapsible" "@shopify/polaris" props elems
+    let inline polarisCollapsible (props : CollapsibleProps) (elems : ReactElement list): ReactElement =
+        ofImport "Collapsible" "@shopify/polaris" props elems

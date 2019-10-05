@@ -1,18 +1,20 @@
-module Polaris.List
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
+module List =
 
-type [<StringEnum>] [<RequireQualifiedAccess>] ListType =
-    | [<CompiledName "bullet">] Bullet
-    | [<CompiledName "number">] Number
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
 
-type ListProps =
-  | Type of ListType
+    type [<StringEnum>] [<RequireQualifiedAccess>] ListType =
+        | [<CompiledName "bullet">] Bullet
+        | [<CompiledName "number">] Number
 
-let inline polarisListItem (elems : ReactElement list) : ReactElement =
-    ofImport "List.Item" "@shopify/polaris" [] elems
+    type ListProps =
+      | Type of ListType
 
-let inline polarisList (props : ListProps list) (elems : ReactElement list) : ReactElement =
-    ofImport "List" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) elems
+    let inline polarisListItem (elems : ReactElement list) : ReactElement =
+        ofImport "List.Item" "@shopify/polaris" [] elems
+
+    let inline polarisList (props : ListProps list) (elems : ReactElement list) : ReactElement =
+        ofImport "List" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) elems

@@ -1,14 +1,16 @@
-module Polaris.ProgressBar
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Polaris.Shared
+module ProgressBar =
 
-type ProgressBarProps =
-    | Progress of float
-    | Size of ProgressBarSize
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.Polaris
 
-let inline polarisProgressBar (props : ProgressBarProps list) : ReactElement =
-    ofImport "ProgressBar" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) []
+    type ProgressBarProps =
+        | Progress of float
+        | Size of Polaris.ProgressBarSize
+
+    let inline polarisProgressBar (props : ProgressBarProps list) : ReactElement =
+        ofImport "ProgressBar" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) []
 

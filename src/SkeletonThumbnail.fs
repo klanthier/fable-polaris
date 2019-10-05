@@ -1,12 +1,14 @@
-module Polaris.SkeletonThumbnail
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Polaris.Shared
+module SkeletonThumbnail =
 
-type SkeletonThumbnailProps =
-    | Size of ThumbnailSize
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.Polaris
 
-let inline polarisSkeletonThumbnail (props : SkeletonThumbnailProps list) : ReactElement =
-    ofImport "SkeletonThumbnail" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []
+    type SkeletonThumbnailProps =
+        | Size of Polaris.ThumbnailSize
+
+    let inline polarisSkeletonThumbnail (props : SkeletonThumbnailProps list) : ReactElement =
+        ofImport "SkeletonThumbnail" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

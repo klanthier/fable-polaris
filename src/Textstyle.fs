@@ -1,18 +1,20 @@
-module Polaris.TextStyle
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
+module TextStyle =
 
-type [<StringEnum>] [<RequireQualifiedAccess>] Variation =
-    | [<CompiledName "positive">] Positive
-    | [<CompiledName "negative">] Negative
-    | [<CompiledName "strong">] Strong
-    | [<CompiledName "subdued">] Subdued
-    | [<CompiledName "code">] Code
+  open Fable.React
+  open Fable.Core
 
-type RequiredTextStyleProps = {
-  variation: Variation
-}
+  type [<StringEnum>] [<RequireQualifiedAccess>] Variation =
+      | [<CompiledName "positive">] Positive
+      | [<CompiledName "negative">] Negative
+      | [<CompiledName "strong">] Strong
+      | [<CompiledName "subdued">] Subdued
+      | [<CompiledName "code">] Code
 
-let inline polarisTextStyle (props : RequiredTextStyleProps) (elems : ReactElement list) : ReactElement =
-    ofImport "TextStyle" "@shopify/polaris" props elems
+  type RequiredTextStyleProps = {
+    variation: Variation
+  }
+
+  let inline polarisTextStyle (props : RequiredTextStyleProps) (elems : ReactElement list) : ReactElement =
+      ofImport "TextStyle" "@shopify/polaris" props elems

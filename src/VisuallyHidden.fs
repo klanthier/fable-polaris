@@ -1,5 +1,8 @@
-module Polaris.VisuallyHidden
-open Fable.React
+namespace Fable.Polaris
 
-let inline polarisVisuallyHidden (elems: ReactElement list): ReactElement =
-    ofImport "VisuallyHidden" "@shopify/polaris" [] elems
+module VisuallyHidden =
+
+    open Fable.React
+
+    let inline polarisVisuallyHidden (elems: ReactElement list): ReactElement =
+        ofImport "VisuallyHidden" "@shopify/polaris" [] elems

@@ -1,43 +1,45 @@
-module Polaris.AppProvider
+namespace Fable.Polaris
 
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.React
+module AppProvider =
 
-// Needs work to have proper type
-type TranslationDictionary = obj
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.React
 
-type AppColorsTopBar = {
-    background: string
-}
+    // Needs work to have proper type
+    type TranslationDictionary = obj
 
-type AppColors =
-    | TopBar of AppColorsTopBar
+    type AppColorsTopBar = {
+        background: string
+    }
 
-type AppLogo =
-    | Width of int
-    | TopBarSource of string
-    | Url of string
-    | AccessibilityLabel of string
-    | ContextualSaveBarSource of string
+    type AppColors =
+        | TopBar of AppColorsTopBar
 
-type AppTheme =
-    static member Colors (colors: AppColors list) =
-        unbox ("colors", (keyValueList CaseRules.LowerFirst colors))
+    type AppLogo =
+        | Width of int
+        | TopBarSource of string
+        | Url of string
+        | AccessibilityLabel of string
+        | ContextualSaveBarSource of string
 
-    static member Logo (logo: AppLogo list) =
-        unbox ("logo", (keyValueList CaseRules.LowerFirst logo))
+    type AppTheme =
+        static member Colors (colors: AppColors list) =
+            unbox ("colors", (keyValueList CaseRules.LowerFirst colors))
+
+        static member Logo (logo: AppLogo list) =
+            unbox ("logo", (keyValueList CaseRules.LowerFirst logo))
 
 
 
-type AppProviderProps =
-    | ApiKey of string
-    | ForceRedirect of bool
-    | I18n of U2<TranslationDictionary, TranslationDictionary list>
-    | LinkComponent of ReactElement
-    | ShopOrigin of string
-    static member Theme (theme: AppTheme list) =
-        unbox ("theme", (keyValueList CaseRules.LowerFirst theme))
+    type AppProviderProps =
+        | ApiKey of string
+        | ForceRedirect of bool
+        | I18n of U2<TranslationDictionary, TranslationDictionary list>
+        | LinkComponent of ReactElement
+        | ShopOrigin of string
+        static member Theme (theme: AppTheme list) =
+            unbox ("theme", (keyValueList CaseRules.LowerFirst theme))
 
-let inline polarisAppProvider (props : AppProviderProps list) (child : ReactElement) : ReactElement =
-    ofImport "AppProvider" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) [ child ]
+    let inline polarisAppProvider (props : AppProviderProps list) (child : ReactElement) : ReactElement =
+        ofImport "AppProvider" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) [ child ]

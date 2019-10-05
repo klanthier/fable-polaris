@@ -1,26 +1,28 @@
-module Polaris.PageActions
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Polaris.Shared
+module PageActions =
 
-type PageAction = U2<DisableableAction, LoadableAction>
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.Polaris
 
-type PageActionsProps =
-    static member PrimaryAction (action: PageAction) =
-        unbox ("primaryAction",
-            match action with
-                | U2.Case1 dAct ->
-                    disableableActionConverterHelper dAct
-                | U2.Case2 lAct ->
-                    lodableActionConverterHelper lAct
-        )
-    static member SecondaryActions (complexActions: ComplexAction list) =
-        unbox ("secondaryActions",
-            List.map complexActionConverterHelper complexActions
-            |> List.toArray
-        )
+    type PageAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
 
-let inline polarisPageActions (props : PageActionsProps list): ReactElement =
-    ofImport "PageActions" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) []
+    type PageActionsProps =
+        static member PrimaryAction (action: PageAction) =
+            unbox ("primaryAction",
+                match action with
+                    | U2.Case1 dAct ->
+                        Polaris.disableableActionConverterHelper dAct
+                    | U2.Case2 lAct ->
+                        Polaris.lodableActionConverterHelper lAct
+            )
+        static member SecondaryActions (complexActions: Polaris.ComplexAction list) =
+            unbox ("secondaryActions",
+                List.map Polaris.complexActionConverterHelper complexActions
+                |> List.toArray
+            )
+
+    let inline polarisPageActions (props : PageActionsProps list): ReactElement =
+        ofImport "PageActions" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) []

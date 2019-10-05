@@ -1,12 +1,14 @@
-module Polaris.SkeletonDisplayText
+namespace Fable.Polaris
 
-open Fable.React
-open Fable.Core
-open Fable.Core.JsInterop
-open Polaris.Shared
+module SkeletonDisplayText =
 
-type SkeletonDisplayTextProps =
-    | Size of DisplayTextSize
+    open Fable.React
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.Polaris
 
-let inline skeletonDisplayText (props : SkeletonDisplayTextProps list) : ReactElement =
-    ofImport "SkeletonDisplayText" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []
+    type SkeletonDisplayTextProps =
+        | Size of Polaris.DisplayTextSize
+
+    let inline skeletonDisplayText (props : SkeletonDisplayTextProps list) : ReactElement =
+        ofImport "SkeletonDisplayText" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []
