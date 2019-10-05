@@ -7,10 +7,19 @@ module Thumbnail =
   open Fable.Polaris
   open Fable.Core.JsInterop
 
+  type RequiredThumbnailProps = {
+    Alt: string
+    Source: string
+  }
   type ThumbnailProps =
-    | Alt of string
     | Size of Polaris.ThumbnailSize
-    | Source of string
 
-  let inline polarisThumbnail (props : ThumbnailProps list): ReactElement =
-      ofImport "Thumbnail" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []
+  let inline polarisThumbnail (requiredProps: RequiredThumbnailProps) (props : ThumbnailProps list): ReactElement =
+    let combinedProps =
+      props
+      |> keyValueList CaseRules.LowerFirst
+      |> (fun obj ->
+          obj?alt <- requiredProps.Alt
+          obj?source <- requiredProps.Source
+      )
+    ofImport "Thumbnail" "@shopify/polaris" combinedProps []

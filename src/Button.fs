@@ -25,7 +25,7 @@ module Button =
         | Download of U2<string, bool>
         | External of bool
         | FullWidth of bool
-        | Icon of string
+        | Icon of Polaris.BundledIcon
         | Id of string
         | Loading of bool
         | Monochrome of bool

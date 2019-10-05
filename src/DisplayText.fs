@@ -6,14 +6,7 @@ module DisplayText =
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.Polaris
-
-    type [<StringEnum>] [<RequireQualifiedAccess>] Variation =
-        | [<CompiledName "positive">] Positive
-        | [<CompiledName "negative">] Negative
-        | [<CompiledName "strong">] Strong
-        | [<CompiledName "subdued">] Subdued
-        | [<CompiledName "code">] Code
-
+    
     type DisplayTextProps =
         | Element of Polaris.ElementNameSelection
         | Size of Polaris.DisplayTextSize

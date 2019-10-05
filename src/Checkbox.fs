@@ -13,7 +13,7 @@ module CheckBox =
 
     type RequiredCheckBoxProps = {
         Checked: CheckedStatus
-        Label: string
+        Label: ReactElement
     }
 
     type CheckBoxProps =

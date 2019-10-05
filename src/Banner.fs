@@ -15,7 +15,7 @@ module Banner =
     type BannerAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
 
     type BannerProps =
-        | Icon of string
+        | Icon of Polaris.BundledIcon
         | Status of BannerStatus
         | Title of string
         | StopAnnouncements of bool

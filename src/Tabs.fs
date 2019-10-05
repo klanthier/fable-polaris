@@ -47,7 +47,6 @@ module Tabs =
     }
 
     type TabsProps =
-        | Children of ReactElement
         | Fitted of bool
         | OnSelect of (int -> unit)
 

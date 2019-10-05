@@ -41,7 +41,7 @@ module ResourceList =
 
     type RequiredResourceListProps<'t> = {
         Items: 't list
-        RenderItem: ('t -> string -> ReactElement)
+        RenderItem: ('t -> string -> int -> ReactElement)
         IdForItem: ('t -> int -> string)
     }
     type ResourceListProps<'t> =
@@ -92,41 +92,6 @@ module ResourceList =
               obj
           )
         ofImport "ResourceList" "@shopify/polaris" combinedProps []
-
-
-    ////////////////////////////////////////
-    ///        RESOURCE-LIST-ITEM        ///
-    ////////////////////////////////////////
-
-    type RequiredResourceListItemProps = {
-        Id : string
-    }
-
-    type ResourceListItemProps =
-      | AccessibilityLabel of string
-      | AriaControls of string
-      | AriaExpanded of bool
-      | Media of ReactElement
-      | PersistActions of bool
-      | OnClick of (string -> unit)
-      | Url of string
-      static member ShortcutActions (actions: Polaris.DisableableAction list) =
-        unbox ("shortcutActions",
-            List.map Polaris.disableableActionConverterHelper actions
-                |> List.toArray
-        )
-
-
-    let inline polarisResourceListItem (requiredProps : RequiredResourceListItemProps) (props : ResourceListItemProps list) (elems : ReactElement list) : ReactElement =
-        let combinedProps =
-          props
-          |> keyValueList CaseRules.LowerFirst
-          |> (fun obj ->
-              obj?id <- requiredProps.Id
-              obj
-          )
-        ofImport "ResourceList.Item" "@shopify/polaris" combinedProps elems
-
 
     ////////////////////////////////////////
     ///       RESOURCE-LIST-FILTER       ///
@@ -234,6 +199,7 @@ module ResourceList =
     type ResourceListFilterControlProps =
         | SearchValue of string
         | Focused of bool
+        | Placeholder of string
         | OnSearchBlur of (unit -> unit)
         | OnFiltersChange of (AppliedFilter array -> unit)
         static member AdditionalAction (additionalAction: Polaris.ComplexAction) =

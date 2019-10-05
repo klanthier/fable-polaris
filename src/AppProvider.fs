@@ -31,9 +31,9 @@ module AppProvider =
             unbox ("logo", (keyValueList CaseRules.LowerFirst logo))
 
 
-
     type AppProviderProps =
         | ApiKey of string
+        | Features of Polaris.Features
         | ForceRedirect of bool
         | I18n of U2<TranslationDictionary, TranslationDictionary list>
         | LinkComponent of ReactElement

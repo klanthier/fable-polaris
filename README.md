@@ -2,14 +2,14 @@
 
 Fable/F# bindings for Shopify's Polaris react component library
 
-Current bindings are written for Shopify Polaris version **4.0.0**
+Current bindings are written for Shopify Polaris version **4.4.0**
 
 # Using in your Fable Project
 
 ## Dependency
 
 You will need to install Shopify Polaris
-`yarn add @shopify/polaris@4.0.0`
+`yarn add @shopify/polaris@4.4.0`
 
 Then you must ensure you add the styles to your main F# file like so:
 `importAll "@shopify/polaris/styles.css"`
@@ -79,7 +79,7 @@ To start the sample project run
 | --------------------- | :----------------: |
 | Account connection    | :white_check_mark: |
 | Action list           | :white_check_mark: |
-| App provider          |   :construction:   |
+| App provider          | :white_check_mark: |
 | Autocomplete          | :white_check_mark: |
 | Avatar                | :white_check_mark: |
 | Badge                 | :white_check_mark: |
@@ -95,15 +95,15 @@ To start the sample project run
 | Color picker          | :white_check_mark: |
 | Contextual save bar   | :white_check_mark: |
 | Data table            | :white_check_mark: |
-| Date picker           |   :construction:   |
+| Date picker           | :white_check_mark: |
 | Description list      | :white_check_mark: |
 | Display text          | :white_check_mark: |
 | Dropzone              | :white_check_mark: |
 | Empty state           | :white_check_mark: |
 | Exception list        | :white_check_mark: |
 | Footer help           | :white_check_mark: |
-| Filters               |   :construction:   |
-| Form                  |   :construction:   |
+| Filters               | :white_check_mark: |
+| Form                  | :white_check_mark: |
 | Form layout           | :white_check_mark: |
 | Frame                 | :white_check_mark: |
 | Heading               | :white_check_mark: |
@@ -115,22 +115,23 @@ To start the sample project run
 | List                  | :white_check_mark: |
 | Loading               | :white_check_mark: |
 | Modal                 | :white_check_mark: |
-| Navigation            |   :construction:   |
+| Navigation            | :white_check_mark: |
 | Option List           | :white_check_mark: |
-| Page                  |   :construction:   |
+| Page                  | :white_check_mark  |
 | Page actions          | :white_check_mark: |
 | Pagination            | :white_check_mark: |
-| Popover               |   :construction:   |
+| Popover               | :white_check_mark: |
 | Progress bar          | :white_check_mark: |
 | Radio button          | :white_check_mark: |
-| Range slider          |   :construction:   |
+| Range slider          | :white_check_mark: |
+| Resource item         | :white_check_mark: |
 | Resource list         | :white_check_mark: |
 | Resource picker       |     :no_entry:     |
 | Scrollable            | :white_check_mark: |
 | Section header        |     :no_entry:     |
 | Select                | :white_check_mark: |
-| Sheet                 |   :construction:   |
 | Setting toggle        | :white_check_mark: |
+| Sheet                 | :white_check_mark: |
 | Skeleton body text    | :white_check_mark: |
 | Skeleton display text | :white_check_mark: |
 | Skeleton page         | :white_check_mark: |

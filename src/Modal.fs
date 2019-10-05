@@ -32,7 +32,7 @@ module Modal =
         | Sectioned of bool
         | Size of Polaris.ModalSize
         | Src of string
-        | Title of string
+        | Title of ReactElement
         | OnIFrameLoad of (unit -> unit)
         | OnScrolledToBottom of (unit -> unit)
         | OnTransitionEnd of (unit -> unit)

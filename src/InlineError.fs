@@ -3,8 +3,6 @@ namespace Fable.Polaris
 module InlineError =
 
     open Fable.React
-    open Fable.Core.JsInterop
-    open Fable.Core
 
     type RequiredInlineErrorProps = {
         fieldID: string

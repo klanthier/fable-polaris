@@ -21,9 +21,10 @@ module Card =
             unbox ("primaryFooterAction",
                 Polaris.complexActionConverterHelper action
             )
-        static member SecondaryFooterAction (action: Polaris.ComplexAction) =
-            unbox ("secondaryFooterAction",
-                Polaris.complexActionConverterHelper action
+        static member SecondaryFooterActions (actions: Polaris.ComplexAction list) =
+            unbox ("secondaryFooterActions",
+                List.map Polaris.complexActionConverterHelper actions
+                |> List.toArray
             )
 
 

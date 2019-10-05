@@ -10,7 +10,8 @@ module Dropzone =
     type [<StringEnum>] [<RequireQualifiedAccess>] FileType =
         | [<CompiledName "file">] File
         | [<CompiledName "image">] Image
-
+    
+    type File = Fable.Core.JS.Object
     type DropZoneProps =
         | Accept of string
         | Active of bool
@@ -27,14 +28,14 @@ module Dropzone =
         | Overlay of bool
         | OverlayText of string
         | Type of FileType
-        | CustomValidator of (unit -> unit)
+        | CustomValidator of (File -> unit)
         | OnClick of (unit -> unit)
         | OnDragEnter of (unit -> unit)
         | OnDragLeave of (unit -> unit)
         | OnDragOver of (unit -> unit)
-        | OnDrop of (unit -> unit)
-        | OnDropAccepted of (unit -> unit)
-        | OnDropRejected of (unit -> unit)
+        | OnDrop of (File array -> File array -> File array -> unit)
+        | OnDropAccepted of (File array -> unit)
+        | OnDropRejected of (File array -> unit)
         | OnFileDialogClose of (unit -> unit)
         static member LabelAction (action: Polaris.Action) =
             Polaris.actionUnboxHelper "labelAction" action

@@ -7,9 +7,12 @@ module RangeSlider =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
+    type DualValue = float * float
+    type RangeValue = U2<float, DualValue>
+
     type RequiredRangeSliderProps = {
-        OnChange: (int -> string -> unit)
-        Value: int // Missing dual value implementation
+        OnChange: RangeValue -> string -> unit
+        Value: RangeValue
     }
     type RangeSliderProps =
         | Disabled of bool
@@ -18,11 +21,11 @@ module RangeSlider =
         | Id of string
         | Label of string
         | LabelHidden of bool
-        | Max of int
-        | Min of int
+        | Max of float
+        | Min of float
         | Output of bool
         | Prefix of ReactElement
-        | Step of int
+        | Step of float
         | Suffix of ReactElement
         | OnBlur of (unit -> unit)
         | OnFocus of (unit -> unit)

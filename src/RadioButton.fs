@@ -7,7 +7,7 @@ module RadioButton =
     open Fable.Core.JsInterop
 
     type RequiredRadioButtonProps = {
-        Label: string
+        Label: ReactElement
         Checked: bool
         OnChange: (bool -> string -> unit)
     }

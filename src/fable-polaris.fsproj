@@ -64,6 +64,7 @@
     <Compile Include="ProgressBar.fs" />
     <Compile Include="RadioButton.fs" />
     <Compile Include="RangeSlider.fs" />
+    <Compile Include="ResourceItem.fs" />
     <Compile Include="ResourceList.fs" />
     <Compile Include="ResourcePicker.fs" />
     <Compile Include="Scrollable.fs" />

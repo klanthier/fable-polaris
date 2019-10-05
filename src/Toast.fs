@@ -16,10 +16,8 @@ module Toast =
   type ToastProps =
     | Duration of int
     | Error of bool
-    static member Actions (actions: Polaris.Action list) =
-      unbox ("actions",
-          Array.map Polaris.actionConverterHelper (List.toArray actions)
-      )
+    static member Action (action: Polaris.Action) =
+      unbox ("action", Polaris.actionConverterHelper action)
 
 
   let inline polarisToast requiredProps (props : ToastProps list) : ReactElement =

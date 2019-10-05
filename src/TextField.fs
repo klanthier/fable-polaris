@@ -13,6 +13,8 @@ module TextField =
       | [<CompiledName "center">] Center
       | [<CompiledName "right">] Right
 
+  type TextFieldMultiline = U2<bool, int>
+
   type TextFieldProps =
     | Align of TextFieldAlignment
     | AriaActiveDescendant of string
@@ -30,11 +32,11 @@ module TextField =
     | HelpText of ReactElement
     | Id of string
     | LabelHidden of bool
-    | Max of int
+    | Max of float
     | MaxLength of int
-    | Min of int
+    | Min of float
     | MinLength of int
-    | Multiline of bool
+    | Multiline of TextFieldMultiline
     | Name of string
     | Pattern of string
     | Placeholder of string

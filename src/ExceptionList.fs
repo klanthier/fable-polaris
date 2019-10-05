@@ -13,7 +13,7 @@ module ExceptionList =
     type ExceptionListItemProps =
         | Title of string
         | Description of ReactElement
-        | Icon of string
+        | Icon of Polaris.BundledIcon
         | Status of ExceptionListItemStatus
         | Truncate of bool
 

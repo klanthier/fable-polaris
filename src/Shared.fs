@@ -1,5 +1,36 @@
 namespace Fable.Polaris
 
+module PolarisDateHelpers =
+    type Weekdays =
+        | Sunday = 0
+        | Monday = 1
+        | Tuesday = 2
+        | Wednesday = 3
+        | Thursday = 4
+        | Friday = 5
+        | Saturday = 6
+    
+    type Months =
+         | January = 0
+         | February = 1
+         | March = 2
+         | April = 3
+         | May = 4
+         | June = 5
+         | July = 6
+         | August = 7
+         | September = 8
+         | October = 9
+         | November = 10
+         | December = 11
+
+    type Range = {
+      start: System.DateTime
+      ``end``: System.DateTime
+    }
+
+    type Year = int
+
 module Polaris =
 
     open Fable.Core
@@ -143,6 +174,9 @@ module Polaris =
         | [<CompiledName "Medium">] Medium
         | [<CompiledName "Large">] Large
         | [<CompiledName "Full">] Full
+
+    type [<AllowNullLiteral>] Features =
+        [<Emit "$0[$1]{{=$2}}">] abstract Item: key: string -> bool with get, set
 
     type Key =
       | Backspace = 8
@@ -307,6 +341,58 @@ module Polaris =
 
 
     ////////////////////////////////////////
+    ///          CALLBACK-ACTION         ///
+    ////////////////////////////////////////
+    type RequiredCallbackActionProps = {
+        Content : string
+        OnAction: (unit -> unit)
+    }
+
+    type CallbackActionProps =
+        | AccessibilityLabel of string
+        | Id of string
+
+    type CallbackAction = RequiredCallbackActionProps * (CallbackActionProps list)
+
+    let CallbackActionConverterHelper (callbackAction: CallbackAction) =
+        let requiredProps = fst callbackAction
+        let combinedProps =
+            (snd callbackAction)
+            |> keyValueList CaseRules.LowerFirst
+            |> (fun obj ->
+                obj?content <- requiredProps.Content
+                obj?onAction <- requiredProps.OnAction
+                obj
+            )
+        combinedProps
+
+    ////////////////////////////////////////
+    ///            LINK-ACTION           ///
+    ////////////////////////////////////////
+    type RequiredLinkActionProps = {
+        Content : string
+        Url: string
+    }
+
+    type LinkActionProps =
+        | AccessibilityLabel of string
+        | Id of string
+
+    type LinkAction = RequiredLinkActionProps * (LinkActionProps list)
+
+    let LinkActionConverterHelper (linkAction: LinkAction) =
+        let requiredProps = fst linkAction
+        let combinedProps =
+            (snd linkAction)
+            |> keyValueList CaseRules.LowerFirst
+            |> (fun obj ->
+                obj?content <- requiredProps.Content
+                obj?url <- requiredProps.Url
+                obj
+            )
+        combinedProps
+
+    ////////////////////////////////////////
     ///          COMPLEX-ACTION          ///
     ////////////////////////////////////////
     type RequiredComplexActionProps = {
@@ -338,6 +424,40 @@ module Polaris =
             )
         combinedProps
 
+
+    
+    ////////////////////////////////////////
+    ///          PRIMARY-ACTION          ///
+    ////////////////////////////////////////
+    type RequiredPrimaryActionProps = {
+        Content : string
+    }
+
+    type PrimaryActionProps =
+        | AccessibilityLabel of string
+        | External of bool
+        | Id of string
+        | Url of string
+        | OnAction of (unit -> unit)
+        | Destructive of bool
+        | Disabled of bool
+        | Target of LinkTarget
+        | Icon of string
+        | Loading of bool
+        | Primary of bool
+
+    type PrimaryAction = RequiredPrimaryActionProps * (PrimaryActionProps list)
+
+    let primaryActionConverterHelper (primaryAction: PrimaryAction) =
+        let requiredProps = fst primaryAction
+        let combinedProps =
+            (snd primaryAction)
+            |> keyValueList CaseRules.LowerFirst
+            |> (fun obj ->
+                obj?content <- requiredProps.Content
+                obj
+            )
+        combinedProps
 
     ////////////////////////////////////////
     ///         APP-BRIDGE-ACTION        ///
@@ -535,3 +655,19 @@ module Polaris =
     let sectionDescriptorsPropsUnboxHelper (keyName: string) (options: SectionDescriptor list) =
         let items = Array.map sectionDescriptorPropsConverterHelper (List.toArray options)
         unbox (keyName, items)
+
+    
+    type PaginationDescriptor =
+        | AccessibilityLabel of string
+        | HasNext of bool
+        | HasPrevious of bool
+        | Label of string
+        | NextKeys of Key array
+        | NextTooltip of string
+        | NextURL of string
+        | Plain of bool
+        | PreviousKeys of Key array
+        | PreviousTooltip of string
+        | PreviousURL of string
+        | OnNext of (unit -> unit)
+        | OnPrevious of (unit -> unit)

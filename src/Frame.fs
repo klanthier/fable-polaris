@@ -10,6 +10,7 @@ module Frame =
         | GlobalRibbon of ReactElement
         | Navigation of ReactElement
         | ShowMobileNavigation of bool
+        | SkipToContentTarget of JS.Object //TODO: Should be a React.RefObject
         | TopBar of ReactElement
         | OnNavigationDismiss of (unit -> unit)
 
