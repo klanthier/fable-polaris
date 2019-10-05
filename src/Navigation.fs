@@ -70,7 +70,7 @@ module Navigation =
         | Action of NavigationSectionAction
         | Separator of bool
 
-    let inline navigation (requiredProps : RequiredNavigationProps) (props : NavigationProps list) (children : ReactElement list) : ReactElement =
+    let inline polarisNavigation (requiredProps : RequiredNavigationProps) (props : NavigationProps list) (children : ReactElement list) : ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst
@@ -80,5 +80,5 @@ module Navigation =
             )
         ofImport "Navigation" "@shopify/polaris" combinedProps children
 
-    let inline navigationSection (props : NavigationSectionProps list) (children : ReactElement list) : ReactElement =
+    let inline polarisNavigationSection (props : NavigationSectionProps list) (children : ReactElement list) : ReactElement =
         ofImport "Navigation.Section" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children

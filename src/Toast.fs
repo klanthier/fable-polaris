@@ -16,9 +16,9 @@ module Toast =
   type ToastProps =
     | Duration of int
     | Error of bool
-    static member Actions (actions: Action list) =
+    static member Actions (actions: Polaris.Action list) =
       unbox ("actions",
-          Array.map actionConverterHelper (List.toArray actions)
+          Array.map Polaris.actionConverterHelper (List.toArray actions)
       )
 
 

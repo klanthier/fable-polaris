@@ -21,5 +21,5 @@ module AccountConnection =
     static member Action (action: Polaris.Action) =
       Polaris.actionUnboxHelper "action" action
 
-  let inline accountConnection (props : AccountConnectionProps list) : ReactElement =
+  let inline polarisAccountConnection (props : AccountConnectionProps list) : ReactElement =
       ofImport "AccountConnection" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

@@ -38,8 +38,8 @@ module Select =
       | Placeholder of string
       | OnBlur of (unit -> unit)
       | OnFocus of (unit -> unit)
-      static member LabelAction (action: Action) =
-        actionUnboxHelper "labelAction" action
+      static member LabelAction (action: Polaris.Action) =
+        Polaris.actionUnboxHelper "labelAction" action
 
     let inline polarisSelect (requiredProps: RequiredSelectProps) (props : SelectProps list) : ReactElement =
         let combinedProps =

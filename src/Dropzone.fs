@@ -36,8 +36,8 @@ module Dropzone =
         | OnDropAccepted of (unit -> unit)
         | OnDropRejected of (unit -> unit)
         | OnFileDialogClose of (unit -> unit)
-        static member LabelAction (action: Action) =
-            actionUnboxHelper "labelAction" action
+        static member LabelAction (action: Polaris.Action) =
+            Polaris.actionUnboxHelper "labelAction" action
 
     let inline polarisDropZone (props : DropZoneProps list) (elems: ReactElement list) : ReactElement =
         ofImport "DropZone" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems

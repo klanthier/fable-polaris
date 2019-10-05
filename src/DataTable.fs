@@ -39,7 +39,7 @@ module DataTable =
         | VerticalAlign of DataTableVerticalAlign
         | OnSort of (int -> DataTableSortDirection -> unit)
 
-    let inline dataTable (requiredProps: RequiredDataTableProps) (props : DataTableProps list) : ReactElement =
+    let inline polarisDataTable (requiredProps: RequiredDataTableProps) (props : DataTableProps list) : ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst

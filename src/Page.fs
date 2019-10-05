@@ -32,7 +32,7 @@ module Page =
         Title : string
     }
 
-    let inline page (requiredProps : RequiredPageProps) (props : PageProps list) (children : ReactElement list) : ReactElement =
+    let inline polarisPage (requiredProps : RequiredPageProps) (props : PageProps list) (children : ReactElement list) : ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst

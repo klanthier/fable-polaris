@@ -1,11 +1,10 @@
 namespace Fable.Polaris
 
 module Spinner =
-
+    open Fable.Polaris
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.React
-    open Shared
 
     type [<RequireQualifiedAccess>] [<StringEnum>] SpinnerSize =
         | [<CompiledName "small">] Small
@@ -13,7 +12,7 @@ module Spinner =
 
     type [<RequireQualifiedAccess>] SpinnerProps =
         | AccessibilityLabel of string
-        | Color of ColorOption
+        | Color of Polaris.ColorOption
         | Size of SpinnerSize
 
     let inline polairsSpinner (props : SpinnerProps list) : ReactElement =

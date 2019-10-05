@@ -30,7 +30,7 @@ module Autocomplete =
         | WillLoadMoreResults of bool
         | OnLoadMoreResults of (unit -> unit)
 
-    let inline autoComplete requiredProps (props : AutocompleteProps list): ReactElement =
+    let inline polarisAutoComplete requiredProps (props : AutocompleteProps list): ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst

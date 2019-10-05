@@ -26,8 +26,8 @@ module RangeSlider =
         | Suffix of ReactElement
         | OnBlur of (unit -> unit)
         | OnFocus of (unit -> unit)
-        static member LabelAction (action: Action) =
-            actionUnboxHelper "labelAction" action
+        static member LabelAction (action: Polaris.Action) =
+            Polaris.actionUnboxHelper "labelAction" action
 
 
     let inline polarisRangeSlider (requiredProps: RequiredRangeSliderProps) (props : RangeSliderProps list) : ReactElement =

@@ -22,7 +22,7 @@ module ActionList =
         static member Sections (sections: ActionListSection list) =
             unbox ("sections", keyValueList CaseRules.LowerFirst sections)
 
-    let inline actionList requiredProps (props : ActionListProps list) : ReactElement =
+    let inline polarisActionList requiredProps (props : ActionListProps list) : ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst
