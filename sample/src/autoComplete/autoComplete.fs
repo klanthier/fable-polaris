@@ -3,7 +3,7 @@ module Autocomplete
 open Fable.React
 open Polaris.AppProvider
 open Polaris.Autocomplete
-open Polaris.Shared
+open Fable.Polaris
 
 let view _ _ =
     appProvider [] <|

@@ -1,21 +1,24 @@
-module Polaris.Avatar
+namespace Fable.Polaris
 
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.React
+[<AutoOpen>]
+module Avatar =
 
-type [<StringEnum>] [<RequireQualifiedAccess>] AvatarSize =
-    | [<CompiledName "small">] Small
-    | [<CompiledName "medium">] Medium
-    | [<CompiledName "large">] Large
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.React
 
-type AvatarProps =
-    | AccessibilityLabel of string
-    | Customer of bool
-    | Initials of string
-    | Name of string
-    | Size of AvatarSize
-    | Source of string
+    type [<StringEnum>] [<RequireQualifiedAccess>] AvatarSize =
+        | [<CompiledName "small">] Small
+        | [<CompiledName "medium">] Medium
+        | [<CompiledName "large">] Large
 
-let inline avatar (props : AvatarProps list): ReactElement =
-    ofImport "Avatar" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []
+    type [<RequireQualifiedAccess>] AvatarProps =
+        | AccessibilityLabel of string
+        | Customer of bool
+        | Initials of string
+        | Name of string
+        | Size of AvatarSize
+        | Source of string
+
+    let inline polarisAvatar (props : AvatarProps list): ReactElement =
+        ofImport "Avatar" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

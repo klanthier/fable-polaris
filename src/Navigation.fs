@@ -1,82 +1,135 @@
-module Polaris.Navigation
+namespace Fable.Polaris
 
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.React
-open Polaris.Shared
+[<AutoOpen>]
+module Navigation =
 
-type ItemType = {
-    icon: BundledIcon option
-    label: string
-    url: string
-}
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.React
+    open Fable.Polaris
 
-type SectionType = 
-    abstract fill : bool with set
-    abstract items : ResizeArray<ItemType> with set
-    abstract title : string with set
+    type [<RequireQualifiedAccess>] RequiredItemTypeProps = {
+        Label: string
+        Url: string
+    }
 
-type SubNavigationSectionItem = {
-    label: string
-    url: string
-    disabled: bool
-}
+    type [<RequireQualifiedAccess>] ItemTypeProps =
+        | Icon of Polaris.BundledIcon
+    
+    type ItemType = RequiredItemTypeProps * (ItemTypeProps list)
 
-type NavigationSectionItem =
-    abstract label : string with set
-    abstract url : string with set
-    abstract matches : bool with set
-    abstract exactMatch : bool with set
-    abstract matchPaths : ResizeArray<string> with set
-    abstract excludePaths : ResizeArray<string> with set
-    abstract icon : BundledIcon with set
-    abstract badge : string with set
-    abstract disabled : bool with set
-    abstract ``new``: bool with set
-    abstract accessibilityLabel : string with set
-    abstract selected : bool with set
-    abstract subNavigationItems : ResizeArray<SubNavigationSectionItem> with set
-    abstract onClick : (unit -> unit) with set
-
-type NavigationSectionAction =
-    abstract icon : BundledIcon with set
-    abstract accessibilityLabel : string with set
-    abstract onClick : (unit -> unit) with set
-
-type NavigationSectionRollup = {
-    after: int
-    view: string
-    hide: string
-    activePath: string
-}
-
-type RequiredNavigationProps = {
-    Location: string
-}
-
-type NavigationProps =
-    | ContextControl of ReactElement
-    | Sections of SectionType list
-    | OnDismiss of (unit -> unit)
-
-type NavigationSectionProps =
-    | Items of ResizeArray<NavigationSectionItem>
-    | Icon of BundledIcon
-    | Title of string
-    | Fill of bool
-    | Rollup of NavigationSectionRollup
-    | Action of NavigationSectionAction
-    | Separator of bool
-
-let inline navigation (requiredProps : RequiredNavigationProps) (props : NavigationProps list) (children : ReactElement list) : ReactElement =
-    let combinedProps =
-        props
+    let itemTypeConverterHelper (item: ItemType) =
+        let requiredProps = fst item
+        snd item
         |> keyValueList CaseRules.LowerFirst
         |> (fun obj ->
-            obj?location <- requiredProps.Location
+            obj?label <- requiredProps.Label
+            obj?url <- requiredProps.Url
             obj
         )
-    ofImport "Navigation" "@shopify/polaris" combinedProps children
 
-let inline navigationSection (props : NavigationSectionProps list) (children : ReactElement list) : ReactElement =
-    ofImport "Navigation.Section" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children
+    type [<RequireQualifiedAccess>] SectionType = 
+        | Fill of bool
+        | Title of string
+        static member Items (items: ItemType list) =
+            unbox ("items", Array.map itemTypeConverterHelper (items |> List.toArray))
+
+
+    type [<RequireQualifiedAccess>] RequiredNavigationProps = {
+        Location: string
+    }
+
+
+    let sectionConverterHelper (sectionType: SectionType list) =
+        keyValueList CaseRules.LowerFirst sectionType
+
+    type [<RequireQualifiedAccess>] NavigationProps =
+        | ContextControl of ReactElement
+        | OnDismiss of (unit -> unit)
+        static member Sections (sections: SectionType list list) =
+            unbox ("sections", Array.map sectionConverterHelper (sections |> List.toArray))
+
+    let inline polarisNavigation (requiredProps : RequiredNavigationProps) (props : NavigationProps list) (children : ReactElement list) : ReactElement =
+        let combinedProps =
+            props
+            |> keyValueList CaseRules.LowerFirst
+            |> (fun obj ->
+                obj?location <- requiredProps.Location
+                obj
+            )
+        ofImport "Navigation" "@shopify/polaris" combinedProps children
+
+
+    
+    type [<RequireQualifiedAccess>] RequiredSubNavigationSectionItemProps = {
+        Label: string
+        Url: string
+    }
+    
+    type [<RequireQualifiedAccess>] SubNavigationSectionItemProps =
+        | Disabled of bool
+        | New of bool
+        | OnClick of (unit -> unit)
+    
+    
+    type SubNavigationSectionItem = RequiredSubNavigationSectionItemProps * (SubNavigationSectionItemProps list)
+
+    let subNavigationItemConverterHelper (item: SubNavigationSectionItem) =
+        let requiredProps = fst item
+        snd item
+        |> keyValueList CaseRules.LowerFirst
+        |> (fun obj ->
+            obj?label <- requiredProps.Label
+            obj?url <- requiredProps.Url
+            obj
+        )
+
+    type [<RequireQualifiedAccess>] SecondarySectionItemAction = {
+        url: string
+        accessibilityLabel: string
+        icon: Polaris.BundledIcon
+    }
+
+    type [<RequireQualifiedAccess>] SectionItem =
+        | Url of string 
+        | Matches of bool 
+        | ExactMatch of bool 
+        | MatchPaths of string array 
+        | ExcludePaths of string array 
+        | Icon of Polaris.BundledIcon 
+        | Badge of string 
+        | Label of string 
+        | Disabled of bool 
+        | New of bool 
+        | AccessibilityLabel of string 
+        | Selected of bool 
+        | OnClick of (unit -> unit) 
+        | SecondaryAction of SecondarySectionItemAction
+        static member SubNavigationItems (items: SubNavigationSectionItem list) =
+             unbox ("subNavigationItems", Array.map subNavigationItemConverterHelper (items |> List.toArray))
+
+    type [<RequireQualifiedAccess>] NavigationSectionAction = {
+        icon : Polaris.BundledIcon
+        accessibilityLabel : string
+        onClick : (unit -> unit)
+    }
+
+    type [<RequireQualifiedAccess>] NavigationSectionRollup = {
+        after: int
+        view: string
+        hide: string
+        activePath: string
+    }
+    
+    type [<RequireQualifiedAccess>] NavigationSectionProps =
+        | Icon of Polaris.BundledIcon
+        | Title of string
+        | Fill of bool
+        | Separator of bool
+        | Rollup of NavigationSectionRollup
+        | Action of NavigationSectionAction
+        static member Items (items: SectionItem list list) =
+            unbox ("items",  Array.map (keyValueList CaseRules.LowerFirst) (items |> List.toArray))
+
+    let inline polarisNavigationSection (props : NavigationSectionProps list) : ReactElement =
+        ofImport "Navigation.Section" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

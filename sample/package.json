@@ -9,7 +9,6 @@
     "@shopify/polaris": "^3.14.0",
     "fable-compiler": "^2.1.12",
     "fable-loader": "^2.1.5",
-    "rc-progress": "^2.3.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-syntax-highlighter": "^10.2.1",

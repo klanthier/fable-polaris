@@ -1,51 +1,48 @@
-module Polaris.Button
+namespace Fable.Polaris
 
-open Browser.Types
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.React
+[<AutoOpen>]
+module Button =
 
-type [<StringEnum>] [<RequireQualifiedAccess>] ButtonSize =
-    | [<CompiledName "slim">] Slim
-    | [<CompiledName "medium">] Medium
-    | [<CompiledName "large">] Large
+    open Browser.Types
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.React
+    open Fable.Polaris
 
-[<RequireQualifiedAccess>]
-type ButtonProps =
-    | AccessibilityLabel of string
-    | AriaControls of string
-    | AriaExpanded of bool
-    | AriaPressed of bool
-    | Destructive of bool
-    | Disabled of bool
-    | Disclosure of bool
-    | Download of U2<string, bool>
-    | External of bool
-    | FullWidth of bool
-    | Icon of string
-    | Id of string
-    | Loading of bool
-    | Monochrome of bool
-    | Outline of bool
-    | Plain of bool
-    | Primary of bool
-    | Size of ButtonSize
-    | Submit of bool
-    | Url of string
-    | OnBlur of (Event -> unit)
-    | OnFocus of (Event -> unit)
+    type [<StringEnum>] [<RequireQualifiedAccess>] ButtonSize =
+        | [<CompiledName "slim">] Slim
+        | [<CompiledName "medium">] Medium
+        | [<CompiledName "large">] Large
+    
+    type [<RequireQualifiedAccess>] ButtonProps =
+        | AccessibilityLabel of string
+        | AriaControls of string
+        | AriaExpanded of bool
+        | AriaPressed of bool
+        | Destructive of bool
+        | Disabled of bool
+        | Disclosure of bool
+        | Download of U2<string, bool>
+        | External of bool
+        | FullWidth of bool
+        | Icon of Polaris.BundledIcon
+        | Id of string
+        | Loading of bool
+        | Monochrome of bool
+        | Outline of bool
+        | Plain of bool
+        | Primary of bool
+        | Size of ButtonSize
+        | Submit of bool
+        | TextAlign of Polaris.TextAlign
+        | Url of string
+        | OnBlur of (Event -> unit)
+        | OnFocus of (Event -> unit)
+        | OnClick of (Event -> unit)
+        | OnKeyDown of (KeyboardEvent -> unit)
+        | OnKeyPress of (KeyboardEvent -> unit)
+        | OnKeyUp of (KeyboardEvent -> unit)
 
-type RequiredButtonProps = {
-    OnClick : (Event -> unit)
-}
 
-
-let inline button requiredProps (props : ButtonProps list) (children : ReactElement list) : ReactElement =
-    let combinedProps =
-        props
-        |> keyValueList CaseRules.LowerFirst
-        |> (fun obj ->
-            obj?onClick <- requiredProps.OnClick
-            obj
-        )
-    ofImport "Button" "@shopify/polaris" combinedProps children
+    let inline polarisButton (props : ButtonProps list) (children : ReactElement list) : ReactElement =
+        ofImport "Button" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) children

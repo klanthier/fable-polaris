@@ -1,39 +1,82 @@
-module Polaris.Page
+namespace Fable.Polaris
 
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.React
+[<AutoOpen>]
+module Page =
 
-type ActionGroupDescriptor = ActionGroupDescriptor
-type PaginationDescriptor = PaginationDescriptor
-type CallbackAction = unit -> unit
-type LinkAction = LinkAction
-type SecondaryAction = SecondaryAction
+    open Fable.Core
+    open Fable.Core.JsInterop
+    open Fable.React
 
-type PrimaryActionProps = PrimaryActionProps
+    type [<RequireQualifiedAccess>] ActionGroupItemBadge = {
+        content: string
+        status: Badge.BadgeStatus
+    }
 
-[<RequireQualifiedAccess>]
-type PageProps =
-    | ActionGroups of ActionGroupDescriptor list
-    | Breadcrumbs of U2<CallbackAction, LinkAction> list
-    | ForceRender of bool
-    | FullWidth of bool
-    | Icon of string
-    | Pagination of PaginationDescriptor
-    | PrimaryAction of PrimaryActionProps
-    | SecondaryActions of SecondaryAction list
-    | Separator of bool
-    | TitleHidden of bool
-    | TitleMetadata of ReactElement
+    type [<RequireQualifiedAccess>] RequiredActionGroupProps = {
+        Actions : Polaris.ActionListItemDescriptor list
+        Title: string
+    }
+    type [<RequireQualifiedAccess>] ActionGroupProps =
+        | Badge of ActionGroupItemBadge
+        | Details of ReactElement
+        | Icon of Polaris.BundledIcon
+        | OnActionAnyItem of (unit -> unit)
+    
+    type [<RequireQualifiedAccess>] ActionGroupItem = RequiredActionGroupProps * (ActionGroupProps list)
 
-type RequiredPageProps = {
-    Title : string
-}
-
-let inline page (requiredProps : RequiredPageProps) (props : PageProps list) (children : ReactElement list) : ReactElement =
-    let combinedProps =
-        props
+    let actionGroupItemConverterHelper (item: ActionGroupItem) =
+        let requiredProps = fst item
+        snd item
         |> keyValueList CaseRules.LowerFirst
-        |> (fun obj -> obj?title <- requiredProps.Title; obj)
+        |> (fun obj ->
+            obj?actions <- Array.map Polaris.actionListItemDescriptorUnboxHelper (List.toArray requiredProps.Actions)
+            obj?title <- requiredProps.Title
+            obj
+        )
 
-    ofImport "Page" "@shopify/polaris" combinedProps children
+
+
+    type [<RequireQualifiedAccess>] PageBreadcrumbsAction = U2<Polaris.CallbackAction, Polaris.LinkAction>
+
+    type [<RequireQualifiedAccess>] PageProps =
+        | ForceRender of bool
+        | FullWidth of bool
+        | NarrowWidth of bool
+        | Icon of string
+        | Subtitle of string
+        | Thumbnail of ReactElement
+        | Separator of bool
+        | Title of string
+        | TitleHidden of bool
+        | TitleMetadata of ReactElement
+        
+        static member ActionGroups (items: ActionGroupItem list) =
+            unbox ("actionGroups", Array.map actionGroupItemConverterHelper (items |> List.toArray))
+
+        static member Breadcrumbs (actions: PageBreadcrumbsAction list) =
+            unbox ("breadcrumbs",
+                Array.map 
+                    <| (fun x -> 
+                        match x with
+                            | U2.Case1 callbackAction ->
+                                Polaris.CallbackActionConverterHelper callbackAction
+                            | U2.Case2 linkAction ->
+                                Polaris.LinkActionConverterHelper linkAction
+                    ) 
+                    <| (actions |> List.toArray)
+            )
+
+        static member Pagination (pagination: Polaris.PaginationDescriptor list) =
+            unbox ("pagination", keyValueList CaseRules.LowerFirst pagination)
+
+        static member PrimaryAction (action: Polaris.PrimaryAction) =
+            unbox ("primaryAction", Polaris.primaryActionConverterHelper action)
+
+        static member SecondaryActions (actions: Polaris.ComplexAction list) =
+            unbox ("secondaryActions",
+                List.map Polaris.complexActionConverterHelper actions
+                |> List.toArray
+            )
+
+    let inline polarisPage (props : PageProps list) (children : ReactElement list) : ReactElement =
+        ofImport "Page" "@shopify/polaris" (props |> keyValueList CaseRules.LowerFirst) children

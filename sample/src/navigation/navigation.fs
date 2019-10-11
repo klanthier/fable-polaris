@@ -4,7 +4,7 @@ open Fable.React
 open Fable.Core.JsInterop
 open Polaris.AppProvider
 open Polaris.Navigation
-open Polaris.Shared
+open Fable.Polaris
 
 
 let view _ _ =

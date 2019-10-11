@@ -2,7 +2,7 @@ module ActionList
 
 open Polaris.AppProvider
 open Polaris.ActionList
-open Polaris.Shared
+open Fable.Polaris
 
 let view _ _ =
     appProvider [] <|

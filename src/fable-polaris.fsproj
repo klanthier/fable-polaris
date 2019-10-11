@@ -8,8 +8,8 @@
     <RepositoryUrl>https://github.com/klanthier/fable-polaris</RepositoryUrl>
     <PackageTags>fable;elm;fsharp;shopify-polaris,react</PackageTags>
     <Authors>Kevin Lanthier</Authors>
-    <PackageVersion>0.2.0</PackageVersion>
-    <Version>0.2.0</Version>
+    <PackageVersion>4.4.0</PackageVersion>
+    <Version>4.4.0</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
@@ -18,17 +18,77 @@
 
     <Compile Include="AccountConnection.fs" />
     <Compile Include="ActionList.fs" />
-    <Compile Include="AutoComplete.fs" />
     <Compile Include="AppProvider.fs" />
+    <Compile Include="AutoComplete.fs" />
     <Compile Include="Avatar.fs" />
+    <Compile Include="Badge.fs" />
+    <Compile Include="Banner.fs" />
     <Compile Include="Button.fs" />
+    <Compile Include="ButtonGroup.fs" />
+    <Compile Include="CalloutCard.fs" />
+    <Compile Include="Caption.fs" />
+    <Compile Include="Card.fs" />
+    <Compile Include="Checkbox.fs" />
+    <Compile Include="ChoiceList.fs" />
+    <Compile Include="Collapsible.fs" />
+    <Compile Include="ColorPicker.fs" />
+    <Compile Include="ContextualSaveBar.fs" />
+    <Compile Include="DataTable.fs" />
+    <Compile Include="DatePicker.fs" />
+    <Compile Include="DescriptionList.fs" />
+    <Compile Include="DisplayText.fs" />
+    <Compile Include="Dropzone.fs" />
+    <Compile Include="EmptyState.fs" />
+    <Compile Include="ExceptionList.fs" />
+    <Compile Include="Filters.fs" />
+    <Compile Include="FooterHelp.fs" />
+    <Compile Include="Form.fs" />
+    <Compile Include="FormLayout.fs" />
     <Compile Include="Frame.fs" />
+    <Compile Include="Heading.fs" />
     <Compile Include="Icon.fs" />
+    <Compile Include="InlineError.fs" />
+    <Compile Include="KeyboardKey.fs" />
+    <Compile Include="Layout.fs" />
+    <Compile Include="Link.fs" />
+    <Compile Include="List.fs" />
+    <Compile Include="Loading.fs" />
+    <Compile Include="Modal.fs" />
     <Compile Include="Navigation.fs" />
+    <Compile Include="OptionList.fs" />
     <Compile Include="Page.fs" />
+    <Compile Include="PageActions.fs" />
+    <Compile Include="Pagination.fs" />
+    <Compile Include="Popover.fs" />
+    <Compile Include="ProgressBar.fs" />
+    <Compile Include="RadioButton.fs" />
+    <Compile Include="RangeSlider.fs" />
+    <Compile Include="ResourceItem.fs" />
+    <Compile Include="ResourceList.fs" />
+    <Compile Include="ResourcePicker.fs" />
+    <Compile Include="Scrollable.fs" />
+    <Compile Include="SectionHeader.fs" />
+    <Compile Include="Select.fs" />
+    <Compile Include="SettingToggle.fs" />
+    <Compile Include="Sheet.fs" />
+    <Compile Include="SkeletonBodyText.fs" />
+    <Compile Include="SkeletonDisplayText.fs" />
+    <Compile Include="SkeletonPage.fs" />
+    <Compile Include="SkeletonThumbnail.fs" />
     <Compile Include="Spinner.fs" />
     <Compile Include="Stack.fs" />
+    <Compile Include="Stepper.fs" />
+    <Compile Include="SubHeading.fs" />
+    <Compile Include="Tabs.fs" />
+    <Compile Include="Tag.fs" />
+    <Compile Include="Textcontainer.fs" />
     <Compile Include="TextField.fs" />
+    <Compile Include="Textstyle.fs" />
+    <Compile Include="Thumbnail.fs" />
+    <Compile Include="Toast.fs" />
+    <Compile Include="Tooltip.fs" />
+    <Compile Include="Topbar.fs" />
+    <Compile Include="VisuallyHidden.fs" />
   </ItemGroup>
 
   <!-- Add source files to "fable" folder in Nuget package -->
