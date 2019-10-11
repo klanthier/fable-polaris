@@ -1,8 +1,7 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module TextContainer =
-
-
   open Fable.React
   open Fable.Core
   open Fable.Core.JsInterop
@@ -11,7 +10,7 @@ module TextContainer =
       | [<CompiledName "loose">] Loose
       | [<CompiledName "tight">] Tight
 
-  type TextContainerProps =
+  type [<RequireQualifiedAccess>] TextContainerProps =
     | Spacing of TextSpacing
 
   let inline polarisTextContainer (props : TextContainerProps list) (elems : ReactElement list) : ReactElement =

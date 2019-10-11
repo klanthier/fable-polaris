@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Pagination =
 
     open Fable.React

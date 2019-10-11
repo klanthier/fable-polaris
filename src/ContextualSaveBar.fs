@@ -1,12 +1,13 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ContextualSaveBar =
 
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type ContextualSaveBarDiscardAction =
+    type [<RequireQualifiedAccess>] ContextualSaveBarDiscardAction =
         | DiscardConfirmationModal of bool
         | Content of string
         | Disabled of bool
@@ -14,7 +15,7 @@ module ContextualSaveBar =
         | Url of string
         | OnAction of (unit -> unit)
 
-    type ContextualSaveBarSaveAction =
+    type [<RequireQualifiedAccess>] ContextualSaveBarSaveAction =
         | Content of string
         | Disabled of bool
         | Loading of bool

@@ -117,7 +117,7 @@ To start the sample project run
 | Modal                 | :white_check_mark: |
 | Navigation            | :white_check_mark: |
 | Option List           | :white_check_mark: |
-| Page                  | :white_check_mark  |
+| Page                  | :white_check_mark: |
 | Page actions          | :white_check_mark: |
 | Pagination            | :white_check_mark: |
 | Popover               | :white_check_mark: |

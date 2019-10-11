@@ -1,17 +1,18 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Sheet =
 
     open Fable.Core.JsInterop
     open Fable.Core
     open Fable.React
 
-    type RequiredSheetProps = {
+    type [<RequireQualifiedAccess>] RequiredSheetProps = {
         Open: bool
         OnClose: (unit -> unit)
     }
 
-    type SheetProps =
+    type [<RequireQualifiedAccess>] SheetProps =
         | OnEntered of (unit -> unit)
         | OnExit of (unit -> unit)
 
@@ -22,6 +23,7 @@ module Sheet =
             |> (fun obj ->
                 obj?``open`` <- requiredProps.Open
                 obj?onClose <- requiredProps.OnClose
+                obj
             )
 
         ofImport "Sheet" "@shopify/polaris" finalProps elems

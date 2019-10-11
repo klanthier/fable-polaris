@@ -1,26 +1,25 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ChoiceList =
-
-
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type ChoiceItemRenderChildren = U2<ReactElement, unit>
+    type [<RequireQualifiedAccess>] ChoiceItemRenderChildren = U2<ReactElement, unit>
 
 
-    type RequiredChoiceItemProps = {
+    type [<RequireQualifiedAccess>] RequiredChoiceItemProps = {
         Label: string
         Value: string
     }
-    type ChoiceItemProps =
+    type [<RequireQualifiedAccess>] ChoiceItemProps =
         | DescribedByError of bool
         | Disabled of bool
         | HelpText of ReactElement
         | RenderChildren of (bool -> ChoiceItemRenderChildren)
 
-    type ChoiceItem = RequiredChoiceItemProps * ChoiceItemProps list
+    type [<RequireQualifiedAccess>] ChoiceItem = RequiredChoiceItemProps * ChoiceItemProps list
 
     let choiceItemConverterHelper (choiceItem: ChoiceItem) =
         let requiredProps = fst choiceItem
@@ -35,13 +34,13 @@ module ChoiceList =
         combinedProps
 
 
-    type RequiredChoiceListProps = {
+    type [<RequireQualifiedAccess>] RequiredChoiceListProps = {
         Choices: ChoiceItem list
         Selected: string list
         Title: string
     }
 
-    type ChoiceListProps =
+    type [<RequireQualifiedAccess>] ChoiceListProps =
         | AllowMultiple of bool
         | Disabled of bool
         | Error of ReactElement
@@ -51,16 +50,21 @@ module ChoiceList =
 
 
     let inline polarisChoiceList (requiredProps: RequiredChoiceListProps) (props : ChoiceListProps list) : ReactElement =
+        let choices = 
+            List.map choiceItemConverterHelper requiredProps.Choices
+            |> List.toArray
+
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
-                obj?selected <- requiredProps.Selected
-                obj?choices <-
-                    List.map choiceItemConverterHelper requiredProps.Choices
+                obj?selected <- 
+                    requiredProps.Selected
                     |> List.toArray
 
+                obj?choices <- choices
                 obj?title <- requiredProps.Title
+                obj
             )
 
 

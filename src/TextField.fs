@@ -1,8 +1,7 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module TextField =
-
-
   open Fable.React
   open Fable.Core
   open Fable.Core.JsInterop
@@ -13,9 +12,9 @@ module TextField =
       | [<CompiledName "center">] Center
       | [<CompiledName "right">] Right
 
-  type TextFieldMultiline = U2<bool, int>
+  type [<RequireQualifiedAccess>] TextFieldMultiline = U2<bool, int>
 
-  type TextFieldProps =
+  type [<RequireQualifiedAccess>] TextFieldProps =
     | Align of TextFieldAlignment
     | AriaActiveDescendant of string
     | AriaAutocomplete of string
@@ -55,12 +54,12 @@ module TextField =
     static member LabelAction (action: Polaris.Action) =
       Polaris.actionUnboxHelper "labelAction" action
 
-  type RequiredTextFieldProps = {
+  type [<RequireQualifiedAccess>] RequiredTextFieldProps = {
     Value: string
     Label: string
   }
 
-  let inline polarisTextField requiredProps (props : TextFieldProps list) : ReactElement =
+  let inline polarisTextField (requiredProps: RequiredTextFieldProps) (props : TextFieldProps list) : ReactElement =
       let combinedProps =
           props
           |> keyValueList CaseRules.LowerFirst

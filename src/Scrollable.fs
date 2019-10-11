@@ -6,7 +6,7 @@ module Scrollable =
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type ScrollableProps =
+    type [<RequireQualifiedAccess>] ScrollableProps =
         | Hint of bool
         | Horizontal of bool
         | Shadow of bool

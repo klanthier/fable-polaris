@@ -1,12 +1,13 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Frame =
 
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.React
 
-    type FrameProps =
+    type [<RequireQualifiedAccess>] FrameProps =
         | GlobalRibbon of ReactElement
         | Navigation of ReactElement
         | ShowMobileNavigation of bool

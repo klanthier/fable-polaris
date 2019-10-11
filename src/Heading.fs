@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Heading =
 
     open Fable.React
@@ -7,7 +8,7 @@ module Heading =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type HeadingProps =
+    type [<RequireQualifiedAccess>] HeadingProps =
         | Element of Polaris.ElementNameSelection
 
     let inline polarisHeading (props: HeadingProps list) (elems : ReactElement) : ReactElement =

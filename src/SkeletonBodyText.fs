@@ -1,12 +1,13 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module SkeletonBodyText =
 
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type SkeletonBodyTextProps =
+    type [<RequireQualifiedAccess>] SkeletonBodyTextProps =
         | Lines of int
 
     let inline polarisSkeletonBodyText (props : SkeletonBodyTextProps list) : ReactElement =

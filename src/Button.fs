@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Button =
 
     open Browser.Types
@@ -12,9 +13,8 @@ module Button =
         | [<CompiledName "slim">] Slim
         | [<CompiledName "medium">] Medium
         | [<CompiledName "large">] Large
-
-    [<RequireQualifiedAccess>]
-    type ButtonProps =
+    
+    type [<RequireQualifiedAccess>] ButtonProps =
         | AccessibilityLabel of string
         | AriaControls of string
         | AriaExpanded of bool

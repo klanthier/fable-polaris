@@ -1,11 +1,12 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Collapsible =
 
-    open Fable.Core.JsInterop
     open Fable.React
+    open Fable.Core.JsInterop
 
-    type CollapsibleProps = {
+    type [<RequireQualifiedAccess>] CollapsibleProps = {
         Id: string
         Open: bool
     }
@@ -16,6 +17,7 @@ module Collapsible =
                 |> (fun obj ->
                     obj?id <- requiredProps.Id
                     obj?``open`` <- requiredProps.Open
+                    obj
                 )
 
         ofImport "Collapsible" "@shopify/polaris" finalProps elems

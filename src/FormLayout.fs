@@ -1,12 +1,12 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module FormLayout =
-
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type FormLayoutGroup =
+    type [<RequireQualifiedAccess>] FormLayoutGroup =
         | Condensed of bool
         | Title of string
         | HelpText of ReactElement

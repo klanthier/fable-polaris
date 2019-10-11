@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module TextStyle =
 
   open Fable.React
@@ -12,7 +13,7 @@ module TextStyle =
       | [<CompiledName "subdued">] Subdued
       | [<CompiledName "code">] Code
 
-  type RequiredTextStyleProps = {
+  type [<RequireQualifiedAccess>] RequiredTextStyleProps = {
     variation: Variation
   }
 

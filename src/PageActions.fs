@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module PageActions =
 
     open Fable.React
@@ -7,9 +8,9 @@ module PageActions =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type PageAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
+    type [<RequireQualifiedAccess>] PageAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
 
-    type PageActionsProps =
+    type [<RequireQualifiedAccess>] PageActionsProps =
         static member PrimaryAction (action: PageAction) =
             unbox ("primaryAction",
                 match action with

@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module DatePicker =
 
     open System
@@ -7,14 +8,14 @@ module DatePicker =
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type SelectedDateOrRange = U2<DateTime, PolarisDateHelpers.Range>
+    type [<RequireQualifiedAccess>] SelectedDateOrRange = U2<DateTime, PolarisDateHelpers.Range>
 
-    type RequiredDatePickerProps = {
+    type [<RequireQualifiedAccess>] RequiredDatePickerProps = {
         Month: PolarisDateHelpers.Months
         Year: PolarisDateHelpers.Year
     }
 
-    type DatePickerProps =
+    type [<RequireQualifiedAccess>] DatePickerProps =
         | AllowRange of bool
         | DisableDatesAfter of DateTime
         | DisableDatesBefore of DateTime
@@ -33,6 +34,7 @@ module DatePicker =
             |> (fun obj ->
                 obj?month <- requiredProps.Month
                 obj?year <- requiredProps.Year
+                obj
             )
 
         ofImport "DatePicker" "@shopify/polaris" combinedProps []

@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Calloutcard =
 
     open Fable.React
@@ -7,13 +8,13 @@ module Calloutcard =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type RequiredCalloutCardProps = {
+    type [<RequireQualifiedAccess>] RequiredCalloutCardProps = {
         Illustration: string
         PrimaryAction: Polaris.Action
         Title: string
     }
 
-    type CalloutCardProps =
+    type [<RequireQualifiedAccess>] CalloutCardProps =
         | OnDismiss of (unit -> unit)
         static member SecondaryAction (action: Polaris.Action) =
             Polaris.actionUnboxHelper "secondaryAction" action

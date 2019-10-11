@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Banner =
     open Fable.React
     open Fable.Core
@@ -12,9 +13,9 @@ module Banner =
         | [<CompiledName "warning">] Warning
         | [<CompiledName "critical">] Critical
 
-    type BannerAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
+    type [<RequireQualifiedAccess>] BannerAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
 
-    type BannerProps =
+    type [<RequireQualifiedAccess>] BannerProps =
         | Icon of Polaris.BundledIcon
         | Status of BannerStatus
         | Title of string

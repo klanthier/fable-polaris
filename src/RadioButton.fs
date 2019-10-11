@@ -1,18 +1,19 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module RadioButton =
 
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type RequiredRadioButtonProps = {
+    type [<RequireQualifiedAccess>] RequiredRadioButtonProps = {
         Label: ReactElement
         Checked: bool
         OnChange: (bool -> string -> unit)
     }
 
-    type RadioButtonProps =
+    type [<RequireQualifiedAccess>] RadioButtonProps =
         | AriaDescribedBy of string
         | Disabled of bool
         | HelpText of ReactElement

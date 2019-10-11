@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ResourceItem =
 
     open Fable.React
@@ -7,11 +8,11 @@ module ResourceItem =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type RequiredResourceItemProps = {
+    type [<RequireQualifiedAccess>] RequiredResourceItemProps = {
         Id : string
     }
 
-    type ResourceItemProps =
+    type [<RequireQualifiedAccess>] ResourceItemProps =
         | AccessibilityLabel of string
         | Name of string
         | AriaControls of string

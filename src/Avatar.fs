@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Avatar =
 
     open Fable.Core
@@ -11,7 +12,7 @@ module Avatar =
         | [<CompiledName "medium">] Medium
         | [<CompiledName "large">] Large
 
-    type AvatarProps =
+    type [<RequireQualifiedAccess>] AvatarProps =
         | AccessibilityLabel of string
         | Customer of bool
         | Initials of string

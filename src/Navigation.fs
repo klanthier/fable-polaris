@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Navigation =
 
     open Fable.Core
@@ -7,12 +8,12 @@ module Navigation =
     open Fable.React
     open Fable.Polaris
 
-    type RequiredItemTypeProps = {
+    type [<RequireQualifiedAccess>] RequiredItemTypeProps = {
         Label: string
         Url: string
     }
 
-    type ItemTypeProps =
+    type [<RequireQualifiedAccess>] ItemTypeProps =
         | Icon of Polaris.BundledIcon
     
     type ItemType = RequiredItemTypeProps * (ItemTypeProps list)
@@ -27,14 +28,14 @@ module Navigation =
             obj
         )
 
-    type SectionType = 
+    type [<RequireQualifiedAccess>] SectionType = 
         | Fill of bool
         | Title of string
         static member Items (items: ItemType list) =
-            unbox "items" <| Array.map itemTypeConverterHelper (items |> List.toArray)
+            unbox ("items", Array.map itemTypeConverterHelper (items |> List.toArray))
 
 
-    type RequiredNavigationProps = {
+    type [<RequireQualifiedAccess>] RequiredNavigationProps = {
         Location: string
     }
 
@@ -42,11 +43,11 @@ module Navigation =
     let sectionConverterHelper (sectionType: SectionType list) =
         keyValueList CaseRules.LowerFirst sectionType
 
-    type NavigationProps =
+    type [<RequireQualifiedAccess>] NavigationProps =
         | ContextControl of ReactElement
         | OnDismiss of (unit -> unit)
         static member Sections (sections: SectionType list list) =
-            unbox "sections" <| Array.map sectionConverterHelper (sections |> List.toArray)
+            unbox ("sections", Array.map sectionConverterHelper (sections |> List.toArray))
 
     let inline polarisNavigation (requiredProps : RequiredNavigationProps) (props : NavigationProps list) (children : ReactElement list) : ReactElement =
         let combinedProps =
@@ -60,12 +61,12 @@ module Navigation =
 
 
     
-    type RequiredSubNavigationSectionItemProps = {
+    type [<RequireQualifiedAccess>] RequiredSubNavigationSectionItemProps = {
         Label: string
         Url: string
     }
     
-    type SubNavigationSectionItemProps =
+    type [<RequireQualifiedAccess>] SubNavigationSectionItemProps =
         | Disabled of bool
         | New of bool
         | OnClick of (unit -> unit)
@@ -83,13 +84,13 @@ module Navigation =
             obj
         )
 
-    type SecondarySectionItemAction = {
+    type [<RequireQualifiedAccess>] SecondarySectionItemAction = {
         url: string
         accessibilityLabel: string
         icon: Polaris.BundledIcon
     }
 
-    type SectionItem =
+    type [<RequireQualifiedAccess>] SectionItem =
         | Url of string 
         | Matches of bool 
         | ExactMatch of bool 
@@ -105,22 +106,22 @@ module Navigation =
         | OnClick of (unit -> unit) 
         | SecondaryAction of SecondarySectionItemAction
         static member SubNavigationItems (items: SubNavigationSectionItem list) =
-             unbox "subNavigationItems" <| Array.map subNavigationItemConverterHelper (items |> List.toArray)
+             unbox ("subNavigationItems", Array.map subNavigationItemConverterHelper (items |> List.toArray))
 
-    type NavigationSectionAction = {
+    type [<RequireQualifiedAccess>] NavigationSectionAction = {
         icon : Polaris.BundledIcon
         accessibilityLabel : string
         onClick : (unit -> unit)
     }
 
-    type NavigationSectionRollup = {
+    type [<RequireQualifiedAccess>] NavigationSectionRollup = {
         after: int
         view: string
         hide: string
         activePath: string
     }
     
-    type NavigationSectionProps =
+    type [<RequireQualifiedAccess>] NavigationSectionProps =
         | Icon of Polaris.BundledIcon
         | Title of string
         | Fill of bool
@@ -128,7 +129,7 @@ module Navigation =
         | Rollup of NavigationSectionRollup
         | Action of NavigationSectionAction
         static member Items (items: SectionItem list list) =
-            unbox "items" <| Array.map (keyValueList CaseRules.LowerFirst) (items |> List.toArray)
+            unbox ("items",  Array.map (keyValueList CaseRules.LowerFirst) (items |> List.toArray))
 
-    let inline polarisNavigationSection (props : NavigationSectionProps list) (children : ReactElement list) : ReactElement =
-        ofImport "Navigation.Section" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) children
+    let inline polarisNavigationSection (props : NavigationSectionProps list) : ReactElement =
+        ofImport "Navigation.Section" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

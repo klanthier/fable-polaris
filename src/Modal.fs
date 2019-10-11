@@ -1,27 +1,32 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Modal =
-
-
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.Polaris
-
-    type ModalActions = U2<Polaris.AppBridgeAction, Polaris.ComplexAction>
+ 
+    type [<RequireQualifiedAccess>] ModalActions = U2<Polaris.AppBridgeAction, Polaris.ComplexAction>
     let modalActionsConverter (action: ModalActions) =
+        Browser.Dom.console.log(action)
+
         match action with
-            | U2.Case1 appAction ->
+            | ModalActions.Case1 appAction ->
+                Browser.Dom.console.log("a")
                 Polaris.appBridgeActionConverterHelper appAction
-            | U2.Case2 complexAction ->
+                
+            | ModalActions.Case2 complexAction ->
+                Browser.Dom.console.log("b")
                 Polaris.complexActionConverterHelper complexAction
 
-    type RequiredModalProps = {
+    type [<RequireQualifiedAccess>] RequiredModalProps = {
         Open: bool
         OnClose: (unit -> unit)
+        Title: ReactElement
     }
 
-    type ModalProps =
+    type [<RequireQualifiedAccess>] ModalProps =
         | Footer of ReactElement
         | IFrameName of string
         | Instant of bool
@@ -32,7 +37,6 @@ module Modal =
         | Sectioned of bool
         | Size of Polaris.ModalSize
         | Src of string
-        | Title of ReactElement
         | OnIFrameLoad of (unit -> unit)
         | OnScrolledToBottom of (unit -> unit)
         | OnTransitionEnd of (unit -> unit)
@@ -52,6 +56,7 @@ module Modal =
             |> (fun obj ->
                 obj?onClose <- requiredProps.OnClose
                 obj?``open`` <- requiredProps.Open
+                obj?title <- requiredProps.Title
                 obj
             )
         ofImport "Modal" "@shopify/polaris" combinedProps elems

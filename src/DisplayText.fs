@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module DisplayText =
 
     open Fable.React
@@ -7,7 +8,7 @@ module DisplayText =
     open Fable.Core.JsInterop
     open Fable.Polaris
     
-    type DisplayTextProps =
+    type [<RequireQualifiedAccess>] DisplayTextProps =
         | Element of Polaris.ElementNameSelection
         | Size of Polaris.DisplayTextSize
 

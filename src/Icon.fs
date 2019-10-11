@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Icon =
 
     open Fable.Core
@@ -47,13 +48,15 @@ module Icon =
         | [<CompiledName "redDark">] RedDark
         | [<CompiledName "purple">] Purple
 
-    type IconProps =
+    type [<RequireQualifiedAccess>] IconSource = U3<ReactElement, Polaris.BundledIcon, string>
+
+    type [<RequireQualifiedAccess>] IconProps =
         | AccessibilityLabel of string
         | Backdrop of bool
         | Color of IconColor
 
-    type RequiredIconProps = {
-        Source : U3<ReactElement, Polaris.BundledIcon, string>
+    type [<RequireQualifiedAccess>] RequiredIconProps = {
+        Source : IconSource
     }
 
     let inline polarisIcon (requiredProps: RequiredIconProps) (props : IconProps list) : ReactElement =
@@ -62,5 +65,6 @@ module Icon =
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?source <- requiredProps.Source
+                obj
             )
         ofImport "Icon" "@shopify/polaris" combinedProps []

@@ -1,7 +1,8 @@
 namespace Fable.Polaris
 
-module ExceptionList =
 
+[<AutoOpen>]
+module ExceptionList =
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
@@ -10,14 +11,14 @@ module ExceptionList =
         | [<CompiledName "critical">] Critical
         | [<CompiledName "warning">] Warning
 
-    type ExceptionListItemProps =
+    type [<RequireQualifiedAccess>] ExceptionListItemProps =
         | Title of string
         | Description of ReactElement
         | Icon of Polaris.BundledIcon
         | Status of ExceptionListItemStatus
         | Truncate of bool
 
-    type ExceptionListProps =
+    type [<RequireQualifiedAccess>] ExceptionListProps =
         static member Items (items: ExceptionListItemProps list list) =
             unbox ("items",
                 (List.map (

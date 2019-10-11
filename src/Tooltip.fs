@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ToolTip =
 
     open Fable.React
@@ -11,13 +12,13 @@ module ToolTip =
         | [<CompiledName "below">] Below
         | [<CompiledName "mostSpace">] MostSpace
 
-    type TooltipProps =
+    type [<RequireQualifiedAccess>] TooltipProps =
       | ActivatorWrapper of string
       | Active of bool
       | Light of bool
       | PreferredPosition of PreferedPosition
 
-    type RequiredTooltipProps = {
+    type [<RequireQualifiedAccess>] RequiredTooltipProps = {
         Content: string
     }
 

@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Select =
 
     open Fable.React
@@ -7,27 +8,27 @@ module Select =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type StrictOption = {
+    type [<RequireQualifiedAccess>] StrictOption = {
         disabled: bool option
         label: string
         value: string
     }
 
-    type SelectGroup = {
+    type [<RequireQualifiedAccess>] SelectGroup = {
         options: U2<string, StrictOption> array
         title: string
     }
 
-    type SelectOption = U3<string, StrictOption, SelectGroup>
+    type [<RequireQualifiedAccess>] SelectOption = U3<string, StrictOption, SelectGroup>
 
 
-    type RequiredSelectProps = {
+    type [<RequireQualifiedAccess>] RequiredSelectProps = {
       Label: string
       Options: SelectOption array
       Value: string
       OnChange: (string -> string -> unit)
     }
-    type SelectProps =
+    type [<RequireQualifiedAccess>] SelectProps =
       | Disabled of bool
       | Error of ReactElement
       | HelpText of ReactElement

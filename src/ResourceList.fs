@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ResourceList =
 
     open Fable.React
@@ -11,18 +12,18 @@ module ResourceList =
     ///          RESOURCE-LIST           ///
     ////////////////////////////////////////
 
-    type ResourceListResourceName = {
+    type [<RequireQualifiedAccess>] ResourceListResourceName = {
         singular : string
         plural : string
     }
 
-    type ResourceListActionListSection =
+    type [<RequireQualifiedAccess>] ResourceListActionListSection =
         | Title of string
         static member Items (items: Polaris.ActionListItemDescriptor list) =
             Polaris.actionListItemsDescriptorUnboxHelper "items" items
 
-    type ResourceListSelectedItems = U2<Polaris.SelectAllItems, string array>
-    type ResourceListSortOption = U2<string, Polaris.StrictOption>
+    type [<RequireQualifiedAccess>] ResourceListSelectedItems = U2<Polaris.SelectAllItems, string array>
+    type [<RequireQualifiedAccess>] ResourceListSortOption = U2<string, Polaris.StrictOption>
     let resourceListSortOptionsConverterHelper options =
         List.map (
             fun opt ->
@@ -35,16 +36,16 @@ module ResourceList =
         |> List.toArray
 
 
-    type BulkAction =
+    type [<RequireQualifiedAccess>] BulkAction =
       U2<ResourceListActionListSection list, Polaris.DisableableAction> /// TODO: WHOA CAREFULL USING DAAAS
 
 
-    type RequiredResourceListProps<'t> = {
+    type [<RequireQualifiedAccess>] RequiredResourceListProps<'t> = {
         Items: 't list
         RenderItem: ('t -> string -> int -> ReactElement)
         IdForItem: ('t -> int -> string)
     }
-    type ResourceListProps<'t> =
+    type [<RequireQualifiedAccess>] ResourceListProps<'t> =
         | AlternateTool of ReactElement
         | FilterControl of ReactElement
         | HasMoreItems of bool
@@ -86,9 +87,9 @@ module ResourceList =
           props
           |> keyValueList CaseRules.LowerFirst
           |> (fun obj ->
-              obj?idForItem <- requiredProps.IdForItem
-              obj?renderItem <- requiredProps.RenderItem
-              obj?items <- requiredProps.Items
+              obj?idForItem <- System.Func<_,_,_> requiredProps.IdForItem
+              obj?renderItem <- System.Func<_, _, _, _> requiredProps.RenderItem
+              obj?items <- List.toArray requiredProps.Items
               obj
           )
         ofImport "ResourceList" "@shopify/polaris" combinedProps []
@@ -97,106 +98,116 @@ module ResourceList =
     ///       RESOURCE-LIST-FILTER       ///
     ////////////////////////////////////////
 
-    type FilterType = Select = 0 | TextField = 1 | DateSelector = 2
+    type [<RequireQualifiedAccess>] FilterType = Select = 0 | TextField = 1 | DateSelector = 2
 
-    type AppliedFilter = {
+    type [<RequireQualifiedAccess>] AppliedFilter = {
         key: string
         value: string
         label: string option
     }
 
-    type Operator = {
+    type [<RequireQualifiedAccess>] Operator = {
         key: string
         optionLabel: string
         filterLabel: string option
     }
 
-    type OperatorText = U2<string, Operator array>
+    type [<RequireQualifiedAccess>] OperatorText = U2<string, Operator array>
 
 
     /// Filter Select ///
-    type RequiredFilterSelectProps = {
+    type [<RequireQualifiedAccess>] RequiredFilterSelectProps = {
         Label: string
         Key: string
         Options: ResourceListSortOption list
     }
 
-    type FilterSelectProps =
+    type [<RequireQualifiedAccess>] FilterSelectProps =
         | OperatorText of OperatorText
 
-    type FilterSelect = RequiredFilterSelectProps * FilterSelectProps list
+    type FilterSelect = {
+        required: RequiredFilterSelectProps
+        optional: FilterSelectProps list
+    }
     ///////////////////////
 
 
     /// Filter TEXTFIELD ///
-    type RequiredFilterTextFieldProps = {
+    type [<RequireQualifiedAccess>] RequiredFilterTextFieldProps = {
         Label: string
         Key: string
     }
-    type FilterTextFieldProps =
+    type [<RequireQualifiedAccess>] FilterTextFieldProps =
         | OperatorText of U2<string, Operator array>
         | TextFieldType of Polaris.TextFieldType
 
-    type FilterTextField = RequiredFilterTextFieldProps * FilterTextFieldProps list
+    type FilterTextField = {
+        required: RequiredFilterTextFieldProps
+        optional: FilterTextFieldProps list
+    }
     ///////////////////////
 
 
     /// Filter DATESELECTOR ///
-    type RequiredFilterDateSelectorProps = {
+    type [<RequireQualifiedAccess>] RequiredFilterDateSelectorProps = {
         Label: string
         Key: string
         MinKey: string
         MaxKey: string
     }
 
-    type FilterDateSelectorProps =
+    type [<RequireQualifiedAccess>] FilterDateSelectorProps =
         | OperatorText of U2<string, Operator array>
         | DateOptionType of Polaris.DateOptionsTypes
 
-    type FilterDateSelector = RequiredFilterDateSelectorProps * FilterDateSelectorProps list
+    type FilterDateSelector = {
+        required: RequiredFilterDateSelectorProps
+        optional: FilterDateSelectorProps list
+    }
     ///////////////////////
 
-    type Filter = U3<FilterSelect, FilterTextField, FilterDateSelector>
-    let filterUnboxerHelper (filter: Filter) =
+    type [<RequireQualifiedAccess>] ResourceListFilter = U3<FilterSelect, FilterTextField, FilterDateSelector>
+
+    let filterUnboxerHelper (filter: ResourceListFilter) =
         match filter with
-            | U3.Case1 (reqSelectProps, selectProps) ->
-                selectProps
+            | U3.Case1 componentProps ->                
+                componentProps.optional
                 |> keyValueList CaseRules.LowerFirst
                 |> (fun obj ->
-                  obj?key <- reqSelectProps.Key
-                  obj?label <- reqSelectProps.Label
+                  obj?key <- componentProps.required.Key
+                  obj?label <- componentProps.required.Label
                   obj?``type`` <- FilterType.Select
-                  obj?key <- resourceListSortOptionsConverterHelper <| reqSelectProps.Options
+                  obj?options <- resourceListSortOptionsConverterHelper <| componentProps.required.Options
                   obj
               )
-            | U3.Case2 (reqTextProps, textProps) ->
-                textProps
+            | U3.Case2 componentProps ->
+                componentProps.optional
                 |> keyValueList CaseRules.LowerFirst
                 |> (fun obj ->
-                  obj?key <- reqTextProps.Key
+                  obj?key <- componentProps.required.Key
                   obj?``type`` <- FilterType.TextField
-                  obj?label <- reqTextProps.Label
+                  obj?label <- componentProps.required.Label
                   obj
                 )
-            | U3.Case3 (reqDateProps, dateProps) ->
-                dateProps
+            | U3.Case3 componentProps ->
+                componentProps.optional
                 |> keyValueList CaseRules.LowerFirst
                 |> (fun obj ->
-                  obj?key <- reqDateProps.Key
+                  obj?key <- componentProps.required.Key
                   obj?``type`` <- FilterType.DateSelector
-                  obj?label <- reqDateProps.Label
-                  obj?maxKey <- reqDateProps.MaxKey
-                  obj?minKey <- reqDateProps.MinKey
+                  obj?label <- componentProps.required.Label
+                  obj?maxKey <- componentProps.required.MaxKey
+                  obj?minKey <- componentProps.required.MinKey
                   obj
                 )
 
-    type RequiredResourceListFilterControlProps = {
+    type [<RequireQualifiedAccess>] RequiredResourceListFilterControlProps = {
         AppliedFilters: AppliedFilter array
-        Filters: Filter list
+        Filters: ResourceListFilter list
         OnSearchChange: (string -> string -> unit)
     }
 
-    type ResourceListFilterControlProps =
+    type [<RequireQualifiedAccess>] ResourceListFilterControlProps =
         | SearchValue of string
         | Focused of bool
         | Placeholder of string
@@ -214,7 +225,7 @@ module ResourceList =
               obj?filters <-
                 List.map filterUnboxerHelper requiredProps.Filters
                 |> List.toArray
-              obj?onSearchChange <- requiredProps.OnSearchChange
+              obj?onSearchChange <- System.Func<_,_,_> requiredProps.OnSearchChange
               obj
           )
         ofImport "ResourceList.FilterControl" "@shopify/polaris" combinedProps []

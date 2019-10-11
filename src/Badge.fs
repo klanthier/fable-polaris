@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Badge =
 
     open Fable.React
@@ -22,7 +23,7 @@ module Badge =
         | [<CompiledName "warning">] Warning
         | [<CompiledName "new">] New
 
-    type BadgeProps =
+    type [<RequireQualifiedAccess>] BadgeProps =
         | Progress of BadgeProgress
         | Size of BadgeSize
         | Status of BadgeStatus

@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module SkeletonThumbnail =
 
     open Fable.React
@@ -7,7 +8,7 @@ module SkeletonThumbnail =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type SkeletonThumbnailProps =
+    type [<RequireQualifiedAccess>] SkeletonThumbnailProps =
         | Size of Polaris.ThumbnailSize
 
     let inline polarisSkeletonThumbnail (props : SkeletonThumbnailProps list) : ReactElement =

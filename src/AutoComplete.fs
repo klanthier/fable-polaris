@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Autocomplete =
 
     open Fable.Polaris
@@ -12,14 +13,14 @@ module Autocomplete =
         | [<CompiledName "below">] Below
         | [<CompiledName "mostSpace">] MostSpace
 
-    type RequiredAutocompleteProps = {
+    type [<RequireQualifiedAccess>] RequiredAutocompleteProps = {
         Selected: string array
         OnSelect: (string array -> unit)
         TextField: ReactElement
         Options: Polaris.OptionDescriptor list
     }
 
-    type AutocompleteProps =
+    type [<RequireQualifiedAccess>] AutocompleteProps =
         | ActionBefore of Polaris.ActionListItemDescriptor
         | AllowMultiple of bool
         | EmptyState of ReactElement
@@ -30,7 +31,7 @@ module Autocomplete =
         | WillLoadMoreResults of bool
         | OnLoadMoreResults of (unit -> unit)
 
-    let inline polarisAutoComplete requiredProps (props : AutocompleteProps list): ReactElement =
+    let inline polarisAutoComplete (requiredProps: RequiredAutocompleteProps) (props : AutocompleteProps list): ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst

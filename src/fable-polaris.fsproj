@@ -40,7 +40,6 @@
     <Compile Include="Dropzone.fs" />
     <Compile Include="EmptyState.fs" />
     <Compile Include="ExceptionList.fs" />
-    <Compile Include="fable-polaris" />
     <Compile Include="Filters.fs" />
     <Compile Include="FooterHelp.fs" />
     <Compile Include="Form.fs" />

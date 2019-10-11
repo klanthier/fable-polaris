@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Link =
 
     open Fable.React
@@ -7,7 +8,7 @@ module Link =
     open Fable.Core.JsInterop
     open Browser.Types
 
-    type LinkProps =
+    type [<RequireQualifiedAccess>] LinkProps =
         | External of bool
         | Id of string
         | Monochrome of bool

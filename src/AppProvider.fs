@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module AppProvider =
 
     open Fable.Core
@@ -9,21 +10,21 @@ module AppProvider =
     // Needs work to have proper type
     type TranslationDictionary = obj
 
-    type AppColorsTopBar = {
+    type [<RequireQualifiedAccess>] AppColorsTopBar = {
         background: string
     }
 
-    type AppColors =
+    type [<RequireQualifiedAccess>] AppColors =
         | TopBar of AppColorsTopBar
 
-    type AppLogo =
+    type [<RequireQualifiedAccess>] AppLogo =
         | Width of int
         | TopBarSource of string
         | Url of string
         | AccessibilityLabel of string
         | ContextualSaveBarSource of string
 
-    type AppTheme =
+    type [<RequireQualifiedAccess>] AppTheme =
         static member Colors (colors: AppColors list) =
             unbox ("colors", (keyValueList CaseRules.LowerFirst colors))
 
@@ -31,7 +32,7 @@ module AppProvider =
             unbox ("logo", (keyValueList CaseRules.LowerFirst logo))
 
 
-    type AppProviderProps =
+    type [<RequireQualifiedAccess>] AppProviderProps =
         | ApiKey of string
         | Features of Polaris.Features
         | ForceRedirect of bool

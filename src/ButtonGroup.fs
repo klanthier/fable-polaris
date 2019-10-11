@@ -1,12 +1,13 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ButtonGroup =
 
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type ButtonGroupProps =
+    type [<RequireQualifiedAccess>] ButtonGroupProps =
         | ConnectedTop of bool
         | FullWidth of bool
         | Segmented of bool

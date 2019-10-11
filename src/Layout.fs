@@ -1,21 +1,22 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Layout =
 
   open Fable.React
   open Fable.Core
   open Fable.Core.JsInterop
 
-  type LayoutProps =
+  type [<RequireQualifiedAccess>] LayoutProps =
     | Sectioned of bool
 
-  type LayoutSectionProps =
+  type [<RequireQualifiedAccess>] LayoutSectionProps =
     | Secondary of bool
     | FullWidth of bool
     | OneHalf of bool
     | OneThird of bool
 
-  type LayoutAnnotatedSectionProps =
+  type [<RequireQualifiedAccess>] LayoutAnnotatedSectionProps =
     | Title of ReactElement
     | Description of ReactElement
 

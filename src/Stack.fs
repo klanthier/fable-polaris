@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Stack =
 
     open Fable.Core
@@ -29,14 +30,14 @@ module Stack =
         | [<CompiledName "fill">] Fill
         | [<CompiledName "fillEvenly">] FillEvenly
 
-    type StackProps =
+    type [<RequireQualifiedAccess>] StackProps =
         | Alignment of StackAlignment
         | Distribution of StackDistribution
         | Spacing of StackSpacing
         | Vertical of bool
         | Wrap of bool
 
-    type StackItemProps =
+    type [<RequireQualifiedAccess>] StackItemProps =
         | Fill of bool
 
     let inline polarisStack (props : StackProps list) (children : ReactElement list) : ReactElement =

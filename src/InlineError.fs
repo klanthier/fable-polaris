@@ -1,10 +1,11 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module InlineError =
 
     open Fable.React
 
-    type RequiredInlineErrorProps = {
+    type [<RequireQualifiedAccess>] RequiredInlineErrorProps = {
         fieldID: string
         message: ReactElement
     }

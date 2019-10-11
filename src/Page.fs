@@ -1,27 +1,28 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Page =
 
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.React
 
-    type ActionGroupItemBadge = {
+    type [<RequireQualifiedAccess>] ActionGroupItemBadge = {
         content: string
         status: Badge.BadgeStatus
     }
 
-    type RequiredActionGroupProps = {
+    type [<RequireQualifiedAccess>] RequiredActionGroupProps = {
         Actions : Polaris.ActionListItemDescriptor list
         Title: string
     }
-    type ActionGroupProps =
+    type [<RequireQualifiedAccess>] ActionGroupProps =
         | Badge of ActionGroupItemBadge
         | Details of ReactElement
         | Icon of Polaris.BundledIcon
         | OnActionAnyItem of (unit -> unit)
     
-    type ActionGroupItem = RequiredActionGroupProps * (ActionGroupProps list)
+    type [<RequireQualifiedAccess>] ActionGroupItem = RequiredActionGroupProps * (ActionGroupProps list)
 
     let actionGroupItemConverterHelper (item: ActionGroupItem) =
         let requiredProps = fst item
@@ -35,10 +36,9 @@ module Page =
 
 
 
-    type PageBreadcrumbsAction = U2<Polaris.CallbackAction, Polaris.LinkAction>
-   
-    [<RequireQualifiedAccess>]
-    type PageProps =
+    type [<RequireQualifiedAccess>] PageBreadcrumbsAction = U2<Polaris.CallbackAction, Polaris.LinkAction>
+
+    type [<RequireQualifiedAccess>] PageProps =
         | ForceRender of bool
         | FullWidth of bool
         | NarrowWidth of bool

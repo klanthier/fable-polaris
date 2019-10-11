@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module EmptyState =
 
     open Fable.React
@@ -7,11 +8,11 @@ module EmptyState =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type RequiredEmptyStateProps = {
+    type [<RequireQualifiedAccess>] RequiredEmptyStateProps = {
         Image: string
     }
 
-    type EmptyStateProps =
+    type [<RequireQualifiedAccess>] EmptyStateProps =
         | FooterContent of bool
         | Heading of string
         | ImageContained of bool
@@ -28,6 +29,7 @@ module EmptyState =
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?image <- requiredProps.Image
+                obj
             )
 
         ofImport "EmptyState" "@shopify/polaris" combinedProps elems

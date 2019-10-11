@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module SubHeading =
 
     open Fable.React
@@ -7,7 +8,7 @@ module SubHeading =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type SubHeadingProps =
+    type [<RequireQualifiedAccess>] SubHeadingProps =
         | Element of Polaris.ElementNameSelection
 
     let inline polarisSubHeading (props : SubHeadingProps list) (elems : ReactElement list) : ReactElement =

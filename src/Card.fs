@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Card =
 
     open Fable.React
@@ -7,7 +8,7 @@ module Card =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type CardProps =
+    type [<RequireQualifiedAccess>] CardProps =
         | Title of ReactElement
         | Sectioned of bool
         | Subdued of bool
@@ -28,7 +29,7 @@ module Card =
             )
 
 
-    type CardHeaderProps =
+    type [<RequireQualifiedAccess>] CardHeaderProps =
         | Title of ReactElement
         static member Actions (actions: Polaris.DisableableAction list) =
             unbox ("actions",
@@ -36,7 +37,7 @@ module Card =
                 |> List.toArray
             )
 
-    type CardSectionProps =
+    type [<RequireQualifiedAccess>] CardSectionProps =
         | Title of ReactElement
         | Subdued of bool
         | FullWidth of bool

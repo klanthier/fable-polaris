@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module RangeSlider =
 
     open Fable.React
@@ -10,11 +11,11 @@ module RangeSlider =
     type DualValue = float * float
     type RangeValue = U2<float, DualValue>
 
-    type RequiredRangeSliderProps = {
+    type [<RequireQualifiedAccess>] RequiredRangeSliderProps = {
         OnChange: RangeValue -> string -> unit
         Value: RangeValue
     }
-    type RangeSliderProps =
+    type [<RequireQualifiedAccess>] RangeSliderProps =
         | Disabled of bool
         | Error of ReactElement
         | HelpText of ReactElement

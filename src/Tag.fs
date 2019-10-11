@@ -1,12 +1,13 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Tag =
 
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.React
 
-    type TagProps =
+    type [<RequireQualifiedAccess>] TagProps =
         | Disabled of bool
         | OnRemove of (unit -> unit)
 

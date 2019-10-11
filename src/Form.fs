@@ -1,7 +1,7 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Form =
-
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
@@ -22,11 +22,11 @@ module Form =
         | [<CompiledName "_parent">] Parent
         | [<CompiledName "_top">] Top
 
-    type RequiredFormProps = {
+    type [<RequireQualifiedAccess>] RequiredFormProps = {
         OnSubmit: unit -> unit
     }
 
-    type FormProps =
+    type [<RequireQualifiedAccess>] FormProps =
         | AcceptCharset of string
         | Action of string
         | AutoComplete of bool
@@ -45,6 +45,7 @@ module Form =
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?onSubmit <- requiredProps.OnSubmit
+                obj
             )
 
         ofImport "Form" "@shopify/polaris" combinedProps []

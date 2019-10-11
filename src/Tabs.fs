@@ -1,8 +1,7 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Tabs =
-
-
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
@@ -14,24 +13,27 @@ module Tabs =
         | [<CompiledName "extraLoose">] ExtraLoose
         | [<CompiledName "none">] None
 
-    type RequiredTabDescriptorProps = {
+    type [<RequireQualifiedAccess>] RequiredTabDescriptorProps = {
         Content : string
         Id : string
     }
 
-    type TabDescriptorProps =
+    type [<RequireQualifiedAccess>] TabDescriptorProps =
         | AccessibilityLabel of string
         | PanelID of string
         | Url of string
 
-    type TabDescriptor = RequiredTabDescriptorProps * TabDescriptorProps list
+    type TabDescriptor = {
+        required: RequiredTabDescriptorProps
+        optional: TabDescriptorProps list
+    }
 
-    let TabDescriptorUnboxerHelper tabs =
+    let TabDescriptorUnboxerHelper (tabs: TabDescriptor list) =
         List.map (
-            fun i ->
-                let reqProps = fst i
+            fun (i: TabDescriptor) ->
+                let reqProps = i.required
 
-                (snd i)
+                (i.optional)
                 |> keyValueList CaseRules.LowerFirst
                 |> (fun obj ->
                   obj?content <- reqProps.Content
@@ -41,12 +43,12 @@ module Tabs =
         ) tabs
         |> List.toArray
 
-    type RequiredTabsProps = {
+    type [<RequireQualifiedAccess>] RequiredTabsProps = {
         Selected : int
         Tabs : TabDescriptor list
     }
 
-    type TabsProps =
+    type [<RequireQualifiedAccess>] TabsProps =
         | Fitted of bool
         | OnSelect of (int -> unit)
 

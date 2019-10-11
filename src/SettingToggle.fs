@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module SettingToggle =
 
     open Fable.React
@@ -7,7 +8,7 @@ module SettingToggle =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type SettingToggleProps =
+    type [<RequireQualifiedAccess>] SettingToggleProps =
         | Enabled of bool
         static member Action (action: Polaris.Action) =
             Polaris.actionUnboxHelper "action" action

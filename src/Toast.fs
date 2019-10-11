@@ -1,26 +1,25 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Toast =
-
-
   open Fable.React
   open Fable.Polaris
   open Fable.Core
   open Fable.Core.JsInterop
 
-  type RequiredToastProps = {
+  type [<RequireQualifiedAccess>] RequiredToastProps = {
     Content: string
     OnDismiss: (unit -> unit)
   }
 
-  type ToastProps =
+  type [<RequireQualifiedAccess>] ToastProps =
     | Duration of int
     | Error of bool
     static member Action (action: Polaris.Action) =
       unbox ("action", Polaris.actionConverterHelper action)
 
 
-  let inline polarisToast requiredProps (props : ToastProps list) : ReactElement =
+  let inline polarisToast (requiredProps: RequiredToastProps) (props : ToastProps list) : ReactElement =
       let combinedProps =
         props
         |> keyValueList CaseRules.LowerFirst

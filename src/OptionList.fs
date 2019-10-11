@@ -1,19 +1,18 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module OptionList =
-
-
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type RequiredOptionListProps = {
+    type [<RequireQualifiedAccess>] RequiredOptionListProps = {
         Selected: string array
         OnChange: (string array -> unit)
     }
 
-    type OptionListProps =
+    type [<RequireQualifiedAccess>] OptionListProps =
         | AllowMultiple of bool
         | Id of string
         | OptionRole of string

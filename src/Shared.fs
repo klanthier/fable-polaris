@@ -134,6 +134,7 @@ module Polaris =
         |  [<CompiledName "h5">] H5
         |  [<CompiledName "h6">] H6
         |  [<CompiledName "p">] P
+        |  [<CompiledName "span">] Span
 
     type [<StringEnum>] [<RequireQualifiedAccess>] ThumbnailSize =
         | [<CompiledName "small">] Small
@@ -293,13 +294,16 @@ module Polaris =
         | Id of string
         | Url of string
 
-    type Action = RequiredActionProps * (ActionProps list)
+    type Action = {
+        required: RequiredActionProps
+        optional: ActionProps list 
+    }
 
 
     let actionConverterHelper (action: Action) =
-        let requiredProps = fst action
+        let requiredProps = action.required
         let combinedProps =
-            (snd action)
+            action.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?onAction <- requiredProps.OnAction
@@ -326,12 +330,15 @@ module Polaris =
         | Url of string
         | OnAction of (unit -> unit)
 
-    type DisableableAction = RequiredDisableableActionProps * (DisableableActionProps list)
+    type DisableableAction = {
+        required: RequiredDisableableActionProps
+        optional: DisableableActionProps list 
+    }    
 
     let disableableActionConverterHelper (disableableAction: DisableableAction) =
-        let requiredProps = fst disableableAction
+        let requiredProps = disableableAction.required
         let combinedProps =
-            (snd disableableAction)
+            disableableAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -352,12 +359,15 @@ module Polaris =
         | AccessibilityLabel of string
         | Id of string
 
-    type CallbackAction = RequiredCallbackActionProps * (CallbackActionProps list)
+    type CallbackAction = {
+        required: RequiredCallbackActionProps
+        optional: CallbackActionProps list
+    }
 
     let CallbackActionConverterHelper (callbackAction: CallbackAction) =
-        let requiredProps = fst callbackAction
+        let requiredProps = callbackAction.required
         let combinedProps =
-            (snd callbackAction)
+            callbackAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -378,12 +388,15 @@ module Polaris =
         | AccessibilityLabel of string
         | Id of string
 
-    type LinkAction = RequiredLinkActionProps * (LinkActionProps list)
+    type LinkAction = {
+        required: RequiredLinkActionProps
+        optional: LinkActionProps list
+    }
 
     let LinkActionConverterHelper (linkAction: LinkAction) =
-        let requiredProps = fst linkAction
+        let requiredProps = linkAction.required
         let combinedProps =
-            (snd linkAction)
+            linkAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -411,12 +424,15 @@ module Polaris =
         | Icon of string
         | Loading of bool
 
-    type ComplexAction = RequiredComplexActionProps * (ComplexActionProps list)
+    type ComplexAction = {
+        required: RequiredComplexActionProps
+        optional: ComplexActionProps list
+    }
 
     let complexActionConverterHelper (complexAction: ComplexAction) =
-        let requiredProps = fst complexAction
+        let requiredProps = complexAction.required
         let combinedProps =
-            (snd complexAction)
+            complexAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -446,12 +462,15 @@ module Polaris =
         | Loading of bool
         | Primary of bool
 
-    type PrimaryAction = RequiredPrimaryActionProps * (PrimaryActionProps list)
+    type PrimaryAction = {
+        required: RequiredPrimaryActionProps
+        optional: PrimaryActionProps list
+    }
 
     let primaryActionConverterHelper (primaryAction: PrimaryAction) =
-        let requiredProps = fst primaryAction
+        let requiredProps = primaryAction.required
         let combinedProps =
-            (snd primaryAction)
+            primaryAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -476,12 +495,15 @@ module Polaris =
         | Disabled of bool
         | Target of LinkTarget
 
-    type AppBridgeAction = RequiredAppBridgeActionProps * (AppBridgeActionProps list)
+    type AppBridgeAction = {
+        required: RequiredAppBridgeActionProps
+        optional: AppBridgeActionProps list
+    }
 
     let appBridgeActionConverterHelper (appBridgeAction: AppBridgeAction) =
-        let requiredProps = fst appBridgeAction
+        let requiredProps = appBridgeAction.required
         let combinedProps =
-            (snd appBridgeAction)
+            appBridgeAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -505,12 +527,15 @@ module Polaris =
         | OnAction of (unit -> unit)
         | Loading of bool
 
-    type LoadableAction = RequiredLoadableActionProps * (LoadableActionProps list)
+    type LoadableAction = {
+        required: RequiredLoadableActionProps
+        optional: LoadableActionProps list
+    }
 
     let lodableActionConverterHelper (loadableAction: LoadableAction) =
-        let requiredProps = fst loadableAction
+        let requiredProps = loadableAction.required
         let combinedProps =
-            (snd loadableAction)
+            loadableAction.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?content <- requiredProps.Content
@@ -531,12 +556,15 @@ module Polaris =
     type StrictOptionProps =
         | Disabled of bool
 
-    type StrictOption = RequiredStrictOptionProps * (StrictOptionProps list)
+    type StrictOption = {
+        required: RequiredStrictOptionProps
+        optional: StrictOptionProps list
+    }
 
     let strictOptionConverterHelper (strictOption: StrictOption) =
-        let requiredProps = fst strictOption
+        let requiredProps = strictOption.required
         let combinedProps =
-            (snd strictOption)
+            strictOption.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?label <- requiredProps.Label
@@ -574,12 +602,15 @@ module Polaris =
         static member Badge (badge: ActionListItemDescriptorBadge list) =
             unbox ("badge", keyValueList CaseRules.LowerFirst badge)
 
-    type ActionListItemDescriptor = RequiredActionListItemDescriptorProps * (ActionListItemDescriptorProps list)
+    type ActionListItemDescriptor = {
+        required: RequiredActionListItemDescriptorProps
+        optional: ActionListItemDescriptorProps list
+    }
 
     let actionListItemDescriptorUnboxHelper (action: ActionListItemDescriptor) =
-        let requiredProps = fst action
+        let requiredProps = action.required
         let combinedProps =
-            (snd action)
+            action.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?onAction <- requiredProps.OnAction
@@ -606,12 +637,15 @@ module Polaris =
         | Id of string
         | Media of ReactElement
 
-    type OptionDescriptor = RequiredOptionDescriptorProps * (OptionDescriptorProps list)
+    type OptionDescriptor = {
+        required: RequiredOptionDescriptorProps
+        optional: OptionDescriptorProps list
+    }
 
     let optionDescriptorPropsConverterHelper (option: OptionDescriptor) =
-        let requiredProps = fst option
+        let requiredProps = option.required
         let combinedProps =
-            (snd option)
+            option.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?label <- requiredProps.Label
@@ -636,12 +670,15 @@ module Polaris =
     type SectionDescriptorProps =
         | Title of string
 
-    type SectionDescriptor = RequiredSectionDescriptorProps * SectionDescriptorProps list
+    type SectionDescriptor = {
+        required: RequiredSectionDescriptorProps
+        optional: SectionDescriptorProps list
+    }
 
     let sectionDescriptorPropsConverterHelper (option: SectionDescriptor) =
-        let requiredProps = fst option
+        let requiredProps = option.required
         let combinedProps =
-            (snd option)
+            option.optional
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
                 obj?options <-

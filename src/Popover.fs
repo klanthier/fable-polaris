@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Popover =
 
     open Fable.React
@@ -7,13 +8,13 @@ module Popover =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type RequiredPopoverProps = {
+    type [<RequireQualifiedAccess>] RequiredPopoverProps = {
         Activator: ReactElement
         Active: bool
         OnClose: (unit -> unit) //Missing OnSourceClose Impl.
     }
 
-    type PopoverProps =
+    type [<RequireQualifiedAccess>] PopoverProps =
         | ActivatorWrapper of string
         | Fixed of bool
         | FullHeight of bool

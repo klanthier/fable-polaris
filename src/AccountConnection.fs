@@ -1,17 +1,14 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module AccountConnection =
 
   open Fable.Polaris
   open Fable.React
   open Fable.Core
   open Fable.Core.JsInterop
-
-  type [<StringEnum>] [<RequireQualifiedAccess>] TextSpacing =
-      |  [<CompiledName "loose">] Loose
-      |  [<CompiledName "tight">] Tight
-
-  type AccountConnectionProps =
+  
+  type [<RequireQualifiedAccess>] AccountConnectionProps =
     | AccountName of string
     | AvatarUrl of string
     | Connected of bool

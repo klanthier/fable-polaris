@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Thumbnail =
 
   open Fable.React
@@ -7,11 +8,11 @@ module Thumbnail =
   open Fable.Polaris
   open Fable.Core.JsInterop
 
-  type RequiredThumbnailProps = {
+  type [<RequireQualifiedAccess>] RequiredThumbnailProps = {
     Alt: string
     Source: string
   }
-  type ThumbnailProps =
+  type [<RequireQualifiedAccess>] ThumbnailProps =
     | Size of Polaris.ThumbnailSize
 
   let inline polarisThumbnail (requiredProps: RequiredThumbnailProps) (props : ThumbnailProps list): ReactElement =
@@ -21,5 +22,6 @@ module Thumbnail =
       |> (fun obj ->
           obj?alt <- requiredProps.Alt
           obj?source <- requiredProps.Source
+          obj
       )
     ofImport "Thumbnail" "@shopify/polaris" combinedProps []

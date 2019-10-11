@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ProgressBar =
 
     open Fable.React
@@ -7,7 +8,7 @@ module ProgressBar =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
-    type ProgressBarProps =
+    type [<RequireQualifiedAccess>] ProgressBarProps =
         | Progress of float
         | Size of Polaris.ProgressBarSize
 

@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Spinner =
     open Fable.Polaris
     open Fable.Core
@@ -15,5 +16,5 @@ module Spinner =
         | Color of Polaris.ColorOption
         | Size of SpinnerSize
 
-    let inline polairsSpinner (props : SpinnerProps list) : ReactElement =
+    let inline polarisSpinner (props : SpinnerProps list) : ReactElement =
         ofImport "Spinner" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

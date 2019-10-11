@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module List =
 
     open Fable.React
@@ -10,7 +11,7 @@ module List =
         | [<CompiledName "bullet">] Bullet
         | [<CompiledName "number">] Number
 
-    type ListProps =
+    type [<RequireQualifiedAccess>] ListProps =
       | Type of ListType
 
     let inline polarisListItem (elems : ReactElement list) : ReactElement =

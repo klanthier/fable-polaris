@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ActionList =
 
     open Fable.Polaris
@@ -7,7 +8,7 @@ module ActionList =
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type ActionListSection =
+    type [<RequireQualifiedAccess>] ActionListSection =
         | Title of string
         static member Items (items: Polaris.ActionListItemDescriptor list) =
             Polaris.actionListItemsDescriptorUnboxHelper "items" items
@@ -16,7 +17,7 @@ module ActionList =
         Items : Polaris.ActionListItemDescriptor list
     }
 
-    type ActionListProps =
+    type [<RequireQualifiedAccess>] ActionListProps =
         | ActionRole of string
         | OnActionAnyItem of (unit -> unit)
         static member Sections (sections: ActionListSection list) =

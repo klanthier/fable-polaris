@@ -1,12 +1,13 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module TopBar =
 
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type TopBarProps =
+    type [<RequireQualifiedAccess>] TopBarProps =
       | ContextControl of ReactElement
       | SearchField of ReactElement
       | SearchResults of ReactElement
@@ -18,24 +19,26 @@ module TopBar =
       | OnNavigationToggle of (unit -> unit)
 
 
-    type IconableAction = {
+    type [<RequireQualifiedAccess>] IconableAction = {
         content: string
         icon: string option
+        onAction: (unit -> unit) option
+        disabled: bool
     }
 
-    type TopBarUserMenuActionsProps = {
+    type [<RequireQualifiedAccess>] TopBarUserMenuActionsProps = {
         items: IconableAction array
     }
 
-    type TopBarUserMenuProps =
-        | OnToggle of (unit -> unit) option
+    type [<RequireQualifiedAccess>] TopBarUserMenuProps =
+        | OnToggle of (unit -> unit)
         | Detail of string
         | Name of string
         | Initials of string
         | Open of bool
         | Avatar of string
         | Message of string
-        | Actions of TopBarUserMenuActionsProps
+        | Actions of TopBarUserMenuActionsProps array
 
     let inline polarisTopBar (props : TopBarProps list): ReactElement =
         ofImport "TopBar" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

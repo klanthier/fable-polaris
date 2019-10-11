@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module CheckBox =
 
     open Fable.React
@@ -9,14 +10,14 @@ module CheckBox =
     type [<StringEnum>] [<RequireQualifiedAccess>] CheckBoxCheckStatuses =
         | [<CompiledName "indeterminate">] Indeterminate
 
-    type CheckedStatus = U2<bool, CheckBoxCheckStatuses>
+    type [<RequireQualifiedAccess>] CheckedStatus = U2<bool, CheckBoxCheckStatuses>
 
-    type RequiredCheckBoxProps = {
+    type [<RequireQualifiedAccess>] RequiredCheckBoxProps = {
         Checked: CheckedStatus
         Label: ReactElement
     }
 
-    type CheckBoxProps =
+    type [<RequireQualifiedAccess>] CheckBoxProps =
         | AriaDescribedBy of string
         | Disabled of bool
         | Error of ReactElement
@@ -36,6 +37,7 @@ module CheckBox =
             |> (fun obj ->
                 obj?``checked`` <- requiredProps.Checked
                 obj?label <- requiredProps.Label
+                obj
             )
 
         ofImport "Checkbox" "@shopify/polaris" combinedProps []

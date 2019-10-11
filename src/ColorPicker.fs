@@ -1,24 +1,25 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module ColorPicker =
 
     open Fable.React
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type Color = {
+    type [<RequireQualifiedAccess>] Color = {
         alpha: int
         brightness: int
         hue: int
         saturation: int
     }
 
-    type RequiredColorPickerProps = {
+    type [<RequireQualifiedAccess>] RequiredColorPickerProps = {
         Color: Color
         OnChange: (Color -> unit)
     }
 
-    type ColorPickerProps =
+    type [<RequireQualifiedAccess>] ColorPickerProps =
         | AllowAlpha of bool
         | Id of string
 
@@ -29,5 +30,6 @@ module ColorPicker =
             |> (fun obj ->
                 obj?color <- requiredProps.Color
                 obj?onChange <- requiredProps.OnChange
+                obj
             )
         ofImport "ColorPicker" "@shopify/polaris" combinedProps []

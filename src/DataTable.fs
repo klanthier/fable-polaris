@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module DataTable =
 
     open Fable.React
@@ -21,14 +22,14 @@ module DataTable =
         | [<CompiledName "middle">] Middle
         | [<CompiledName "top">] Top
 
-    type DataTableRow = U3<ReactElement, string, float>
+    type [<RequireQualifiedAccess>] DataTableRow = U3<ReactElement, string, float>
 
-    type RequiredDataTableProps = {
+    type [<RequireQualifiedAccess>] RequiredDataTableProps = {
         Headings: string array
         Rows: DataTableRow array array
     }
 
-    type DataTableProps =
+    type [<RequireQualifiedAccess>] DataTableProps =
         | ColumnContentTypes of DataTableColumnContent array
         | DefaultSortDirection of DataTableSortDirection
         | FooterContent of ReactElement
@@ -46,6 +47,7 @@ module DataTable =
             |> (fun obj ->
                 obj?headings <- requiredProps.Headings
                 obj?rows <- requiredProps.Rows
+                obj
             )
 
         ofImport "DataTable" "@shopify/polaris" combinedProps []

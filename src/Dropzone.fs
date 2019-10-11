@@ -1,5 +1,6 @@
 namespace Fable.Polaris
 
+[<AutoOpen>]
 module Dropzone =
 
     open Fable.React
@@ -12,7 +13,7 @@ module Dropzone =
         | [<CompiledName "image">] Image
     
     type File = Fable.Core.JS.Object
-    type DropZoneProps =
+    type [<RequireQualifiedAccess>] DropZoneProps =
         | Accept of string
         | Active of bool
         | AllowMultiple of bool
@@ -44,7 +45,7 @@ module Dropzone =
         ofImport "DropZone" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) elems
 
 
-    type DropZoneFileUploadProps =
+    type [<RequireQualifiedAccess>] DropZoneFileUploadProps =
         | ActionTitle of string
         | ActionHint of string
 
