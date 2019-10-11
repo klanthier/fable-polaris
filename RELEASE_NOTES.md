@@ -1,3 +1,7 @@
+### 4.4.1
+
+* Package was not including the files to properly build in fable project
+
 ### 4.4.0
 
 * Added all Polaris components and made them up to date with the latest library version
