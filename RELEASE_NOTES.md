@@ -1,3 +1,7 @@
+### 4.4.0
+
+* Added all Polaris components and made them up to date with the latest library version
+
 ### 0.2.0
 
 * Button component bindings

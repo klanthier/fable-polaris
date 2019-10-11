@@ -1,8 +1,8 @@
 {
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "fable build.fsx --run",
-    "publish": "fable build.fsx --run publish",
+    "publishNuget": "fable build.fsx --run publish",
     "pretest": "fable-splitter test -o build --commonjs",
     "test": "mocha build",
     "test:watch": "npm-run-all --parallel watch:*",

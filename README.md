@@ -28,10 +28,7 @@ open Elmish
 open Elmish.React
 open Fable.React
 open Fable.Core.JsInterop
-
-open Polaris
-open Polaris.AppProvider
-open Polaris.Stack
+open Fable.Polaris
 
 importAll "@shopify/polaris/styles.css"
 
@@ -49,15 +46,13 @@ let update (msg:Msg) (model:Model) =
     | Decrement -> model - 1
 
 let view (model:Model) dispatch =
-
-    appProvider [] [
-      stack [ StackProps.Vertical true ]
+    polarisAppProvider [] <|
+      polarisStack [ StackProps.Vertical true ]
         [
-          Button.button { OnClick = (fun _ -> dispatch Increment) } [] [ str "+" ]
+          polarisButton [ ButtonProps.OnClick <| (fun _ -> dispatch Increment)] [ str "+" ]
           div [] [ str (string model) ]
-          Button.button { OnClick = (fun _ -> dispatch Decrement) } [] [ str "-" ]
+          polarisButton [ ButtonProps.OnClick <| (fun _ -> dispatch Decrement)] [ str "-" ]
         ]
-    ]
 
 // App
 Program.mkSimple init update view
