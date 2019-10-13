@@ -9,15 +9,11 @@ module Modal =
  
     type [<RequireQualifiedAccess>] ModalActions = U2<Polaris.AppBridgeAction, Polaris.ComplexAction>
     let modalActionsConverter (action: ModalActions) =
-        Browser.Dom.console.log(action)
-
         match action with
             | ModalActions.Case1 appAction ->
-                Browser.Dom.console.log("a")
                 Polaris.appBridgeActionConverterHelper appAction
                 
             | ModalActions.Case2 complexAction ->
-                Browser.Dom.console.log("b")
                 Polaris.complexActionConverterHelper complexAction
 
     type [<RequireQualifiedAccess>] RequiredModalProps = {

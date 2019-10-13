@@ -21,7 +21,7 @@ module TopBar =
 
     type [<RequireQualifiedAccess>] IconableAction = {
         content: string
-        icon: string option
+        icon: Polaris.FunctionPolarisIcon option
         onAction: (unit -> unit) option
         disabled: bool
     }

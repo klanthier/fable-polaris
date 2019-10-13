@@ -14,7 +14,7 @@ module Navigation =
     }
 
     type [<RequireQualifiedAccess>] ItemTypeProps =
-        | Icon of Polaris.BundledIcon
+        | Icon of Polaris.FunctionPolarisIcon
     
     type ItemType = RequiredItemTypeProps * (ItemTypeProps list)
 
@@ -34,11 +34,9 @@ module Navigation =
         static member Items (items: ItemType list) =
             unbox ("items", Array.map itemTypeConverterHelper (items |> List.toArray))
 
-
     type [<RequireQualifiedAccess>] RequiredNavigationProps = {
         Location: string
     }
-
 
     let sectionConverterHelper (sectionType: SectionType list) =
         keyValueList CaseRules.LowerFirst sectionType
@@ -58,7 +56,6 @@ module Navigation =
                 obj
             )
         ofImport "Navigation" "@shopify/polaris" combinedProps children
-
 
     
     type [<RequireQualifiedAccess>] RequiredSubNavigationSectionItemProps = {
@@ -87,7 +84,7 @@ module Navigation =
     type [<RequireQualifiedAccess>] SecondarySectionItemAction = {
         url: string
         accessibilityLabel: string
-        icon: Polaris.BundledIcon
+        icon: Polaris.FunctionPolarisIcon
     }
 
     type [<RequireQualifiedAccess>] SectionItem =
@@ -96,22 +93,22 @@ module Navigation =
         | ExactMatch of bool 
         | MatchPaths of string array 
         | ExcludePaths of string array 
-        | Icon of Polaris.BundledIcon 
         | Badge of string 
         | Label of string 
         | Disabled of bool 
         | New of bool 
         | AccessibilityLabel of string 
         | Selected of bool 
-        | OnClick of (unit -> unit) 
+        | OnClick of (unit -> unit)
         | SecondaryAction of SecondarySectionItemAction
+        | Icon of Polaris.FunctionPolarisIcon
         static member SubNavigationItems (items: SubNavigationSectionItem list) =
              unbox ("subNavigationItems", Array.map subNavigationItemConverterHelper (items |> List.toArray))
 
     type [<RequireQualifiedAccess>] NavigationSectionAction = {
-        icon : Polaris.BundledIcon
         accessibilityLabel : string
         onClick : (unit -> unit)
+        icon: Polaris.FunctionPolarisIcon
     }
 
     type [<RequireQualifiedAccess>] NavigationSectionRollup = {
@@ -122,12 +119,12 @@ module Navigation =
     }
     
     type [<RequireQualifiedAccess>] NavigationSectionProps =
-        | Icon of Polaris.BundledIcon
         | Title of string
         | Fill of bool
         | Separator of bool
         | Rollup of NavigationSectionRollup
         | Action of NavigationSectionAction
+        | Icon of Polaris.FunctionPolarisIcon
         static member Items (items: SectionItem list list) =
             unbox ("items",  Array.map (keyValueList CaseRules.LowerFirst) (items |> List.toArray))
 

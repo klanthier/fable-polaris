@@ -37,65 +37,13 @@ module Polaris =
     open Fable.React
     open Fable.Core.JsInterop
 
+    // Type used for importing Polaris icon from @shopify/polaris-icon
+    type FunctionPolarisIcon = FunctionPolarisIcon
+
     type [<RequireQualifiedAccess>] [<StringEnum>] ColorOption =
         |  [<CompiledName "white">] White
         |  [<CompiledName "teal">] Teal
         |  [<CompiledName "inkLightest">] InkLightest
-
-    type [<RequireQualifiedAccess>] [<StringEnum>] BundledIcon =
-        |  [<CompiledName "add">] Add
-        |  [<CompiledName "alert">] Alert
-        |  [<CompiledName "arrowDown">] ArrowDown
-        |  [<CompiledName "arrowLeft">] ArrowLeft
-        |  [<CompiledName "arrowRight">] ArrowRight
-        |  [<CompiledName "arrowUp">] ArrowUp
-        |  [<CompiledName "arrowUpDown">] ArrowUpDown
-        |  [<CompiledName "calendar">] Calendar
-        |  [<CompiledName "cancel">] Cancel
-        |  [<CompiledName "cancelSmall">] CancelSmall
-        |  [<CompiledName "caretDown">] CaretDown
-        |  [<CompiledName "caretUp">] CaretUp
-        |  [<CompiledName "checkmark">] Checkmark
-        |  [<CompiledName "chevronDown">] ChevronDown
-        |  [<CompiledName "chevronLeft">] ChevronLeft
-        |  [<CompiledName "chevronRight">] ChevronRight
-        |  [<CompiledName "chevronUp">] ChevronUp
-        |  [<CompiledName "circleCancel">] CircleCancel
-        |  [<CompiledName "circleChevronDown">] CircleChevronDown
-        |  [<CompiledName "circleChevronLeft">] CircleChevronLeft
-        |  [<CompiledName "circleChevronRight">] CircleChevronRight
-        |  [<CompiledName "circleChevronUp">] CircleChevronUp
-        |  [<CompiledName "circleInformation">] CircleInformation
-        |  [<CompiledName "circlePlus">] CirclePlus
-        |  [<CompiledName "circlePlusOutline">] CirclePlusOutline
-        |  [<CompiledName "conversation">] Conversation
-        |  [<CompiledName "delete">] Delete
-        |  [<CompiledName "disable">] Disable
-        |  [<CompiledName "dispute">] Dispute
-        |  [<CompiledName "duplicate">] Duplicate
-        |  [<CompiledName "embed">] Embed
-        |  [<CompiledName "export">] Export
-        |  [<CompiledName "external">] External
-        |  [<CompiledName "help">] Help
-        |  [<CompiledName "home">] Home
-        |  [<CompiledName "horizontalDots">] HorizontalDots
-        |  [<CompiledName "import">] Import
-        |  [<CompiledName "logOut">] LogOut
-        |  [<CompiledName "menu">] Menu
-        |  [<CompiledName "notes">] Notes
-        |  [<CompiledName "notification">] Notification
-        |  [<CompiledName "onlineStore">] OnlineStore
-        |  [<CompiledName "orders">] Orders
-        |  [<CompiledName "placeholder">] Placeholder
-        |  [<CompiledName "print">] Print
-        |  [<CompiledName "products">] Products
-        |  [<CompiledName "profile">] Profile
-        |  [<CompiledName "refresh">] Refresh
-        |  [<CompiledName "risk">] Risk
-        |  [<CompiledName "save">] Save
-        |  [<CompiledName "search">] Search
-        |  [<CompiledName "subtract">] Subtract
-        |  [<CompiledName "view">] View
 
     type [<StringEnum>] [<RequireQualifiedAccess>] TextAlign =
         |  [<CompiledName "left">] Left
@@ -421,7 +369,7 @@ module Polaris =
         | Destructive of bool
         | Disabled of bool
         | Target of LinkTarget
-        | Icon of string
+        | Icon of FunctionPolarisIcon
         | Loading of bool
 
     type ComplexAction = {
@@ -458,7 +406,7 @@ module Polaris =
         | Destructive of bool
         | Disabled of bool
         | Target of LinkTarget
-        | Icon of string
+        | Icon of FunctionPolarisIcon
         | Loading of bool
         | Primary of bool
 
@@ -593,12 +541,13 @@ module Polaris =
         | Ellipsis of bool
         | External of bool
         | HelpText of string
-        | Icon of BundledIcon
         | Id of string
         | Image of string
         | Role of string
         | Target of LinkTarget
         | Url of string
+        | Icon of FunctionPolarisIcon
+
         static member Badge (badge: ActionListItemDescriptorBadge list) =
             unbox ("badge", keyValueList CaseRules.LowerFirst badge)
 
