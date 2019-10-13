@@ -19,8 +19,8 @@ module Page =
     type [<RequireQualifiedAccess>] ActionGroupProps =
         | Badge of ActionGroupItemBadge
         | Details of ReactElement
-        | Icon of Polaris.BundledIcon
         | OnActionAnyItem of (unit -> unit)
+        | Icon of Polaris.FunctionPolarisIcon
     
     type [<RequireQualifiedAccess>] ActionGroupItem = RequiredActionGroupProps * (ActionGroupProps list)
 
@@ -42,7 +42,7 @@ module Page =
         | ForceRender of bool
         | FullWidth of bool
         | NarrowWidth of bool
-        | Icon of string
+        | Icon of Polaris.FunctionPolarisIcon
         | Subtitle of string
         | Thumbnail of ReactElement
         | Separator of bool

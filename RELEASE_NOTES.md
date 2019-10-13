@@ -1,3 +1,7 @@
+### 4.4.2
+
+* Added full support for new polaris icons. Now all icon fields will require you to provide a Function component of polaris icon.
+
 ### 4.4.1
 
 * Package was not including the files to properly build in fable project

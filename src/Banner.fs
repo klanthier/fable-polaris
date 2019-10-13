@@ -16,11 +16,11 @@ module Banner =
     type [<RequireQualifiedAccess>] BannerAction = U2<Polaris.DisableableAction, Polaris.LoadableAction>
 
     type [<RequireQualifiedAccess>] BannerProps =
-        | Icon of Polaris.BundledIcon
         | Status of BannerStatus
         | Title of string
         | StopAnnouncements of bool
         | OnDismiss of (unit -> unit)
+        | Icon of Polaris.FunctionPolarisIcon     
         static member SecondaryAction (action: Polaris.Action) =
             Polaris.actionUnboxHelper "secondaryAction" action
 

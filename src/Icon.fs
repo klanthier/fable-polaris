@@ -48,7 +48,8 @@ module Icon =
         | [<CompiledName "redDark">] RedDark
         | [<CompiledName "purple">] Purple
 
-    type [<RequireQualifiedAccess>] IconSource = U3<ReactElement, Polaris.BundledIcon, string>
+    type IconPlaceHolder = IconPlaceholer
+    type [<RequireQualifiedAccess>] IconSource = U3<Polaris.FunctionPolarisIcon, IconPlaceHolder, string>
 
     type [<RequireQualifiedAccess>] IconProps =
         | AccessibilityLabel of string
@@ -59,12 +60,23 @@ module Icon =
         Source : IconSource
     }
 
+    let inline polarisUserProvidedIcon (iconName: string): Polaris.FunctionPolarisIcon =
+      let importedPolarisIcons = ofImport "*" "@shopify/polaris-icons" [] []
+      importedPolarisIcons?("type")?(iconName)
+
     let inline polarisIcon (requiredProps: RequiredIconProps) (props : IconProps list) : ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
-                obj?source <- requiredProps.Source
+                obj?source <- 
+                    match requiredProps.Source with
+                        | IconSource.Case1 x ->
+                            unbox (x)                            
+                        | IconSource.Case2 x ->
+                            unbox ("placeholder")
+                        | IconSource.Case3 x ->
+                            unbox (x)
                 obj
             )
         ofImport "Icon" "@shopify/polaris" combinedProps []

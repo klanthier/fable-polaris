@@ -14,9 +14,9 @@ module ExceptionList =
     type [<RequireQualifiedAccess>] ExceptionListItemProps =
         | Title of string
         | Description of ReactElement
-        | Icon of Polaris.BundledIcon
         | Status of ExceptionListItemStatus
         | Truncate of bool
+        | Icon of Polaris.FunctionPolarisIcon
 
     type [<RequireQualifiedAccess>] ExceptionListProps =
         static member Items (items: ExceptionListItemProps list list) =

@@ -20,13 +20,30 @@ export const load = function() {
 ## Code
 
 <SyntaxHighlighter language='fsharp' style={tomorrowNight}>{`
-  navigation { Location = "/"} []
-    [
-        navigationSection
-            [
-                [nav1; nav2] |> ResizeArray |> NavigationSectionProps.Items
-            ]
-            []
-    ]
+  polarisNavigation {
+        Location = "/"
+  } [] [
+      polarisNavigationSection <| 
+          [
+              NavigationSectionProps.Items <|
+                    [
+                          [
+                                SectionItem.Label "Dashboard"
+                                SectionItem.Icon <| polarisUserProvidedIcon "StoreStatusMajorMonotone"
+                                SectionItem.Url "#"
+                                SectionItem.Selected true
+                          ]                
+                          [ 
+                                SectionItem.Label "Users"
+                                SectionItem.Icon <| polarisUserProvidedIcon "CustomersMajorMonotone"
+                                SectionItem.Url "#"
+                                    
+                                SectionItem.Selected false
+                          ]
+                    ]
+              
+              NavigationSectionProps.Title "Management"
+        ]
+  ]
 `}</SyntaxHighlighter>
 
