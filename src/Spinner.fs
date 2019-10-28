@@ -15,6 +15,7 @@ module Spinner =
         | AccessibilityLabel of string
         | Color of Polaris.ColorOption
         | Size of SpinnerSize
+        | HasFocusableParent of bool
 
     let inline polarisSpinner (props : SpinnerProps list) : ReactElement =
         ofImport "Spinner" "@shopify/polaris" (keyValueList CaseRules.LowerFirst props) []

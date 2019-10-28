@@ -55,6 +55,7 @@ module ResourceList =
         | SelectedItems of ResourceListSelectedItems
         | ShowHeader of bool
         | SortValue of string
+        | TotalItemsCount of int
         | OnSelectionChange of (ResourceListSelectedItems -> unit)
         | OnSortChange of (string -> string -> unit)
         | ResolveItemId of ('t -> string)
@@ -170,7 +171,7 @@ module ResourceList =
 
     let filterUnboxerHelper (filter: ResourceListFilter) =
         match filter with
-            | U3.Case1 componentProps ->                
+            | U3.Case1 componentProps ->
                 componentProps.optional
                 |> keyValueList CaseRules.LowerFirst
                 |> (fun obj ->

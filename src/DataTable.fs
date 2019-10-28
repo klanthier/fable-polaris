@@ -35,6 +35,7 @@ module DataTable =
         | FooterContent of ReactElement
         | InitialSortColumnIndex of int
         | Sortable of bool array
+        | ShowTotalsInFooter of bool
         | Totals of DataTableRow array
         | Truncate of bool
         | VerticalAlign of DataTableVerticalAlign

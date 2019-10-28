@@ -2,14 +2,15 @@
 
 Fable/F# bindings for Shopify's Polaris react component library
 
-Current bindings are written for Shopify Polaris version **4.4.0**
+Current bindings are written for Shopify Polaris version **4.7.1**
+Each release of this project is an equivalent of Polaris version.
 
 # Using in your Fable Project
 
 ## Dependency
 
 You will need to install Shopify Polaris
-`yarn add @shopify/polaris@4.4.0`
+`yarn add @shopify/polaris@4.7.1`
 
 Then you must ensure you add the styles to your main F# file like so:
 `importAll "@shopify/polaris/styles.css"`

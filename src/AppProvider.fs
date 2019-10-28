@@ -18,11 +18,11 @@ module AppProvider =
         | TopBar of AppColorsTopBar
 
     type [<RequireQualifiedAccess>] AppLogo =
-        | Width of int
-        | TopBarSource of string
-        | Url of string
         | AccessibilityLabel of string
         | ContextualSaveBarSource of string
+        | TopBarSource of string
+        | Url of string
+        | Width of int
 
     type [<RequireQualifiedAccess>] AppTheme =
         static member Colors (colors: AppColors list) =
