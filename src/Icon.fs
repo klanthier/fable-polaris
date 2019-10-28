@@ -1,5 +1,7 @@
 namespace Fable.Polaris
 
+
+
 [<AutoOpen>]
 module Icon =
 
@@ -60,19 +62,23 @@ module Icon =
         Source : IconSource
     }
 
+
+    [<ImportAll("@shopify/polaris-icons")>]
+    let importedPolarisIcons: Fable.Core.JS.Object = jsNative
+
     let inline polarisUserProvidedIcon (iconName: string): Polaris.FunctionPolarisIcon =
-      let importedPolarisIcons = ofImport "*" "@shopify/polaris-icons" [] []
-      importedPolarisIcons?("type")?(iconName)
+        importedPolarisIcons?(iconName)
+
 
     let inline polarisIcon (requiredProps: RequiredIconProps) (props : IconProps list) : ReactElement =
         let combinedProps =
             props
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
-                obj?source <- 
+                obj?source <-
                     match requiredProps.Source with
                         | IconSource.Case1 x ->
-                            unbox (x)                            
+                            unbox (x)
                         | IconSource.Case2 x ->
                             unbox ("placeholder")
                         | IconSource.Case3 x ->
