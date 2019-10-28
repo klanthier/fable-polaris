@@ -10,7 +10,7 @@ module ChoiceList =
 
 
     type [<RequireQualifiedAccess>] RequiredChoiceItemProps = {
-        Label: string
+        Label: ReactElement
         Value: string
     }
     type [<RequireQualifiedAccess>] ChoiceItemProps =
@@ -50,7 +50,7 @@ module ChoiceList =
 
 
     let inline polarisChoiceList (requiredProps: RequiredChoiceListProps) (props : ChoiceListProps list) : ReactElement =
-        let choices = 
+        let choices =
             List.map choiceItemConverterHelper requiredProps.Choices
             |> List.toArray
 
@@ -58,7 +58,7 @@ module ChoiceList =
             props
             |> keyValueList CaseRules.LowerFirst
             |> (fun obj ->
-                obj?selected <- 
+                obj?selected <-
                     requiredProps.Selected
                     |> List.toArray
 

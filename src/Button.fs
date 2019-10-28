@@ -13,7 +13,7 @@ module Button =
         | [<CompiledName "slim">] Slim
         | [<CompiledName "medium">] Medium
         | [<CompiledName "large">] Large
-    
+
     type [<RequireQualifiedAccess>] ButtonProps =
         | AccessibilityLabel of string
         | AriaControls of string
@@ -31,6 +31,7 @@ module Button =
         | Outline of bool
         | Plain of bool
         | Primary of bool
+        | Pressed of bool
         | Size of ButtonSize
         | Submit of bool
         | TextAlign of Polaris.TextAlign

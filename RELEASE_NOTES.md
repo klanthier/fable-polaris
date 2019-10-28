@@ -1,3 +1,8 @@
+### 4.7.1
+
+* Fixed Polaris Icons import issues
+* Ajusted bindings to match latest Polaris upgrades and bug fixes
+
 ### 4.4.2
 
 * Added full support for new polaris icons. Now all icon fields will require you to provide a Function component of polaris icon.
