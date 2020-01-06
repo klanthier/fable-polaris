@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
-    "@shopify/polaris": "4.7.1",
-    "fable-compiler": "^2.4.6",
+    "@shopify/polaris": "^4.10.2",
+    "fable-compiler": "^2.4.12",
     "fable-loader": "^2.1.8",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

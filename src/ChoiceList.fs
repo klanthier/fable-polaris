@@ -37,7 +37,7 @@ module ChoiceList =
     type [<RequireQualifiedAccess>] RequiredChoiceListProps = {
         Choices: ChoiceItem list
         Selected: string list
-        Title: string
+        Title: ReactElement
     }
 
     type [<RequireQualifiedAccess>] ChoiceListProps =

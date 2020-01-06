@@ -944,10 +944,9 @@
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-2.6.0.tgz#1654c83025d80ce803f06329aceaabfb96b5e684"
 
-"@shopify/polaris@4.7.1":
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-4.7.1.tgz#bdcfb1f7c5135b14e05c2536721f8b76900f3818"
-  integrity sha512-mfiAYopKr1iZN/nSdjf4KL32Xc7KMokOr1ysT2WWqKddIpMnKIw1uoaKHORNTYPSHYtR3gdSjMEPxo+/RPnP3w==
+"@shopify/polaris@^4.10.2":
+  version "4.10.2"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-4.10.2.tgz#800760c2127592137c4d02d558b0c7a10f8322bb"
   dependencies:
     "@babel/runtime" "^7.1.6"
     "@material-ui/react-transition-group" "^4.2.0"
@@ -961,6 +960,7 @@
     "@types/react-dom" "^16.8.4"
     "@types/react-transition-group" "^2.0.7"
     hoist-non-react-statics "^3.3.0"
+    hsluv "^0.0.3"
     lodash "^4.17.4"
     tslib "^1.9.3"
 
@@ -3396,9 +3396,9 @@ fable-babel-plugins@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/fable-babel-plugins/-/fable-babel-plugins-2.2.0.tgz#2c61be1bd1afb1f03da4e66ccaa1bfecf92063a3"
 
-fable-compiler@^2.4.6:
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/fable-compiler/-/fable-compiler-2.4.6.tgz#049ec70d07303a756833fc6a32a187b8885d3db4"
+fable-compiler@^2.4.12:
+  version "2.4.12"
+  resolved "https://registry.yarnpkg.com/fable-compiler/-/fable-compiler-2.4.12.tgz#ee34edac10f22d523fa60054d689b65aca67a805"
 
 fable-loader@^2.1.8:
   version "2.1.8"
@@ -4046,6 +4046,10 @@ hpack.js@^2.1.6:
     obuf "^1.0.0"
     readable-stream "^2.0.1"
     wbuf "^1.1.0"
+
+hsluv@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/hsluv/-/hsluv-0.0.3.tgz#829107dafb4a9f8b52a1809ed02e091eade6754c"
 
 html-entities@^1.2.1:
   version "1.2.1"
