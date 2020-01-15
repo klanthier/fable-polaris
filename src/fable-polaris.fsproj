@@ -3,8 +3,7 @@
   <PropertyGroup>
     <Description>Fable Components implementation of Polaris React for Elmish apps</Description>
     <PackageProjectUrl>https://github.com/klanthier/fable-polaris</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/klanthier/fable-polaris/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/klanthier/fable-polaris/master/fable-polaris.jpg</PackageIconUrl>
+    <license>https://github.com/klanthier/fable-polaris/blob/master/LICENSE</license>
     <RepositoryUrl>https://github.com/klanthier/fable-polaris</RepositoryUrl>
     <PackageTags>fable;elm;fsharp;shopify-polaris,react</PackageTags>
     <Authors>Kevin Lanthier</Authors>

@@ -591,9 +591,9 @@ fable-metadata@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/fable-metadata/-/fable-metadata-1.0.1.tgz#36de18aa8fc1649afa58b1e38b91f6fc3074f39a"
 
-fable-publish-utils@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/fable-publish-utils/-/fable-publish-utils-1.0.5.tgz#63d784668327a89f7e3a83a0f6b5b8dc47112c0f"
+fable-publish-utils@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/fable-publish-utils/-/fable-publish-utils-1.1.1.tgz#e78865709a4f6a83a5d14c46f760741a2a3bee36"
 
 fable-splitter@^2.1.11:
   version "2.1.11"
