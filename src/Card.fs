@@ -8,10 +8,15 @@ module Card =
     open Fable.Core.JsInterop
     open Fable.Polaris
 
+    type [<StringEnum>] [<RequireQualifiedAccess>] CardFooterActionAlignment = 
+        | [<CompiledName "right">] Right
+        | [<CompiledName "left">] Left
+
     type [<RequireQualifiedAccess>] CardProps =
         | Title of ReactElement
         | Sectioned of bool
         | Subdued of bool
+        | FooterActionAlignment of CardFooterActionAlignment
         | SecondaryFooterActionsDisclosureText of string
         static member Actions (actions: Polaris.DisableableAction list) =
             unbox ("actions",

@@ -5,5 +5,5 @@ open PublishUtils
 // run "npm test"
 match args with
 | IgnoreCase "publish"::_ ->
-    pushNuget "src/fable-polaris.fsproj"
+    pushNuget "src/fable-polaris.fsproj" doNothing
 | _ -> ()

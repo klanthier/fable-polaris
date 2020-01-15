@@ -9,6 +9,10 @@ module Button =
     open Fable.React
     open Fable.Polaris
 
+    type [<StringEnum>] [<RequireQualifiedAccess>] ButtonDisclosure =
+        | [<CompiledName "down">] Down
+        | [<CompiledName "up">] Up
+
     type [<StringEnum>] [<RequireQualifiedAccess>] ButtonSize =
         | [<CompiledName "slim">] Slim
         | [<CompiledName "medium">] Medium
@@ -21,7 +25,7 @@ module Button =
         | AriaPressed of bool
         | Destructive of bool
         | Disabled of bool
-        | Disclosure of bool
+        | Disclosure of U2<bool, ButtonDisclosure>
         | Download of U2<string, bool>
         | External of bool
         | FullWidth of bool
@@ -37,6 +41,8 @@ module Button =
         | TextAlign of Polaris.TextAlign
         | Url of string
         | OnBlur of (Event -> unit)
+        | OnMouseEnter of (unit -> unit)
+        | OnTouchStart of (unit -> unit)
         | OnFocus of (Event -> unit)
         | OnClick of (Event -> unit)
         | OnKeyDown of (KeyboardEvent -> unit)

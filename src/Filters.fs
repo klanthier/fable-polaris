@@ -27,6 +27,8 @@ module Filters =
         | QueryValue of string
         | OnQueryBlur of (unit -> unit)
         | OnQueryFocus of (unit -> unit)
+        | HelpText of ReactElement 
+        | Disabled of bool 
 
 
     let inline polarisFilters (requiredProps: RequiredFilterProps) (props : FilterProps list) : ReactElement =

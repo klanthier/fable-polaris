@@ -1,3 +1,6 @@
+### 4.10.2
+* Upgraded bindings to consume the latest API from Polaris version 4.10.2
+
 ### 4.7.1
 
 * Fixed Polaris Icons import issues

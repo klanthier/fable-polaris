@@ -4,7 +4,7 @@ open Fable.Polaris
 
 
 let view _ _ =
-    polarisAppProvider [] <|
+      polarisAppProvider [] <|
         div [] [
             polarisNavigation {
                   Location = "/"
@@ -32,3 +32,4 @@ let view _ _ =
                   ]
             ]
         ]
+              
