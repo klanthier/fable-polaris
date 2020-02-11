@@ -25,8 +25,13 @@ module DataTable =
     type [<RequireQualifiedAccess>] DataTableRow = U3<ReactElement, string, float>
 
     type [<RequireQualifiedAccess>] RequiredDataTableProps = {
-        Headings: string array
+        Headings: ReactElement array
         Rows: DataTableRow array array
+    }
+
+    type DataTableTotalsName = {
+        plural: string
+        singular: string
     }
 
     type [<RequireQualifiedAccess>] DataTableProps =
@@ -36,6 +41,7 @@ module DataTable =
         | InitialSortColumnIndex of int
         | Sortable of bool array
         | ShowTotalsInFooter of bool
+        | TotalsName of DataTableTotalsName
         | Totals of DataTableRow array
         | Truncate of bool
         | VerticalAlign of DataTableVerticalAlign

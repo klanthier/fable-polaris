@@ -13,6 +13,7 @@ module TopBar =
       | SearchResults of ReactElement
       | SearchResultsVisible of bool
       | SecondaryMenu of ReactElement
+      | SearchResultsOverlayVisible of bool
       | ShowNavigationToggle of bool
       | UserMenu of ReactElement
       | OnSearchResultsDismiss of (unit -> unit)

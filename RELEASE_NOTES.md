@@ -1,3 +1,6 @@
+### 4.13.1
+* Updated props for Filters, Datatable and Topbar as per Polaris changes.
+
 ### 4.10.2
 * Upgraded bindings to consume the latest API from Polaris version 4.10.2
 

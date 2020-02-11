@@ -7,10 +7,18 @@ module Filters =
     open Fable.Core
     open Fable.Core.JsInterop
 
-    type [<RequireQualifiedAccess>] Filter = {
+    type [<RequireQualifiedAccess>] AppliedFilter = {
         key: string
         label: string
         onRemove: string -> unit //key -> void
+    }
+
+    type [<RequireQualifiedAccess>] Filter = {
+        disabled: bool
+        shortcut: bool
+        key: string
+        label: string
+        filter: ReactElement
     }
 
     type [<RequireQualifiedAccess>] RequiredFilterProps = {
@@ -21,13 +29,14 @@ module Filters =
     }
 
     type [<RequireQualifiedAccess>] FilterProps = 
-        | AppliedFilters of Filter array
+        | AppliedFilters of AppliedFilter array
         | Focused of bool
         | QueryPlaceholder of string
         | QueryValue of string
         | OnQueryBlur of (unit -> unit)
         | OnQueryFocus of (unit -> unit)
         | HelpText of ReactElement 
+        | HideTags of bool 
         | Disabled of bool 
 
 
