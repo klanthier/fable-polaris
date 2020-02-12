@@ -1,3 +1,6 @@
+### 4.13.2
+* Reverted Fable.Core and React versions for lower version to prevent unecessary conflicts
+
 ### 4.13.1
 * Updated props for Filters, Datatable and Topbar as per Polaris changes.
 
