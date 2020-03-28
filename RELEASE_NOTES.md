@@ -1,3 +1,6 @@
+### 4.16.0
+* Upgraded polaris bindings to match the latest 4.16.0 release, including all latest modifications to the library.
+
 ### 4.13.2
 * Reverted Fable.Core and React versions for lower version to prevent unecessary conflicts
 
