@@ -12,6 +12,13 @@ module ResourceItem =
         Id : string
     }
 
+    type [<StringEnum>] [<RequireQualifiedAccess>] ResourceItemAlignment = 
+        | [<CompiledName "leading">] Leading
+        | [<CompiledName "trailing">] Trailing
+        | [<CompiledName "center">] Center
+        | [<CompiledName "fill">] Fill
+        | [<CompiledName "baseline">] Baseline
+
     type [<RequireQualifiedAccess>] ResourceItemProps =
         | AccessibilityLabel of string
         | Name of string
@@ -19,6 +26,7 @@ module ResourceItem =
         | AriaExpanded of bool
         | Media of ReactElement
         | PersistActions of bool
+        | VerticalAlignment of ResourceItemAlignment
         | SortOrder of float
         | Url of string
         | OnClick of (string -> unit)

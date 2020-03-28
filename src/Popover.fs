@@ -30,6 +30,7 @@ module Popover =
         | FluidContent of bool
         | FullWidth of bool
         | PreferredAlignment of Polaris.PopoverPreferedAlignment
+        | PreferInputActivator of bool
         | PreferredPosition of Polaris.PopoverPreferedPosition
         | PreventAutofocus of bool
         | Sectioned of bool
